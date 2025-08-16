@@ -1,1 +1,7 @@
 .devcontainer/Quartus-lite-24.1std.0.1077-linux.tar
+labs/01-fpga/db/*
+labs/01-fpga/incremental_db/*
+labs/01-fpga/output_files/*
+labs/01-fpga/simulation/*
+labs/01-fpga/c5_pin_model_dump.txt
+labs/01-fpga/fpga.qws
