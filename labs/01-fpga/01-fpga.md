@@ -85,7 +85,7 @@ Now that you have your circuit working, you will extend it to convert any binary
 encoded in the ten switches (SW0 to SW9) into its hexadecimal representation.
 Now you will use all the seven-segment displays that you need.
 
-### 4.3 Negative numbers
+### 4.4 Negative numbers
 
 For this part you will assume your number is a signed number, so you will
 implement a two's complement converter and your display will show the
@@ -103,7 +103,7 @@ representations. So the expected behavior of your final circuit is:
 
 You will submit your work in two parts:
 
-- **Part 1**: By next thursday, August 22 (23:59 COT) you will create a pull request
+- **Part 1**: By next friday, August 22 (23:59 COT) you will create a pull request
   with your answers and a simulation of your circuit.
 
 - **Part 2**: After that you will contact out teaching assistant and schedule
