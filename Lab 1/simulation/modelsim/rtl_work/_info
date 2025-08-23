@@ -1,0 +1,63 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/simulation/modelsim
+vtop_level
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1755750066
+!i10b 1
+!s100 BP@1MJ6;4Z0loi?AJ5=941
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IE8^WLYi5C5MP4QM1];_010
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1755748051
+8C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/top_level.sv
+FC:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/top_level.sv
+!i122 0
+L0 2 117
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1755750066.000000
+!s107 C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/top_level.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA|C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/top_level.sv|
+!i113 1
+Z7 o-sv -work work
+Z8 !s92 -sv -work work +incdir+C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA
+Z9 tCvgOpt 0
+vtop_level_tb
+R1
+R2
+!i10b 1
+!s100 T8j@8AI]LjEG@b:;J]a[@2
+R3
+I1gVRDNDcZOj006lGD1cV41
+R4
+S1
+R0
+w1755748447
+8C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/top_level_tb.sv
+FC:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/top_level_tb.sv
+!i122 1
+L0 4 86
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/top_level_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA|C:/Users/santi/OneDrive/Escritorio/Datos/Quartus/Tareas/LabSession-Introduction-to-FPGA/top_level_tb.sv|
+!i113 1
+R7
+R8
+R9
