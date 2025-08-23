@@ -1,3 +1,3 @@
 # is614
-A simple quartus project and dev container configuration for the course IS614 Computer Organization
-YA LA TAREA ESTA LISTAAAAAA
+Sebastian Ramirez Valencia 
+Arian Valencia Soto
