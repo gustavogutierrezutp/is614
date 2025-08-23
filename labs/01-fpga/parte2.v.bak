@@ -1,0 +1,6 @@
+module parte2(
+	input switch0, switch1, switch2, switch3,
+	output seg0, seg1, seg2, seg3, seg4, seg0, seg6
+);
+
+endmodule
