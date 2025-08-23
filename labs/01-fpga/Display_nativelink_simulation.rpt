@@ -1,0 +1,84 @@
+Info: Start Nativelink Simulation process
+
+========= EDA Simulation Settings =====================
+
+Sim Mode              :  Gate
+Family                :  cyclonev
+Quartus root          :  c:/intelfpga_lite/24.1std/quartus/bin64/
+Quartus sim root      :  c:/intelfpga_lite/24.1std/quartus/eda/sim_lib
+Simulation Tool       :  questa intel fpga
+Simulation Language   :  verilog
+Simulation Mode       :  GUI
+Sim Output File       :  Display.vo
+Sim SDF file          :  Display__verilog.sdo
+Sim dir               :  simulation\questa
+
+=======================================================
+
+Info: Starting NativeLink simulation with Questa Intel FPGA software
+Sourced NativeLink script c:/intelfpga_lite/24.1std/quartus/common/tcl/internal/nativelink/modelsim.tcl
+Warning: File Display_run_msim_gate_verilog.do already exists - backing up current file as Display_run_msim_gate_verilog.do.bak9
+Probing transcript
+Questa Intel FPGA Info: # Reading pref.tcl
+Questa Intel FPGA Info: # do Display_run_msim_gate_verilog.do
+Questa Intel FPGA Info: # if {[file exists gate_work]} {
+Questa Intel FPGA Info: # 	vdel -lib gate_work -all
+Questa Intel FPGA Info: # }
+Questa Intel FPGA Info: # vlib gate_work
+Questa Intel FPGA Info: # vmap work gate_work
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+Questa Intel FPGA Info: # vmap work gate_work 
+Questa Intel FPGA Info: # Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+Questa Intel FPGA Info: # Modifying modelsim.ini
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vlog -vlog01compat -work work +incdir+. {Display.vo}
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+Questa Intel FPGA Info: # Start time: 22:42:47 on Aug 22,2025
+Questa Intel FPGA Info: # vlog -reportprogress 300 -vlog01compat -work work "+incdir+." Display.vo 
+Questa Intel FPGA Info: # -- Compiling module display
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # Top level modules:
+Questa Intel FPGA Info: # 	display
+Questa Intel FPGA Info: # End time: 22:42:47 on Aug 22,2025, Elapsed time: 0:00:00
+Questa Intel FPGA Info: # Errors: 0, Warnings: 0
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vlog -vlog01compat -work work +incdir+C:/Users/thepu/Downloads/FPGA_1/Taller\ 1/Display {C:/Users/thepu/Downloads/FPGA_1/Taller 1/Display/tb_display.v}
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+Questa Intel FPGA Info: # Start time: 22:42:48 on Aug 22,2025
+Questa Intel FPGA Info: # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/thepu/Downloads/FPGA_1/Taller 1/Display" C:/Users/thepu/Downloads/FPGA_1/Taller 1/Display/tb_display.v 
+Questa Intel FPGA Info: # -- Compiling module tb_display
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # Top level modules:
+Questa Intel FPGA Info: # 	tb_display
+Questa Intel FPGA Info: # End time: 22:42:48 on Aug 22,2025, Elapsed time: 0:00:00
+Questa Intel FPGA Info: # Errors: 0, Warnings: 0
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  tb_display
+Questa Intel FPGA Info: # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" tb_display 
+Questa Intel FPGA Info: # Start time: 22:42:48 on Aug 22,2025
+Questa Intel FPGA Info: # Loading work.tb_display
+Questa Intel FPGA Info: # Loading work.display
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_io_obuf
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_io_ibuf
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_lcell_comb
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # add wave *
+Questa Intel FPGA Info: # view structure
+Questa Intel FPGA Info: # .main_pane.structure.interior.cs.body.struct
+Questa Intel FPGA Info: # view signals
+Questa Intel FPGA Info: # .main_pane.objects.interior.cs.body.tree
+Questa Intel FPGA Info: # run 100 ns
+Questa Intel FPGA Info: # Iniciando simulación...
+Questa Intel FPGA Info: # SW=0000000000, Unsigned -> LEDS=0000000000
+Questa Intel FPGA Info: # SW=0000001111, Unsigned -> LEDS=0000001111
+Questa Intel FPGA Info: # SW=1111111111, Unsigned -> LEDS=1111111111
+Questa Intel FPGA Info: # SW=1000000000, Unsigned -> LEDS=1000000000
+Questa Intel FPGA Info: # SW=1000000000, Signed -> LEDS=1000000000
+Questa Intel FPGA Info: # SW=1111111111, Signed -> LEDS=1111111111
+Questa Intel FPGA Info: # Simulación terminada.
+Questa Intel FPGA Info: # ** Note: $stop    : C:/Users/thepu/Downloads/FPGA_1/Taller 1/Display/tb_display.v(57)
+Questa Intel FPGA Info: #    Time: 60 ns  Iteration: 0  Instance: /tb_display
+Questa Intel FPGA Info: # Break in Module tb_display at C:/Users/thepu/Downloads/FPGA_1/Taller 1/Display/tb_display.v line 57
+Questa Intel FPGA Info: # End time: 22:59:55 on Aug 22,2025, Elapsed time: 0:17:07
+Questa Intel FPGA Info: # Errors: 0, Warnings: 0
+Info: NativeLink simulation flow was successful
