@@ -17,7 +17,7 @@ Sim dir               :  simulation\questa
 
 Info: Starting NativeLink simulation with Questa Intel FPGA software
 Sourced NativeLink script c:/intelfpga_lite/24.1std/quartus/common/tcl/internal/nativelink/modelsim.tcl
-Warning: File fpga_run_msim_gate_systemverilog.do already exists - backing up current file as fpga_run_msim_gate_systemverilog.do.bak1
+Warning: File fpga_run_msim_gate_systemverilog.do already exists - backing up current file as fpga_run_msim_gate_systemverilog.do.bak2
 Probing transcript
 Questa Intel FPGA Info: # Reading C:/intelFPGA/19.1/modelsim_ase/tcl/vsim/pref.tcl
 Questa Intel FPGA Info: # do fpga_run_msim_gate_systemverilog.do
@@ -33,29 +33,29 @@ Questa Intel FPGA Info: # Modifying modelsim.ini
 Questa Intel FPGA Info: # 
 Questa Intel FPGA Info: # vlog -sv -work work +incdir+. {fpga.svo}
 Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-Questa Intel FPGA Info: # Start time: 19:25:04 on Aug 22,2025
+Questa Intel FPGA Info: # Start time: 20:01:09 on Aug 22,2025
 Questa Intel FPGA Info: # vlog -reportprogress 300 -sv -work work "+incdir+." fpga.svo 
 Questa Intel FPGA Info: # -- Compiling module top_level
 Questa Intel FPGA Info: # 
 Questa Intel FPGA Info: # Top level modules:
 Questa Intel FPGA Info: # 	top_level
-Questa Intel FPGA Info: # End time: 19:25:04 on Aug 22,2025, Elapsed time: 0:00:00
+Questa Intel FPGA Info: # End time: 20:01:09 on Aug 22,2025, Elapsed time: 0:00:00
 Questa Intel FPGA Info: # Errors: 0, Warnings: 0
 Questa Intel FPGA Info: # 
-Questa Intel FPGA Info: # vlog -sv -work work +incdir+C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab\ 1 {C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/top_level_tb.sv}
+Questa Intel FPGA Info: # vlog -sv -work work +incdir+C:/Users/tomas/Documents/GitHub/Lab-1/Lab\ 1 {C:/Users/tomas/Documents/GitHub/Lab-1/Lab 1/top_level_tb.sv}
 Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-Questa Intel FPGA Info: # Start time: 19:25:04 on Aug 22,2025
-Questa Intel FPGA Info: # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1" C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/top_level_tb.sv 
+Questa Intel FPGA Info: # Start time: 20:01:10 on Aug 22,2025
+Questa Intel FPGA Info: # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/tomas/Documents/GitHub/Lab-1/Lab 1" C:/Users/tomas/Documents/GitHub/Lab-1/Lab 1/top_level_tb.sv 
 Questa Intel FPGA Info: # -- Compiling module top_level_tb
 Questa Intel FPGA Info: # 
 Questa Intel FPGA Info: # Top level modules:
 Questa Intel FPGA Info: # 	top_level_tb
-Questa Intel FPGA Info: # End time: 19:25:04 on Aug 22,2025, Elapsed time: 0:00:00
+Questa Intel FPGA Info: # End time: 20:01:10 on Aug 22,2025, Elapsed time: 0:00:00
 Questa Intel FPGA Info: # Errors: 0, Warnings: 0
 Questa Intel FPGA Info: # 
 Questa Intel FPGA Info: # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  top_level_tb
 Questa Intel FPGA Info: # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" top_level_tb 
-Questa Intel FPGA Info: # Start time: 19:25:04 on Aug 22,2025
+Questa Intel FPGA Info: # Start time: 20:01:10 on Aug 22,2025
 Questa Intel FPGA Info: # Loading sv_std.std
 Questa Intel FPGA Info: # Loading work.top_level_tb
 Questa Intel FPGA Info: # Loading work.top_level
@@ -76,10 +76,10 @@ Questa Intel FPGA Info: # t=50000 | SW=0001100100 | KEY0=0 | LEDR=0001100100 | H
 Questa Intel FPGA Info: # t=70000 | SW=1111111000 | KEY0=0 | LEDR=1111111000 | HEX0=0000000 HEX1=1000000 HEX2=1000000 HEX3=0111111
 Questa Intel FPGA Info: # t=90000 | SW=0111111111 | KEY0=0 | LEDR=0111111111 | HEX0=0001110 HEX1=0001110 HEX2=1111001 HEX3=1111111
 Questa Intel FPGA Info: # t=110000 | SW=1000000000 | KEY0=0 | LEDR=1000000000 | HEX0=1000000 HEX1=1000000 HEX2=0100100 HEX3=0111111
-Questa Intel FPGA Info: # ** Note: $finish    : C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/top_level_tb.sv(72)
+Questa Intel FPGA Info: # ** Note: $finish    : C:/Users/tomas/Documents/GitHub/Lab-1/Lab 1/top_level_tb.sv(72)
 Questa Intel FPGA Info: #    Time: 170 ns  Iteration: 0  Instance: /top_level_tb
 Questa Intel FPGA Info: # 1
-Questa Intel FPGA Info: # Break in Module top_level_tb at C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/top_level_tb.sv line 72
-Questa Intel FPGA Info: # End time: 19:35:33 on Aug 22,2025, Elapsed time: 0:10:29
+Questa Intel FPGA Info: # Break in Module top_level_tb at C:/Users/tomas/Documents/GitHub/Lab-1/Lab 1/top_level_tb.sv line 72
+Questa Intel FPGA Info: # End time: 20:02:59 on Aug 22,2025, Elapsed time: 0:01:49
 Questa Intel FPGA Info: # Errors: 0, Warnings: 0
 Info: NativeLink simulation flow was successful
