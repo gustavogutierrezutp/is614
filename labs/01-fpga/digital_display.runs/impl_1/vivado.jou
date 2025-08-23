@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Thu Aug 21 22:57:32 2025
+# Process ID: 932
+# Current directory: /home/user/Desktop/digital_display/digital_display.runs/impl_1
+# Command line: vivado -log top_hex_display_controller.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_hex_display_controller.tcl -notrace
+# Log file: /home/user/Desktop/digital_display/digital_display.runs/impl_1/top_hex_display_controller.vdi
+# Journal file: /home/user/Desktop/digital_display/digital_display.runs/impl_1/vivado.jou
+# Running On        :f22f8f6634c3
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 22.04.5 LTS
+# Processor Detail  :VirtualApple @ 2.50GHz
+# CPU Frequency     :2502.057 MHz
+# CPU Physical cores:10
+# CPU Logical cores :10
+# Host memory       :8218 MB
+# Swap memory       :1073 MB
+# Total Virtual     :9291 MB
+# Available Virtual :5525 MB
+#-----------------------------------------------------------
+source top_hex_display_controller.tcl -notrace

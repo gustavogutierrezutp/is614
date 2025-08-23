@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Checkpoint Version="22" Minor="0">
+	<BUILD_NUMBER Name="5076996"/>
+	<FULL_BUILD Name="SW Build 5076996 on Wed May 22 18:36:09 MDT 2024"/>
+	<PRODUCT Name="Vivado v2024.1 (64-bit)"/>
+	<Part Name="xc7k70tfbv676-1"/>
+	<FeatureSet Name="FeatureSet_Classic"/>
+	<NEXTGEN_VERSAL Name="0"/>
+	<Top Name="top_hex_display_controller"/>
+	<DisableAutoIOBuffers Name="0"/>
+	<OutOfContext Name="0"/>
+	<MacroLevel Name="1"/>
+	<RunGenerated Name="1"/>
+	<HDPlatform Name="0"/>
+	<File Type="VERILOG_STUB" Name="top_hex_display_controller_stub.v" ModTime="1755816444"/>
+	<File Type="VHDL_STUB" Name="top_hex_display_controller_stub.vhdl" ModTime="1755816444"/>
+	<File Type="PARAMXML" Name="top_hex_display_controller_param.xml" ModTime="1755816444"/>
+	<File Type="PARAMXML" Name="top_hex_display_controller_param.xml" ModTime="1755816444"/>
+	<File Type="SHAPE" Name="top_hex_display_controller.shape" ModTime="1755816444"/>
+	<File Type="XN" Name="top_hex_display_controller.xn" ModTime="1755816444"/>
+	<File Type="EDIF" Name="top_hex_display_controller.edf" ModTime="1755816444"/>
+	<File Type="INCR" Name="top_hex_display_controller.incr" ModTime="1755816444"/>
+	<File Type="RDA" Name="top_hex_display_controller.rda" ModTime="1755816444"/>
+	<File Type="JSON_RDA" Name="top_hex_display_controller_rda.json" ModTime="1755816444"/>
+	<File Type="WDF" Name="top_hex_display_controller.wdf" ModTime="1755816444"/>
+	<File Type="SYNTH" Name="top_hex_display_controller.synth" ModTime="1755816444"/>
+</Checkpoint>
+
