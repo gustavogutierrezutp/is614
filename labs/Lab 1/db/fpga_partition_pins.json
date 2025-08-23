@@ -1,0 +1,181 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "LEDR0",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR1",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR2",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR3",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR4",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR5",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR6",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR7",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR8",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR9",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0_a",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0_b",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0_c",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0_d",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0_e",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0_f",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0_g",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1_a",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1_b",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1_c",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1_d",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1_e",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1_f",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1_g",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2_a",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2_b",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2_c",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2_d",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2_e",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2_f",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2_g",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3_a",
+					"strict" : false
+				},
+				{
+					"name" : "SW0",
+					"strict" : false
+				},
+				{
+					"name" : "SW1",
+					"strict" : false
+				},
+				{
+					"name" : "SW2",
+					"strict" : false
+				},
+				{
+					"name" : "SW3",
+					"strict" : false
+				},
+				{
+					"name" : "SW4",
+					"strict" : false
+				},
+				{
+					"name" : "SW5",
+					"strict" : false
+				},
+				{
+					"name" : "SW6",
+					"strict" : false
+				},
+				{
+					"name" : "SW7",
+					"strict" : false
+				},
+				{
+					"name" : "SW8",
+					"strict" : false
+				},
+				{
+					"name" : "SW9",
+					"strict" : false
+				},
+				{
+					"name" : "KEY0",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

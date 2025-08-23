@@ -1,0 +1,60 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/simulation/questa
+vtop_level
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1755908704
+!i10b 1
+!s100 UhUzQa;@Zz;:UeK1RXhKQ3
+IVV52L2Lh_^zdNSjXae;V03
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 fpga_svo_unit
+S1
+R0
+w1755908695
+8fpga.svo
+Ffpga.svo
+L0 32
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1755908704.000000
+!s107 fpga.svo|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+.|fpga.svo|
+!i113 1
+Z6 o-sv -work work
+!s92 -sv -work work +incdir+.
+Z7 tCvgOpt 0
+vtop_level_tb
+R1
+R2
+!i10b 1
+!s100 >Ui8hZJ;]89Y>1S:DjQ;f0
+IdB:=DGacK0eoHL;Zi]M683
+R3
+!s105 top_level_tb_sv_unit
+S1
+R0
+w1755822485
+8C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/top_level_tb.sv
+FC:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/top_level_tb.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/top_level_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1|C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1/top_level_tb.sv|
+!i113 1
+R6
+!s92 -sv -work work {+incdir+C:/Users/tomas/Documents/GitHub/Lab-1/labs/Lab 1}
+R7
