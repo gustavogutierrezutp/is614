@@ -18,5 +18,5 @@ En los displays se muestra el valor ingresado en los switches con las siguientes
 5. Cada display usa el módulo `hex7seg` para convertir el valor a hexadecimal y mostrarlo en los displays.
 
 ## AUTORES:
-Valentina Murillo Muñoz - 1085717310
-Jeronimo Escudero Cuartas - 1091273110
+  - Valentina Murillo Muñoz - 1085717310
+  - Jeronimo Escudero Cuartas - 1091273110
