@@ -1,0 +1,24 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /home/user/Xilinx/Vivado/2024.1/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_display_controller_behav xil_defaultlib.tb_display_controller xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "/home/user/Desktop/digital_display/digital_display.srcs/sources_1/new/top_display_controller_10bit.v" Line 1. Module top_hex_display_controller doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/user/Desktop/digital_display/digital_display.srcs/sources_1/new/bcd_to_7_segment.v" Line 2. Module hex_to_7_segment doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/user/Desktop/digital_display/digital_display.srcs/sources_1/new/bcd_to_7_segment.v" Line 2. Module hex_to_7_segment doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/user/Desktop/digital_display/digital_display.srcs/sources_1/new/bcd_to_7_segment.v" Line 2. Module hex_to_7_segment doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/user/Desktop/digital_display/digital_display.srcs/sources_1/new/top_display_controller_10bit.v" Line 1. Module top_hex_display_controller doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/user/Desktop/digital_display/digital_display.srcs/sources_1/new/bcd_to_7_segment.v" Line 2. Module hex_to_7_segment doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/user/Desktop/digital_display/digital_display.srcs/sources_1/new/bcd_to_7_segment.v" Line 2. Module hex_to_7_segment doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/user/Desktop/digital_display/digital_display.srcs/sources_1/new/bcd_to_7_segment.v" Line 2. Module hex_to_7_segment doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.hex_to_7_segment
+Compiling module xil_defaultlib.top_hex_display_controller
+Compiling module xil_defaultlib.tb_display_controller
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_display_controller_behav
