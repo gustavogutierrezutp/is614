@@ -16,7 +16,3 @@ Para el cuarto ejercicio que consiste en agregar negativos con el complemento a 
 # Simulación
 <img width="1380" height="258" alt="image" src="https://github.com/user-attachments/assets/6d196b02-692a-4b56-bbc8-89136603dc83" />
 Para la simulación realizamos varias pruebas para verificar su funcionamiento, en el que podemos ver que los calculos están funcionando.
-
-# Hecho por:
-Juan David Garcia Arce
-Maximiliano Giraldo Ocampo
