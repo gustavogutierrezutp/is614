@@ -1,0 +1,66 @@
+`timescale 1ns/1ps
+
+module tb_top_level;
+
+    // Entradas
+    logic [9:0] SW;
+    logic KEY0;
+
+    // Salidas
+    logic [6:0] HEX0, HEX1, HEX2;
+
+    // Instancia del DUT (Device Under Test)
+    top_level dut (
+        .SW(SW),
+        .KEY0(KEY0),
+        .HEX0(HEX0),
+        .HEX1(HEX1),
+        .HEX2(HEX2)
+    );
+
+    // Procedimiento de test
+    initial begin
+        $display("==== INICIO DEL TEST ====");
+
+        // Caso 0: todos apagados
+        SW   = 10'b0000000000;
+        KEY0 = 0; #10;
+        $display("SW=%b | Signed=%0d | Unsigned=%0d | HEX2=%b HEX1=%b HEX0=%b", 
+                 SW, $signed(SW), SW, HEX2, HEX1, HEX0);
+
+        // Caso 1: valor pequeño positivo
+        SW   = 10'b0000000001;
+        KEY0 = 0; #10; // signed
+        $display("SW=%b | Signed=%0d | Unsigned=%0d", SW, $signed(SW), SW);
+
+        KEY0 = 1; #10; // unsigned
+        $display("SW=%b | Signed=%0d | Unsigned=%0d", SW, $signed(SW), SW);
+
+        // Caso 2: número intermedio
+        SW   = 10'b0000010101; // 21
+        KEY0 = 0; #10;
+        $display("SW=%b | Signed=%0d | Unsigned=%0d", SW, $signed(SW), SW);
+
+        // Caso 3: el máximo negativo en 10 bits (1000000000 = -512 en signed)
+        SW   = 10'b1000000000;
+        KEY0 = 0; #10;
+        $display("SW=%b | Signed=%0d | Unsigned=%0d", SW, $signed(SW), SW);
+
+        // Caso 4: todos los switches en 1
+        SW   = 10'b1111111111; // -1 signed, 1023 unsigned
+        KEY0 = 0; #10; // signed
+        $display("SW=%b | Signed=%0d | Unsigned=%0d", SW, $signed(SW), SW);
+
+        KEY0 = 1; #10; // unsigned
+        $display("SW=%b | Signed=%0d | Unsigned=%0d", SW, $signed(SW), SW);
+
+        // Caso 5: otro negativo cercano al límite
+        SW   = 10'b1111111110; // -2 signed, 1022 unsigned
+        KEY0 = 0; #10;
+        $display("SW=%b | Signed=%0d | Unsigned=%0d", SW, $signed(SW), SW);
+
+        $display("==== FIN DEL TEST ====");
+        $finish;
+    end
+
+endmodule
