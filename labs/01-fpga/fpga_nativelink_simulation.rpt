@@ -1,23 +1,94 @@
 Info: Start Nativelink Simulation process
-Info: NativeLink has detected Verilog design -- Verilog simulation models will be used
 
 ========= EDA Simulation Settings =====================
 
-Sim Mode              :  RTL
+Sim Mode              :  Gate
 Family                :  cyclonev
 Quartus root          :  c:/intelfpga_lite/24.1std/quartus/bin64/
 Quartus sim root      :  c:/intelfpga_lite/24.1std/quartus/eda/sim_lib
 Simulation Tool       :  questa intel fpga
 Simulation Language   :  verilog
 Simulation Mode       :  GUI
-Sim Output File       :  
-Sim SDF file          :  
+Sim Output File       :  fpga.vo
+Sim SDF file          :  fpga__verilog.sdo
 Sim dir               :  simulation\questa
 
 =======================================================
 
 Info: Starting NativeLink simulation with Questa Intel FPGA software
 Sourced NativeLink script c:/intelfpga_lite/24.1std/quartus/common/tcl/internal/nativelink/modelsim.tcl
-Warning: File fpga_run_msim_rtl_verilog.do already exists - backing up current file as fpga_run_msim_rtl_verilog.do.bak1
-Info: Spawning Questa Intel FPGA Simulation software 
+Warning: File fpga_run_msim_gate_verilog.do already exists - backing up current file as fpga_run_msim_gate_verilog.do.bak7
+Probing transcript
+Questa Intel FPGA Info: # Reading C:/intelFPGA/19.1/modelsim_ase/tcl/vsim/pref.tcl
+Questa Intel FPGA Info: # do fpga_run_msim_gate_verilog.do
+Questa Intel FPGA Info: # if {[file exists gate_work]} {
+Questa Intel FPGA Info: # 	vdel -lib gate_work -all
+Questa Intel FPGA Info: # }
+Questa Intel FPGA Info: # vlib gate_work
+Questa Intel FPGA Info: # vmap work gate_work
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+Questa Intel FPGA Info: # vmap work gate_work 
+Questa Intel FPGA Info: # Copying C:/intelFPGA/19.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+Questa Intel FPGA Info: # Modifying modelsim.ini
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vlog -vlog01compat -work work +incdir+. {fpga.vo}
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Questa Intel FPGA Info: # Start time: 11:20:10 on Aug 25,2025
+Questa Intel FPGA Info: # vlog -reportprogress 300 -vlog01compat -work work "+incdir+." fpga.vo 
+Questa Intel FPGA Info: # -- Compiling module top_level
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # Top level modules:
+Questa Intel FPGA Info: # 	top_level
+Questa Intel FPGA Info: # End time: 11:20:10 on Aug 25,2025, Elapsed time: 0:00:00
+Questa Intel FPGA Info: # Errors: 0, Warnings: 0
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vlog -sv -work work +incdir+D:/Documents/INGENIERIA\ DE\ SISTEMAS\ Y\ COMPUTACION/2025-2/Arquitectura\ De\ Computadores/Quartus/is614/labs/01-fpga {D:/Documents/INGENIERIA DE SISTEMAS Y COMPUTACION/2025-2/Arquitectura De Computadores/Quartus/is614/labs/01-fpga/top_level_tb.sv}
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Questa Intel FPGA Info: # Start time: 11:20:10 on Aug 25,2025
+Questa Intel FPGA Info: # vlog -reportprogress 300 -sv -work work "+incdir+D:/Documents/INGENIERIA DE SISTEMAS Y COMPUTACION/2025-2/Arquitectura De Computadores/Quartus/is614/labs/01-fpga" D:/Documents/INGENIERIA DE SISTEMAS Y COMPUTACION/2025-2/Arquitectura De Computadores/Quartus/is614/labs/01-fpga/top_level_tb.sv 
+Questa Intel FPGA Info: # -- Compiling module tb_top_level
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # Top level modules:
+Questa Intel FPGA Info: # 	tb_top_level
+Questa Intel FPGA Info: # End time: 11:20:10 on Aug 25,2025, Elapsed time: 0:00:00
+Questa Intel FPGA Info: # Errors: 0, Warnings: 0
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  tb_top_level
+Questa Intel FPGA Info: # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" tb_top_level 
+Questa Intel FPGA Info: # Start time: 11:20:10 on Aug 25,2025
+Questa Intel FPGA Info: # Loading sv_std.std
+Questa Intel FPGA Info: # Loading work.tb_top_level
+Questa Intel FPGA Info: # Loading work.top_level
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_io_obuf
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_io_ibuf
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_lcell_comb
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # add wave *
+Questa Intel FPGA Info: # view structure
+Questa Intel FPGA Info: # .main_pane.structure.interior.cs.body.struct
+Questa Intel FPGA Info: # view signals
+Questa Intel FPGA Info: # .main_pane.objects.interior.cs.body.tree
+Questa Intel FPGA Info: # run 200 ns
+Questa Intel FPGA Info: # SW=0 -> HEX0=1000000
+Questa Intel FPGA Info: # SW=1 -> HEX0=1111001
+Questa Intel FPGA Info: # SW=2 -> HEX0=0100100
+Questa Intel FPGA Info: # SW=3 -> HEX0=0110000
+Questa Intel FPGA Info: # SW=4 -> HEX0=0011001
+Questa Intel FPGA Info: # SW=5 -> HEX0=0010010
+Questa Intel FPGA Info: # SW=6 -> HEX0=0000010
+Questa Intel FPGA Info: # SW=7 -> HEX0=1111000
+Questa Intel FPGA Info: # SW=8 -> HEX0=0000000
+Questa Intel FPGA Info: # SW=9 -> HEX0=0010000
+Questa Intel FPGA Info: # SW=a -> HEX0=0001000
+Questa Intel FPGA Info: # SW=b -> HEX0=0000011
+Questa Intel FPGA Info: # SW=c -> HEX0=1000110
+Questa Intel FPGA Info: # SW=d -> HEX0=0100001
+Questa Intel FPGA Info: # SW=e -> HEX0=0000110
+Questa Intel FPGA Info: # SW=f -> HEX0=0001110
+Questa Intel FPGA Info: # ** Note: $finish    : D:/Documents/INGENIERIA DE SISTEMAS Y COMPUTACION/2025-2/Arquitectura De Computadores/Quartus/is614/labs/01-fpga/top_level_tb.sv(23)
+Questa Intel FPGA Info: #    Time: 160 ns  Iteration: 0  Instance: /tb_top_level
+Questa Intel FPGA Info: # 1
+Questa Intel FPGA Info: # Break in Module tb_top_level at D:/Documents/INGENIERIA DE SISTEMAS Y COMPUTACION/2025-2/Arquitectura De Computadores/Quartus/is614/labs/01-fpga/top_level_tb.sv line 23
+Questa Intel FPGA Info: # End time: 11:25:08 on Aug 25,2025, Elapsed time: 0:04:58
+Questa Intel FPGA Info: # Errors: 0, Warnings: 0
 Info: NativeLink simulation flow was successful
