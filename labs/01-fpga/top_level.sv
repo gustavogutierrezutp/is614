@@ -1,9 +1,8 @@
 module top_level (
-    output logic led0,  
-    input logic switch0,
-    input logic switch9
+	output logic [9:0] led,     // vector de 10 LEDs
+	input  logic [9:0] switch   // vector de 10 switches
 );
-
-assign led0 = switch0 & switch9;
+	
+	assign led = switch;
 
 endmodule
