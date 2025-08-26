@@ -1,0 +1,59 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/david/OneDrive/Documentos/Utp/Arquitectura/Laboratorio 1/Ejercicio 4.2/simulation/questa
+vtb_top_level
+!s110 1756221815
+!i10b 1
+!s100 MSc0;BJDog2R^`PF157IU1
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IKM5>f>@JgjE`eJ7zjR:Z10
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1756221734
+8C:/Users/david/OneDrive/Documentos/Utp/Arquitectura/Laboratorio 1/Ejercicio 4.2/tb_top_level.v
+FC:/Users/david/OneDrive/Documentos/Utp/Arquitectura/Laboratorio 1/Ejercicio 4.2/tb_top_level.v
+!i122 1
+L0 3 17
+Z3 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1756221815.000000
+!s107 C:/Users/david/OneDrive/Documentos/Utp/Arquitectura/Laboratorio 1/Ejercicio 4.2/tb_top_level.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/david/OneDrive/Documentos/Utp/Arquitectura/Laboratorio 1/Ejercicio 4.2|C:/Users/david/OneDrive/Documentos/Utp/Arquitectura/Laboratorio 1/Ejercicio 4.2/tb_top_level.v|
+!i113 1
+Z4 o-vlog01compat -work work
+!s92 -vlog01compat -work work {+incdir+C:/Users/david/OneDrive/Documentos/Utp/Arquitectura/Laboratorio 1/Ejercicio 4.2}
+Z5 tCvgOpt 0
+vtop_level
+!s110 1756221814
+!i10b 1
+!s100 F2GVR>B_@T9zX<]:8mKO;1
+R1
+IN3J1Y2XEZFE_Rd4^32EL_1
+R2
+R0
+w1756221802
+8top_level.vo
+Ftop_level.vo
+!i122 0
+L0 32 400
+R3
+r1
+!s85 0
+31
+!s108 1756221814.000000
+!s107 top_level.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|top_level.vo|
+!i113 1
+R4
+!s92 -vlog01compat -work work +incdir+.
+R5
