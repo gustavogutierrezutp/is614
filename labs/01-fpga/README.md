@@ -1,11 +1,11 @@
 # Lab Session: Introduction to FPGA using the DE1-SoC Board
 
 
-## Solved Exercises by Diego Amaya, Group 101
+## Solved Exercises by Diego Amaya, Group 101.
 
 ## This repository contains the solution for Section 4 of the laboratory.
 
-## Project description
+## Project description.
 
 The project has two main files:
 
@@ -13,7 +13,7 @@ The project has two main files:
 
 - **top_level_tb.sv**: testbench used to simulate and verify the design.
 
-## Evidences
+## Evidences.
 
 There is a folder called [Evidences](https://github.com/Aeae21/IS614/tree/main/labs/01-fpga/Evidences).
 
