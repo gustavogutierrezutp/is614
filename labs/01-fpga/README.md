@@ -1,7 +1,7 @@
 # Lab Session: Introduction to FPGA using the DE1-SoC Board
 
 
-## Solved Exercises by Diego Amaya, Group 101.
+## by Diego Amaya, Group 101.
 
 ## This repository contains the solution for Section 4 of the laboratory.
 
@@ -18,6 +18,8 @@ The project has two main files:
 There is a folder called [Evidences](https://github.com/Aeae21/IS614/tree/main/labs/01-fpga/Evidences).
 
 This folder contains all the images and waveforms that show the correct operation of each exercise.
+
+## Solved Exercises.
 
 ### 4.1 LED reflection
 
