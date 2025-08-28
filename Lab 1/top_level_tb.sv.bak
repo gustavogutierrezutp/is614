@@ -1,0 +1,50 @@
+`timescale 1ns/1ps
+
+module top_level_tb;
+
+    // Señales de prueba (entradas)
+    logic SW0, SW1, SW2, SW3, SW4, SW5, SW6, SW7, SW8, SW9;
+
+    // Señales observadas (salidas)
+    logic LEDR0, LEDR1, LEDR2, LEDR3, LEDR4, LEDR5, LEDR6, LEDR7, LEDR8, LEDR9;
+
+    // Instanciación del DUT (Device Under Test)
+    top_level dut (
+        .SW0(SW0), .SW1(SW1), .SW2(SW2), .SW3(SW3), .SW4(SW4),
+        .SW5(SW5), .SW6(SW6), .SW7(SW7), .SW8(SW8), .SW9(SW9),
+        .LEDR0(LEDR0), .LEDR1(LEDR1), .LEDR2(LEDR2), .LEDR3(LEDR3), .LEDR4(LEDR4),
+        .LEDR5(LEDR5), .LEDR6(LEDR6), .LEDR7(LEDR7), .LEDR8(LEDR8), .LEDR9(LEDR9)
+    );
+
+    // Bloque inicial de simulación
+    initial begin
+        // Monitor: imprime valores durante la simulación
+        $monitor("t=%0t | SW=%b%b%b%b%b%b%b%b%b%b | LEDR=%b%b%b%b%b%b%b%b%b%b",
+                 $time, SW9,SW8,SW7,SW6,SW5,SW4,SW3,SW2,SW1,SW0,
+                        LEDR9,LEDR8,LEDR7,LEDR6,LEDR5,LEDR4,LEDR3,LEDR2,LEDR1,LEDR0);
+
+        // Caso 1: todos apagados
+        {SW9,SW8,SW7,SW6,SW5,SW4,SW3,SW2,SW1,SW0} = 10'b0000000000;
+        #10;
+
+        // Caso 2: todos encendidos
+        {SW9,SW8,SW7,SW6,SW5,SW4,SW3,SW2,SW1,SW0} = 10'b1111111111;
+        #10;
+
+        // Caso 3: patrón alternado
+        {SW9,SW8,SW7,SW6,SW5,SW4,SW3,SW2,SW1,SW0} = 10'b1010101010;
+        #10;
+
+        // Caso 4: otro patrón
+        {SW9,SW8,SW7,SW6,SW5,SW4,SW3,SW2,SW1,SW0} = 10'b0101010101;
+        #10;
+
+        // Caso 5: solo SW0 encendido
+        {SW9,SW8,SW7,SW6,SW5,SW4,SW3,SW2,SW1,SW0} = 10'b0000000001;
+        #10;
+
+        // Fin de la simulación
+        $finish;
+    end
+
+endmodule
