@@ -62,6 +62,10 @@ Where:
 - `program.bin` is an **output file** containing the binary encoding of the
   program in `program.asm`
 
+```shell
+node assembler.js program.asm program.hex program.bin
+```
+
 ### Supported Instruction Set
 
 Your assembler must support all standard base integer instructions from the
@@ -160,5 +164,10 @@ Here is the list of pseudoinstructions your assembler has to support.
 | Code quality                   | 15     | The code is well-structured, readable, and commented. The README is clear and complete. |
 | Total                          | 100    |                                                                                         |
 
+## Libraries
+
+- [SLY](https://sly.readthedocs.io/en/latest/sly.html)
+- [PEGGY](https://peggyjs.org/)
+- [Regular expressions](https://docs.python.org/3/library/re.html)
 
 ## Good luck!
