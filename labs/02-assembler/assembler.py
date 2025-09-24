@@ -1,4 +1,5 @@
 from sly import Lexer, Parser
+import sys
 
 # Dictionary to store label addresses
 labels = {}
@@ -11,6 +12,8 @@ memory_bin = []
 memory_hex = []
 
 # Class to define assembler directives
+
+
 class directives:
     Directives = [
         ".text",  # Start of text section
@@ -24,6 +27,8 @@ class directives:
     ]
 
 # Class to define R-type instructions
+
+
 class type_r:
     Functions = {
         # Format: opcode, funct3, funct7
@@ -40,6 +45,8 @@ class type_r:
     }
 
 # Class to define I-type instructions
+
+
 class type_i:
     Functions = {
         # Format: opcode, funct3
@@ -52,6 +59,8 @@ class type_i:
     }
 
 # Class to define shift immediate instructions (special I-type)
+
+
 class type_si:
     Functions = {
         # Format: opcode, funct3, imm[5:11]
@@ -61,6 +70,8 @@ class type_si:
     }
 
 # Class to define load instructions
+
+
 class type_l:
     Functions = {
         # Format: opcode, funct3
@@ -72,6 +83,8 @@ class type_l:
     }
 
 # Class to define store instructions
+
+
 class type_s:
     Functions = {
         # Format: opcode, funct3
@@ -81,6 +94,8 @@ class type_s:
     }
 
 # Class to define branch instructions
+
+
 class type_b:
     Functions = {
         # Format: opcode, funct3
@@ -93,6 +108,8 @@ class type_b:
     }
 
 # Class to define jump instructions
+
+
 class type_j:
     Functions = {
         # Format: opcode
@@ -100,6 +117,8 @@ class type_j:
     }
 
 # Class to define jump register instructions
+
+
 class type_jr:
     Functions = {
         # Format: opcode, funct3
@@ -107,6 +126,8 @@ class type_jr:
     }
 
 # Class to define upper immediate instructions
+
+
 class type_u:
     Functions = {
         # Format: opcode
@@ -115,6 +136,8 @@ class type_u:
     }
 
 # Class to define environment call instructions
+
+
 class type_ecall:
     Functions = {
         # Format: opcode, funct3, imm
@@ -123,6 +146,8 @@ class type_ecall:
     }
 
 # Class to define pseudoinstructions
+
+
 class pseudoinstruction:
     Functions = [
         "nop", "mv", "not", "neg", "seqz", "snez", "sltz", "sgtz",
@@ -131,6 +156,8 @@ class pseudoinstruction:
     ]
 
 # Class to define register mappings
+
+
 class register:
     register = {
         "zero": 0, "ra": 1, "sp": 2, "gp": 3, "tp": 4,
@@ -150,7 +177,9 @@ class register:
         "x30": 30, "x31": 31
     }
 
-#Lexer for numbers
+# Lexer for numbers
+
+
 class number_lexer(Lexer):
     tokens = {NUMBER}
     literals = {',', ':', '\n'}
@@ -163,6 +192,8 @@ class number_lexer(Lexer):
     NUMBER = r'0x[0-9a-fA-F]+|-?\d+'
 
 # Lexer for R-type instructions
+
+
 class lexer_rtype(Lexer):
     tokens = {REGISTER, INSTRUCTION}
     literals = {',', ':', '\n'}
@@ -176,6 +207,8 @@ class lexer_rtype(Lexer):
     INSTRUCTION = r'add|sub|xor|or|and|sll|srl|sra|sltu|slt'
 
 # Lexer for I-type instructions
+
+
 class lexer_itype(Lexer):
     tokens = {REGISTER, NUMBER, INSTRUCTION}
     literals = {',', ':', '\n'}
@@ -190,6 +223,8 @@ class lexer_itype(Lexer):
     INSTRUCTION = r'addi|xori|ori|andi|sltiu|slti'
 
 # Lexer for shift immediate instructions
+
+
 class lexer_shift_itype(Lexer):
     tokens = {REGISTER, NUMBER, INSTRUCTION}
     literals = {',', ':', '\n'}
@@ -204,6 +239,8 @@ class lexer_shift_itype(Lexer):
     INSTRUCTION = r'slli|srli|srai'
 
 # Lexer for load instructions
+
+
 class lexer_load(Lexer):
     tokens = {REGISTER, INSTRUCTION, NUMBER, LABEL}
     literals = {',', ':', '\n'}
@@ -219,6 +256,8 @@ class lexer_load(Lexer):
     LABEL = r'[a-zA-Z_]+[a-zA-Z0-9_]*'
 
 # Lexer for store instructions
+
+
 class lexer_store(Lexer):
     tokens = {REGISTER, INSTRUCTION, NUMBER}
     literals = {',', ':', '\n'}
@@ -233,6 +272,8 @@ class lexer_store(Lexer):
     NUMBER = r'0x[0-9a-fA-F]+|-?\d+'
 
 # Lexer for branch instructions
+
+
 class lexer_branch(Lexer):
     tokens = {REGISTER, LABEL, INSTRUCTION}
     literals = {',', ':', '\n'}
@@ -247,6 +288,8 @@ class lexer_branch(Lexer):
     LABEL = r'[a-zA-Z_]+[a-zA-Z0-9_]*'
 
 # Lexer for jump instructions
+
+
 class lexer_jtype(Lexer):
     tokens = {REGISTER, LABEL, INSTRUCTION}
     literals = {',', ':', '\n'}
@@ -261,6 +304,8 @@ class lexer_jtype(Lexer):
     LABEL = r'[a-zA-Z_]+[a-zA-Z0-9_]*'
 
 # Lexer for jump register instructions
+
+
 class lexer_jrtype(Lexer):
     tokens = {REGISTER, NUMBER, INSTRUCTION}
     literals = {',', ':', '\n'}
@@ -275,6 +320,8 @@ class lexer_jrtype(Lexer):
     INSTRUCTION = r'jalr'
 
 # Lexer for upper immediate instructions
+
+
 class lexer_utype(Lexer):
     tokens = {REGISTER, NUMBER, INSTRUCTION}
     literals = {',', ':', '\n'}
@@ -289,6 +336,8 @@ class lexer_utype(Lexer):
     INSTRUCTION = r'lui|auipc'
 
 # Lexer for environment call instructions
+
+
 class lexer_ecall(Lexer):
     tokens = {INSTRUCTION}
     literals = {',', ':', '\n'}
@@ -301,6 +350,8 @@ class lexer_ecall(Lexer):
     INSTRUCTION = r'ecall|ebreak'
 
 # Lexer for labels
+
+
 class label_lexer(Lexer):
     tokens = {LABEL}
     literals = {',', ':', '\n'}
@@ -313,15 +364,19 @@ class label_lexer(Lexer):
     LABEL = r'[a-zA-Z_]+[a-zA-Z0-9_]*'
 
 # Function to calculate two's complement for a given value and bit size
+
+
 def two_complement(value, bits):
     if value < 0:
         value = (1 << bits) + value
-    return value 
+    return value
 
 # First pass: Identify labels and their addresses
-def first_pass():
+
+
+def first_pass(input_file):
     in_data_section = False
-    lines = [line.strip() for line in open("program.asm", "r")]
+    lines = [line.strip() for line in open(input_file, "r")]
     pc = 0
     for line in lines:
         parts1 = line.split(",")
@@ -338,8 +393,9 @@ def first_pass():
                 lexer = label_lexer()
                 for tok in lexer.tokenize(line):
                     if tok.type == 'LABEL':
-                        label = tok.value.replace(':', '').replace(' ', '')  # Remove the colon and any spaces
-                        labels[label] = pc 
+                        label = tok.value.replace(':', '').replace(
+                            ' ', '')  # Remove the colon and any spaces
+                        labels[label] = pc
             elif line == '' or line.startswith('#') or line == '\n' or line == '\r':
                 continue
             elif parts[0] in pseudoinstruction.Functions or parts[0] in type_r.Functions or parts[0] in type_i.Functions or parts[0] in type_si.Functions or parts[0] in type_l.Functions or parts[0] in type_s.Functions or parts[0] in type_b.Functions or parts[0] in type_j.Functions or parts[0] in type_jr.Functions or parts[0] in type_u.Functions or parts[0] in type_ecall.Functions:
@@ -348,11 +404,14 @@ def first_pass():
             continue
 
 # Second pass: Generate binary and hexadecimal instructions
-def second_pass():
-    with open("program.bin", "w") as binary_instruction_doc, open("program.hex", "w") as hex_instruction_doc:
+
+
+def second_pass(input_file, binary_file, hex_file):
+
+    with open(binary_file, "w") as binary_instruction_doc, open(hex_file, "w") as hex_instruction_doc:
         pc = 0
         in_data_section = False
-        lines = [line.strip() for line in open("program.asm", "r")]
+        lines = [line.strip() for line in open(input_file, "r")]
         for line in lines:
             line = line.split('#')[0].strip()
             parts1 = line.split(",")
@@ -370,14 +429,15 @@ def second_pass():
             if in_data_section:
                 if line == '' or line.startswith('#') or line == '\n' or line == '\r' or line == '.data':
                     continue
-                elif parts[0].endswith(':') :
+                elif parts[0].endswith(':'):
                     if parts[1] in ['.ascii', '.asciiz', '.string']:
                         parts3 = line.split('"')
                         parts = [parts[0], parts[1], '"' + parts3[1] + '"']
-                    lexer= label_lexer()
+                    lexer = label_lexer()
                     for tok in lexer.tokenize(parts[0]):
                         if tok.type == 'LABEL':
-                            variable = tok.value.replace(':', '').replace(' ', '')  # Remove the colon and any spaces
+                            variable = tok.value.replace(':', '').replace(
+                                ' ', '')  # Remove the colon and any spaces
                             variables[variable] = pc
 
                     # Handle .word directive (32-bit data)
@@ -390,17 +450,22 @@ def second_pass():
                                     pc += 1
                             variables[variable] = pc
                             if len(parts) > 3:
-                                variable = parts[0].replace(':', '').replace(' ', '') + '_' + str(j-2)
+                                variable = parts[0].replace(':', '').replace(
+                                    ' ', '') + '_' + str(j-2)
                                 variables[variable] = pc
                             if parts[j].startswith('0x'):
-                                if 0 <= int(parts[j], 16) <= 0xFFFFFFFF :
-                                    byte_1 = format(int(parts[j], 16) & 0xFF, '08b')
+                                if 0 <= int(parts[j], 16) <= 0xFFFFFFFF:
+                                    byte_1 = format(
+                                        int(parts[j], 16) & 0xFF, '08b')
                                     memory_bin.append(byte_1)
-                                    byte_2 = format((int(parts[j], 16) >> 8) & 0xFF, '08b')
+                                    byte_2 = format(
+                                        (int(parts[j], 16) >> 8) & 0xFF, '08b')
                                     memory_bin.append(byte_2)
-                                    byte_3 = format((int(parts[j], 16) >> 16) & 0xFF, '08b')
+                                    byte_3 = format(
+                                        (int(parts[j], 16) >> 16) & 0xFF, '08b')
                                     memory_bin.append(byte_3)
-                                    byte_4 = format((int(parts[j], 16) >> 24) & 0xFF, '08b')
+                                    byte_4 = format(
+                                        (int(parts[j], 16) >> 24) & 0xFF, '08b')
                                     memory_bin.append(byte_4)
 
                                     byte_1_hex = hex(int(byte_1, 2))
@@ -413,15 +478,19 @@ def second_pass():
                                     memory_hex.append(byte_4_hex)
                                     pc += 4
                                 else:
-                                    raise ValueError("Value out of range for 32 bits")
-                            elif -2147483648 <= int(parts[j]) <= 2147483647 :
+                                    raise ValueError(
+                                        "Value out of range for 32 bits")
+                            elif -2147483648 <= int(parts[j]) <= 2147483647:
                                 byte_1 = format(int(parts[j]) & 0xFF, '08b')
                                 memory_bin.append(byte_1)
-                                byte_2 = format((int(parts[j]) >> 8) & 0xFF, '08b')
+                                byte_2 = format(
+                                    (int(parts[j]) >> 8) & 0xFF, '08b')
                                 memory_bin.append(byte_2)
-                                byte_3 = format((int(parts[j]) >> 16) & 0xFF, '08b')
+                                byte_3 = format(
+                                    (int(parts[j]) >> 16) & 0xFF, '08b')
                                 memory_bin.append(byte_3)
-                                byte_4 = format((int(parts[j]) >> 24) & 0xFF, '08b')
+                                byte_4 = format(
+                                    (int(parts[j]) >> 24) & 0xFF, '08b')
                                 memory_bin.append(byte_4)
                                 byte_1_hex = hex(int(byte_1, 2))
                                 memory_hex.append(byte_1_hex)
@@ -433,31 +502,36 @@ def second_pass():
                                 memory_hex.append(byte_4_hex)
                                 pc += 4
                             else:
-                                raise ValueError("Value out of range for 32 bits")
-                            
+                                raise ValueError(
+                                    "Value out of range for 32 bits")
+
                     # Handle .byte directive (8-bit data)
                     elif parts[1] == '.byte' and len(parts) >= 3:
                         for j in range(2, len(parts)):
                             if len(parts) > 3:
-                                variable = parts[0].replace(':', '').replace(' ', '') + '_' + str(j-2)
+                                variable = parts[0].replace(':', '').replace(
+                                    ' ', '') + '_' + str(j-2)
                                 variables[variable] = pc
                             if parts[j].startswith('0x'):
-                                if 0 <= int(parts[j], 16) <= 0xFF :
-                                    byte = format(int(parts[j], 16) & 0xFF, '08b')
+                                if 0 <= int(parts[j], 16) <= 0xFF:
+                                    byte = format(
+                                        int(parts[j], 16) & 0xFF, '08b')
                                     memory_bin.append(byte)
                                     byte_hex = hex(int(byte, 2))
                                     memory_hex.append(byte_hex)
                                     pc += 1
                                 else:
-                                    raise ValueError("Value out of range for 8 bits")
-                            elif -128 <= int(parts[j]) <= 127 :
+                                    raise ValueError(
+                                        "Value out of range for 8 bits")
+                            elif -128 <= int(parts[j]) <= 127:
                                 byte = format(int(parts[j]) & 0xFF, '08b')
                                 memory_bin.append(byte)
                                 byte_hex = hex(int(byte, 2))
                                 memory_hex.append(byte_hex)
                                 pc += 1
                             else:
-                                raise ValueError("Value out of range for 8 bits")
+                                raise ValueError(
+                                    "Value out of range for 8 bits")
                     # Handle .half directive (16-bit data)
                     elif parts[1] == '.half' and len(parts) >= 3:
                         for j in range(2, len(parts)):
@@ -468,13 +542,16 @@ def second_pass():
                                     pc += 1
                             variables[variable] = pc
                             if len(parts) > 3:
-                                variable = parts[0].replace(':', '').replace(' ', '') + '_' + str(j-2)
+                                variable = parts[0].replace(':', '').replace(
+                                    ' ', '') + '_' + str(j-2)
                                 variables[variable] = pc
                             if parts[j].startswith('0x'):
-                                if 0 <= int(parts[j], 16) <= 0xFFFF :
-                                    byte_1 = format(int(parts[j], 16) & 0xFF, '08b')
+                                if 0 <= int(parts[j], 16) <= 0xFFFF:
+                                    byte_1 = format(
+                                        int(parts[j], 16) & 0xFF, '08b')
                                     memory_bin.append(byte_1)
-                                    byte_2 = format((int(parts[j], 16) >> 8) & 0xFF, '08b')
+                                    byte_2 = format(
+                                        (int(parts[j], 16) >> 8) & 0xFF, '08b')
                                     memory_bin.append(byte_2)
                                     byte_1_hex = hex(int(byte_1, 2))
                                     memory_hex.append(byte_1_hex)
@@ -482,11 +559,13 @@ def second_pass():
                                     memory_hex.append(byte_2_hex)
                                     pc += 2
                                 else:
-                                    raise ValueError("Value out of range for 16 bits")
-                            elif -32768 <= int(parts[j]) <= 32767 :
+                                    raise ValueError(
+                                        "Value out of range for 16 bits")
+                            elif -32768 <= int(parts[j]) <= 32767:
                                 byte_1 = format(int(parts[j]) & 0xFF, '08b')
                                 memory_bin.append(byte_1)
-                                byte_2 = format((int(parts[j]) >> 8) & 0xFF, '08b')
+                                byte_2 = format(
+                                    (int(parts[j]) >> 8) & 0xFF, '08b')
                                 memory_bin.append(byte_2)
                                 byte_1_hex = hex(int(byte_1, 2))
                                 memory_hex.append(byte_1_hex)
@@ -494,11 +573,12 @@ def second_pass():
                                 memory_hex.append(byte_2_hex)
                                 pc += 2
                             else:
-                                raise ValueError("Value out of range for 16 bits")
+                                raise ValueError(
+                                    "Value out of range for 16 bits")
                     # Handle .space directive (reserve memory space)
                     elif parts[1] == '.space' and len(parts) == 3:
                         if parts[2].startswith('0x'):
-                            if 0 <= int(parts[2], 16) <= 0xFFFFFFFF :
+                            if 0 <= int(parts[2], 16) <= 0xFFFFFFFF:
                                 space_size = int(parts[2], 16)
                                 for j in range(space_size):
                                     memory_bin.append('00000000')
@@ -506,20 +586,23 @@ def second_pass():
                                     memory_hex.append(byte_hex)
                                 pc += space_size
                             else:
-                                raise ValueError("Value out of range for .space directive")
-                        elif 0 <= int(parts[2]) <= 4294967295 :
-                             space_size = int(parts[2])
-                             for j in range(space_size):
-                                 memory_bin.append('00000000')
-                                 byte_hex = hex(0)
-                                 memory_hex.append(byte_hex)
-                             pc += space_size
+                                raise ValueError(
+                                    "Value out of range for .space directive")
+                        elif 0 <= int(parts[2]) <= 4294967295:
+                            space_size = int(parts[2])
+                            for j in range(space_size):
+                                memory_bin.append('00000000')
+                                byte_hex = hex(0)
+                                memory_hex.append(byte_hex)
+                            pc += space_size
                         else:
-                             raise ValueError("Value out of range for .space directive")
-                     # Handle .ascii directive (non-null-terminated string)
+                            raise ValueError(
+                                "Value out of range for .space directive")
+                    # Handle .ascii directive (non-null-terminated string)
                     elif parts[1] == '.ascii' and len(parts) == 3:
                         string = parts[2].strip('"')
-                        string = string[::-1]  # Reverse the string for correct byte order
+                        # Reverse the string for correct byte order
+                        string = string[::-1]
                         for char in string:
                             byte = format(ord(char) & 0xFF, '08b')
                             memory_bin.append(byte)
@@ -529,7 +612,8 @@ def second_pass():
                     # Handle .asciiz and .string directives (null-terminated string)
                     elif (parts[1] == '.asciiz' or parts[1] == '.string') and len(parts) == 3:
                         string = parts[2].strip('"')
- # Reverse the string for correct byte order
+                        # Reverse the string for correct byte order
+                        string = string[::-1]
                         string += '\0'  # Add null terminator
                         for char in string:
                             byte = format(ord(char) & 0xFF, '08b')
@@ -543,11 +627,13 @@ def second_pass():
                 elif parts[1].endswith(':'):
                     if parts[2] in ['.ascii', '.asciiz', '.string']:
                         parts3 = line.split('"')
-                        parts = [parts[0], parts[1], parts[2] + '"' + parts3[1] + '"']
-                    lexer= label_lexer()
+                        parts = [parts[0], parts[1],
+                                 parts[2] + '"' + parts3[1] + '"']
+                    lexer = label_lexer()
                     for tok in lexer.tokenize(parts[0]):
                         if tok.type == 'LABEL':
-                            variable = tok.value.replace(':', '').replace(' ', '')  # Remove the colon and any spaces
+                            variable = tok.value.replace(':', '').replace(
+                                ' ', '')  # Remove the colon and any spaces
                             variables[variable] = pc
 
                     # Handle .word directive (32-bit data) with label
@@ -559,14 +645,18 @@ def second_pass():
                                 pc += 1
                         variables[variable] = pc
                         if parts[3].startswith('0x'):
-                            if 0 <= int(parts[3], 16) <= 0xFFFFFFFF :
-                                byte_1 = format((int(parts[3], 16) >> 24) & 0xFF, '08b')
+                            if 0 <= int(parts[3], 16) <= 0xFFFFFFFF:
+                                byte_1 = format(
+                                    (int(parts[3], 16) >> 24) & 0xFF, '08b')
                                 memory_bin.append(byte_1)
-                                byte_2 = format((int(parts[3], 16) >> 16) & 0xFF, '08b')
+                                byte_2 = format(
+                                    (int(parts[3], 16) >> 16) & 0xFF, '08b')
                                 memory_bin.append(byte_2)
-                                byte_3 = format((int(parts[3], 16) >> 8) & 0xFF, '08b')
+                                byte_3 = format(
+                                    (int(parts[3], 16) >> 8) & 0xFF, '08b')
                                 memory_bin.append(byte_3)
-                                byte_4 = format(int(parts[3], 16) & 0xFF, '08b')
+                                byte_4 = format(
+                                    int(parts[3], 16) & 0xFF, '08b')
                                 memory_bin.append(byte_4)
 
                                 byte_1_hex = hex(int(byte_1, 2))
@@ -579,11 +669,14 @@ def second_pass():
                                 memory_hex.append(byte_4_hex)
                                 pc += 4
                             else:
-                                raise ValueError("Value out of range for 32 bits")
-                        elif -2147483648 <= int(parts[3]) <= 2147483647 :
-                            byte_1 = format((int(parts[3]) >> 24) & 0xFF, '08b')
+                                raise ValueError(
+                                    "Value out of range for 32 bits")
+                        elif -2147483648 <= int(parts[3]) <= 2147483647:
+                            byte_1 = format(
+                                (int(parts[3]) >> 24) & 0xFF, '08b')
                             memory_bin.append(byte_1)
-                            byte_2 = format((int(parts[3]) >> 16) & 0xFF, '08b')
+                            byte_2 = format(
+                                (int(parts[3]) >> 16) & 0xFF, '08b')
                             memory_bin.append(byte_2)
                             byte_3 = format((int(parts[3]) >> 8) & 0xFF, '08b')
                             memory_bin.append(byte_3)
@@ -603,15 +696,16 @@ def second_pass():
                     # Handle .byte directive (8-bit data) with label
                     elif parts[2] == '.byte' and len(parts) == 3:
                         if parts[3].startswith('0x'):
-                            if 0 <= int(parts[3], 16) <= 0xFF :
+                            if 0 <= int(parts[3], 16) <= 0xFF:
                                 byte = format(int(parts[3], 16) & 0xFF, '08b')
                                 memory_bin.append(byte)
                                 byte_hex = hex(int(byte, 2))
                                 memory_hex.append(byte_hex)
                                 pc += 1
                             else:
-                                raise ValueError("Value out of range for 8 bits")
-                        elif -128 <= int(parts[3]) <= 127 :
+                                raise ValueError(
+                                    "Value out of range for 8 bits")
+                        elif -128 <= int(parts[3]) <= 127:
                             byte = format(int(parts[3]) & 0xFF, '08b')
                             memory_bin.append(byte)
                             byte_hex = hex(int(byte, 2))
@@ -628,10 +722,12 @@ def second_pass():
                                 pc += 1
                         variables[variable] = pc
                         if parts[3].startswith('0x'):
-                            if 0 <= int(parts[3], 16) <= 0xFFFF :
-                                byte_1 = format((int(parts[3], 16) >> 8) & 0xFF, '08b')
+                            if 0 <= int(parts[3], 16) <= 0xFFFF:
+                                byte_1 = format(
+                                    (int(parts[3], 16) >> 8) & 0xFF, '08b')
                                 memory_bin.append(byte_1)
-                                byte_2 = format(int(parts[3], 16) & 0xFF, '08b')
+                                byte_2 = format(
+                                    int(parts[3], 16) & 0xFF, '08b')
                                 memory_bin.append(byte_2)
                                 byte_1_hex = hex(int(byte_1, 2))
                                 memory_hex.append(byte_1_hex)
@@ -639,8 +735,9 @@ def second_pass():
                                 memory_hex.append(byte_2_hex)
                                 pc += 2
                             else:
-                                raise ValueError("Value out of range for 16 bits")
-                        elif -32768 <= int(parts[3]) <= 32767 :
+                                raise ValueError(
+                                    "Value out of range for 16 bits")
+                        elif -32768 <= int(parts[3]) <= 32767:
                             byte_1 = format((int(parts[3]) >> 8) & 0xFF, '08b')
                             memory_bin.append(byte_1)
                             byte_2 = format(int(parts[3]) & 0xFF, '08b')
@@ -655,7 +752,7 @@ def second_pass():
                     # Handle .space directive (reserve memory space) with label
                     elif parts[2] == '.space' and len(parts) == 3:
                         if parts[3].startswith('0x'):
-                            if 0 <= int(parts[3], 16) <= 0xFFFFFFFF :
+                            if 0 <= int(parts[3], 16) <= 0xFFFFFFFF:
                                 space_size = int(parts[3], 16)
                                 for j in range(space_size):
                                     memory_bin.append('00000000')
@@ -663,8 +760,9 @@ def second_pass():
                                     memory_hex.append(byte_hex)
                                 pc += space_size
                             else:
-                                raise ValueError("Value out of range for .space directive")
-                        elif 0 <= int(parts[3]) <= 4294967295 :
+                                raise ValueError(
+                                    "Value out of range for .space directive")
+                        elif 0 <= int(parts[3]) <= 4294967295:
                             space_size = int(parts[3])
                             for j in range(space_size):
                                 memory_bin.append('00000000')
@@ -672,11 +770,13 @@ def second_pass():
                                 memory_hex.append(byte_hex)
                             pc += space_size
                         else:
-                            raise ValueError("Value out of range for .space directive")
+                            raise ValueError(
+                                "Value out of range for .space directive")
                     # Handle .ascii directive (non-null-terminated string) with label
                     elif parts[2] == '.ascii' and len(parts) == 3:
                         string = parts[3].strip('"')
-                        string = string[::-1] # Reverse the string for correct byte order
+                        # Reverse the string for correct byte order
+                        string = string[::-1]
                         for char in string:
                             byte = format(ord(char) & 0xFF, '08b')
                             memory_bin.append(byte)
@@ -686,7 +786,8 @@ def second_pass():
                     # Handle .asciiz and .string directives (null-terminated string) with label
                     elif (parts[2] == '.asciiz' or parts[2] == '.string') and len(parts) == 3:
                         string = parts[3].strip('"')
-                        string = string[::-1] # Reverse the string for correct byte order
+                        # Reverse the string for correct byte order
+                        string = string[::-1]
                         string += '\0'
 
                         for char in string:
@@ -703,7 +804,7 @@ def second_pass():
 
 # .text section
             elif not in_data_section:
-    # Type R (Register)
+                # Type R (Register)
                 if line == '' or line.startswith('#') or line == '\n' or line == '\r' or line == '.text':
                     continue
                 elif parts[0] in type_r.Functions and len(parts) == 4:
@@ -728,9 +829,12 @@ def second_pass():
                         elif tok.type == ',':
                             continue
                         else:
-                            raise ValueError("Invalid token or token not in expected position")
+                            raise ValueError(
+                                "Invalid token or token not in expected position")
                     # Generate binary and hexadecimal instructions
-                    binary_instruction = func7 + format(rs2, '05b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                    binary_instruction = func7 + \
+                        format(rs2, '05b') + format(rs1, '05b') + \
+                        func3 + format(rd, '05b') + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
@@ -756,36 +860,44 @@ def second_pass():
                         elif tok.type == 'NUMBER' and tok.value in parts[3]:
                             if parts[0] == 'sltiu':
                                 if tok.value.startswith('0x'):
-                                    if 0 <= int(tok.value, 16) <= 0xFFF :
+                                    if 0 <= int(tok.value, 16) <= 0xFFF:
                                         imm = int(tok.value, 16)
                                     else:
-                                        raise ValueError("Immediate value out of range for 12 bits")
-                                elif 0 <= int(tok.value) <= 4095 :
+                                        raise ValueError(
+                                            "Immediate value out of range for 12 bits")
+                                elif 0 <= int(tok.value) <= 4095:
                                     imm = int(tok.value)
                                 else:
-                                    raise ValueError("Immediate value out of range for 12 bits")
+                                    raise ValueError(
+                                        "Immediate value out of range for 12 bits")
                             else:
                                 if tok.value.startswith('0x'):
-                                    if 0 <= int(tok.value, 16) <= 0xFFF :
+                                    if 0 <= int(tok.value, 16) <= 0xFFF:
                                         if int(tok.value, 16) > 0x7FF:
-                                            imm = two_complement(int(tok.value, 16), 12)
+                                            imm = two_complement(
+                                                int(tok.value, 16), 12)
                                         else:
                                             imm = int(tok.value, 16)
                                     else:
-                                        raise ValueError("Immediate value out of range for 12 bits")
-                                elif -2048 <= int(tok.value) <= 2047 :
+                                        raise ValueError(
+                                            "Immediate value out of range for 12 bits")
+                                elif -2048 <= int(tok.value) <= 2047:
                                     if int(tok.value) < 0:
-                                        imm = two_complement(int(tok.value), 12)
+                                        imm = two_complement(
+                                            int(tok.value), 12)
                                     else:
                                         imm = int(tok.value)
                                 else:
-                                    raise ValueError("Immediate value out of range for 12 bits")
+                                    raise ValueError(
+                                        "Immediate value out of range for 12 bits")
                         elif tok.type in ",":
-                                continue
+                            continue
                         else:
-                            raise ValueError("Invalid token or token not in expected position")
+                            raise ValueError(
+                                "Invalid token or token not in expected position")
                     # Generate binary and hexadecimal instructions
-                    binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                    binary_instruction = format(
+                        imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
@@ -811,25 +923,30 @@ def second_pass():
                         # Extract immediate value and handle range validation
                         elif tok.type == 'NUMBER' and tok.value in parts[3]:
                             if tok.value.startswith('0x'):
-                                if 0 <= int(tok.value, 16) <= 0x1F :
+                                if 0 <= int(tok.value, 16) <= 0x1F:
                                     imm = int(tok.value, 16)
                                 else:
-                                    raise ValueError("Immediate value out of range for shift amount (0-31)")
-                            elif 0 <= int(tok.value) <= 31 :
+                                    raise ValueError(
+                                        "Immediate value out of range for shift amount (0-31)")
+                            elif 0 <= int(tok.value) <= 31:
                                 imm = int(tok.value)
                             else:
-                                raise ValueError("Immediate value out of range for shift amount (0-31)")
+                                raise ValueError(
+                                    "Immediate value out of range for shift amount (0-31)")
                         elif tok.type in ",":
-                                continue
+                            continue
                         else:
-                            raise ValueError("Invalid token or token not in expected position")
+                            raise ValueError(
+                                "Invalid token or token not in expected position")
                     # Generate binary and hexadecimal instructions
-                    binary_instruction = func7 + format(imm, '05b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                    binary_instruction = func7 + \
+                        format(imm, '05b') + format(rs1, '05b') + \
+                        func3 + format(rd, '05b') + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
                     pc += 4
-        # Type L (Load)        
+        # Type L (Load)
                 elif parts[0] in type_l.Functions and len(parts) == 3:
                     # Parse the load instruction format
                     lexer = number_lexer()
@@ -837,10 +954,12 @@ def second_pass():
                     # Check if parts[2] contains a variable and replace it with its address
                     if parts[2] in lexer.tokenize(parts[2]):
                         parts[2] = str(parts[2])+'('+'x0'+')'
-                        
-                    parts3=parts[2].replace(')', ' ').replace('(', ' ').split()
-                    if len(parts3)==2:
-                        line=parts[0]+' '+parts[1]+' '+parts3[0]+' '+parts3[1]+' '
+
+                    parts3 = parts[2].replace(')', ' ').replace(
+                        '(', ' ').split()
+                    if len(parts3) == 2:
+                        line = parts[0]+' '+parts[1] + \
+                            ' '+parts3[0]+' '+parts3[1]+' '
                     else:
                         raise ValueError("Invalid load instruction format")
                     # Tokenize the line using the lexer for load instructions
@@ -863,37 +982,45 @@ def second_pass():
                             # Handle unsigned load instructions separately
                             if parts[0] == 'lhu' or parts[0] == 'lbu':
                                 if tok.value.startswith('0x'):
-                                    if 0 <= int(tok.value, 16) <= 0xFFF :
+                                    if 0 <= int(tok.value, 16) <= 0xFFF:
                                         imm = int(tok.value, 16)
                                     else:
-                                        raise ValueError("Immediate value out of range for 12 bits")
-                                elif 0 <= int(tok.value) <= 4095 :
+                                        raise ValueError(
+                                            "Immediate value out of range for 12 bits")
+                                elif 0 <= int(tok.value) <= 4095:
                                     imm = int(tok.value)
                                 else:
-                                    raise ValueError("Immediate value out of range for 12 bits")
+                                    raise ValueError(
+                                        "Immediate value out of range for 12 bits")
                             # Handle signed load instructions
                             else:
                                 if tok.value.startswith('0x'):
-                                    if 0 <= int(tok.value, 16) <= 0xFFF :
+                                    if 0 <= int(tok.value, 16) <= 0xFFF:
                                         if int(tok.value, 16) > 0x7FF:
-                                            imm = two_complement(int(tok.value, 16), 12)
+                                            imm = two_complement(
+                                                int(tok.value, 16), 12)
                                         else:
                                             imm = int(tok.value, 16)
                                     else:
-                                        raise ValueError("Immediate value out of range for 12 bits")
-                                elif -2048 <= int(tok.value) <= 2047 :
+                                        raise ValueError(
+                                            "Immediate value out of range for 12 bits")
+                                elif -2048 <= int(tok.value) <= 2047:
                                     if int(tok.value) < 0:
-                                        imm = two_complement(int(tok.value), 12)
+                                        imm = two_complement(
+                                            int(tok.value), 12)
                                     else:
                                         imm = int(tok.value)
                                 else:
-                                    raise ValueError("Immediate value out of range for 12 bits")
+                                    raise ValueError(
+                                        "Immediate value out of range for 12 bits")
                         elif tok.type in ",":
                             continue
                         else:
-                            raise ValueError("Invalid token or token not in expected position")
+                            raise ValueError(
+                                "Invalid token or token not in expected position")
                     # Generate binary and hexadecimal instructions
-                    binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                    binary_instruction = format(
+                        imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
@@ -901,9 +1028,11 @@ def second_pass():
         # Type S (Store)
                 elif parts[0] in type_s.Functions and len(parts) == 3:
                     # Parse the store instruction format
-                    parts3=parts[2].replace(')', ' ').replace('(', ' ').split()
-                    if len(parts3)==2:
-                        line=parts[0]+' '+parts[1]+' '+parts3[0]+' '+parts3[1]+' '
+                    parts3 = parts[2].replace(')', ' ').replace(
+                        '(', ' ').split()
+                    if len(parts3) == 2:
+                        line = parts[0]+' '+parts[1] + \
+                            ' '+parts3[0]+' '+parts3[1]+' '
                     else:
                         raise ValueError("Invalid load instruction format")
                     # Tokenize the line using the lexer for store instructions
@@ -923,29 +1052,34 @@ def second_pass():
                         # Extract immediate value and handle range validation
                         elif tok.type == 'NUMBER' and tok.value in parts3[0]:
                             if tok.value.startswith('0x'):
-                                if 0 <= int(tok.value, 16) <= 0xFFF :
+                                if 0 <= int(tok.value, 16) <= 0xFFF:
                                     if int(tok.value, 16) > 0x7FF:
-                                        imm = two_complement(int(tok.value, 16), 12)
+                                        imm = two_complement(
+                                            int(tok.value, 16), 12)
                                     else:
                                         imm = int(tok.value, 16)
                                 else:
-                                    raise ValueError("Immediate value out of range for 12 bits")
-                            elif -2048 <= int(tok.value) <= 2047 :
+                                    raise ValueError(
+                                        "Immediate value out of range for 12 bits")
+                            elif -2048 <= int(tok.value) <= 2047:
                                 if int(tok.value) < 0:
                                     imm = two_complement(int(tok.value), 12)
                                 else:
                                     imm = int(tok.value)
                             else:
-                                raise ValueError("Immediate value out of range for 12 bits")
+                                raise ValueError(
+                                    "Immediate value out of range for 12 bits")
                         elif tok.type in ",":
                             continue
                         else:
-                            raise ValueError("Invalid token or token not in expected position")
-                        
+                            raise ValueError(
+                                "Invalid token or token not in expected position")
+
                     # Split immediate value into two parts for S-type instruction format
                     imm_11_5 = (imm >> 5) & 0x7F
                     imm_4_0 = imm & 0x1F
-                    binary_instruction = format(imm_11_5, '07b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_0, '05b') + opcode
+                    binary_instruction = format(imm_11_5, '07b') + format(rs2, '05b') + format(
+                        rs1, '05b') + func3 + format(imm_4_0, '05b') + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
@@ -974,33 +1108,39 @@ def second_pass():
                                 # Handle unsigned branch instructions separately
                                 if parts[0] == 'bltu' or parts[0] == 'bgeu':
                                     if imm < 0:
-                                        raise ValueError("Branch target address must be non-negative for unsigned branches")
+                                        raise ValueError(
+                                            "Branch target address must be non-negative for unsigned branches")
                                     else:
                                         if imm % 2 != 0 or not (0 <= imm <= 8192):
-                                            raise ValueError("Branch target address must be even and within range for 13 bits")
+                                            raise ValueError(
+                                                "Branch target address must be even and within range for 13 bits")
                                         else:
                                             imm = imm
                                 # Handle signed branch instructions
                                 else:
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                             else:
-                                raise ValueError(f"Undefined label: {tok.value}")
+                                raise ValueError(
+                                    f"Undefined label: {tok.value}")
                         elif tok.type in ",":
                             continue
                         else:
-                            raise ValueError("Invalid token or token not in expected position")
+                            raise ValueError(
+                                "Invalid token or token not in expected position")
                     # Split immediate value into parts for B-type instruction format
                     imm_12 = (imm >> 12) & 0x1
                     imm_10_5 = (imm >> 5) & 0x3F
                     imm_4_1 = (imm >> 1) & 0xF
                     imm_11 = (imm >> 11) & 0x1
-                    binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                    binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                        rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
@@ -1024,24 +1164,28 @@ def second_pass():
                             if tok.value in labels:
                                 imm = labels[tok.value] - pc
                                 if imm % 2 != 0 or not (-1048576 <= imm <= 1048574):
-                                    raise ValueError("Jump target address must be even and within range for 21 bits")
+                                    raise ValueError(
+                                        "Jump target address must be even and within range for 21 bits")
                                 else:
                                     if imm < 0:
                                         imm = two_complement(imm, 21)
                                     else:
                                         imm = imm
                             else:
-                                raise ValueError(f"Undefined label: {tok.value}")
+                                raise ValueError(
+                                    f"Undefined label: {tok.value}")
                         elif tok.type in ",":
                             continue
                         else:
-                            raise ValueError("Invalid token or token not in expected position")
+                            raise ValueError(
+                                "Invalid token or token not in expected position")
                     # Split immediate value into parts for J-type instruction format
                     imm_20 = (imm >> 20) & 0x1
                     imm_10_1 = (imm >> 1) & 0x3FF
                     imm_11 = (imm >> 11) & 0x1
                     imm_19_12 = (imm >> 12) & 0xFF
-                    binary_instruction = format(imm_20, '01b') + format(imm_10_1, '010b') + format(imm_11, '01b') + format(imm_19_12, '08b') + format(rd, '05b') + opcode
+                    binary_instruction = format(imm_20, '01b') + format(imm_10_1, '010b') + format(
+                        imm_11, '01b') + format(imm_19_12, '08b') + format(rd, '05b') + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
@@ -1053,9 +1197,11 @@ def second_pass():
                     i = 0
                     # Handle both formats of JR instructions
                     if len(parts) == 3:
-                        parts3=parts[2].replace(')', ' ').replace('(', ' ').split()
-                        if len(parts3)==2:
-                            line=parts[0]+' '+parts[1]+' '+parts3[0]+' '+parts3[1]+' '
+                        parts3 = parts[2].replace(')', ' ').replace(
+                            '(', ' ').split()
+                        if len(parts3) == 2:
+                            line = parts[0]+' '+parts[1] + \
+                                ' '+parts3[0]+' '+parts3[1]+' '
                         else:
                             raise ValueError("Invalid load instruction format")
                         for tok in lexer.tokenize(line):
@@ -1073,26 +1219,32 @@ def second_pass():
                             # Extract immediate value and handle range validation
                             elif tok.type == 'NUMBER' and tok.value in parts3[0]:
                                 if tok.value.startswith('0x'):
-                                    if 0 <= int(tok.value, 16) <= 0xFFF :
+                                    if 0 <= int(tok.value, 16) <= 0xFFF:
                                         if int(tok.value, 16) > 0x7FF:
-                                            imm = two_complement(int(tok.value, 16), 12)
+                                            imm = two_complement(
+                                                int(tok.value, 16), 12)
                                         else:
                                             imm = int(tok.value, 16)
                                     else:
-                                        raise ValueError("Immediate value out of range for 12 bits")
-                                elif -2048 <= int(tok.value) <= 2047 :
+                                        raise ValueError(
+                                            "Immediate value out of range for 12 bits")
+                                elif -2048 <= int(tok.value) <= 2047:
                                     if int(tok.value) < 0:
-                                        imm = two_complement(int(tok.value), 12)
+                                        imm = two_complement(
+                                            int(tok.value), 12)
                                     else:
                                         imm = int(tok.value)
                                 else:
-                                    raise ValueError("Immediate value out of range for 12 bits")
+                                    raise ValueError(
+                                        "Immediate value out of range for 12 bits")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Combine all parts into the final binary instruction
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                     elif len(parts) == 4:
                         for tok in lexer.tokenize(line):
                             # Extract function codes and opcode for the instruction
@@ -1109,26 +1261,32 @@ def second_pass():
                             # Extract immediate value and handle range validation
                             elif tok.type == 'NUMBER' and tok.value in parts[3]:
                                 if tok.value.startswith('0x'):
-                                    if 0 <= int(tok.value, 16) <= 0xFFF :
+                                    if 0 <= int(tok.value, 16) <= 0xFFF:
                                         if int(tok.value, 16) > 0x7FF:
-                                            imm = two_complement(int(tok.value, 16), 12)
+                                            imm = two_complement(
+                                                int(tok.value, 16), 12)
                                         else:
                                             imm = int(tok.value, 16)
                                     else:
-                                        raise ValueError("Immediate value out of range for 12 bits")
-                                elif -2048 <= int(tok.value) <= 2047 :
+                                        raise ValueError(
+                                            "Immediate value out of range for 12 bits")
+                                elif -2048 <= int(tok.value) <= 2047:
                                     if int(tok.value) < 0:
-                                        imm = two_complement(int(tok.value), 12)
+                                        imm = two_complement(
+                                            int(tok.value), 12)
                                     else:
                                         imm = int(tok.value)
                                 else:
-                                    raise ValueError("Immediate value out of range for 12 bits")
+                                    raise ValueError(
+                                        "Immediate value out of range for 12 bits")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                     # Write the binary and hexadecimal instructions
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
@@ -1151,23 +1309,27 @@ def second_pass():
                         # Extract immediate value and handle range validation
                         elif tok.type == 'NUMBER' and tok.value in parts[2]:
                             if tok.value.startswith('0x'):
-                                if 0 <= int(tok.value, 16) <= 0xFFFFF :
+                                if 0 <= int(tok.value, 16) <= 0xFFFFF:
                                     imm = int(tok.value, 16)
                                 else:
-                                    raise ValueError("Immediate value out of range for 20 bits")
-                            elif -524288 <= int(tok.value) <= 524287 :
+                                    raise ValueError(
+                                        "Immediate value out of range for 20 bits")
+                            elif -524288 <= int(tok.value) <= 524287:
                                 if int(tok.value) < 0:
                                     imm = two_complement(int(tok.value), 20)
                                 else:
                                     imm = int(tok.value)
                             else:
-                                raise ValueError("Immediate value out of range for 20 bits")
+                                raise ValueError(
+                                    "Immediate value out of range for 20 bits")
                         elif tok.type in ",":
                             continue
                         else:
-                            raise ValueError("Invalid token or token not in expected position")
+                            raise ValueError(
+                                "Invalid token or token not in expected position")
                     # Generate binary and hexadecimal instructions
-                    binary_instruction = format(imm, '020b') + format(rd, '05b') + opcode
+                    binary_instruction = format(
+                        imm, '020b') + format(rd, '05b') + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
@@ -1181,8 +1343,9 @@ def second_pass():
                             imm = int(type_ecall.Functions[tok.value][2])
                             func3 = type_ecall.Functions[tok.value][1]
                             opcode = type_ecall.Functions[tok.value][0]
-                    # Generate binary and hexadecimal instructions    
-                    binary_instruction = format(imm, '012b') + '00000' + func3 + '00000' + opcode
+                    # Generate binary and hexadecimal instructions
+                    binary_instruction = format(
+                        imm, '012b') + '00000' + func3 + '00000' + opcode
                     binary_instruction_doc.write(binary_instruction + '\n')
                     hex_instruction = hex(int(binary_instruction, 2))
                     hex_instruction_doc.write(hex_instruction + '\n')
@@ -1198,7 +1361,7 @@ def second_pass():
                         # Tokenize the translated nop instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_i.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_i.Functions:
                                 func3 = type_i.Functions[tok.value][1]
                                 opcode = type_i.Functions[tok.value][0]
                             # Extract register values for rd and rs1
@@ -1214,9 +1377,11 @@ def second_pass():
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1230,7 +1395,7 @@ def second_pass():
                         # Tokenize the translated mv instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_i.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_i.Functions:
                                 func3 = type_i.Functions[tok.value][1]
                                 opcode = type_i.Functions[tok.value][0]
                             # Extract register values for rd and rs1
@@ -1246,9 +1411,11 @@ def second_pass():
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1262,7 +1429,7 @@ def second_pass():
                         # Tokenize the translated not instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_i.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_i.Functions:
                                 func3 = type_i.Functions[tok.value][1]
                                 opcode = type_i.Functions[tok.value][0]
                             # Extract register values for rd and rs1
@@ -1273,14 +1440,16 @@ def second_pass():
                                     rs1 = register.register[tok.value]
                                 i += 1
                             # Immediate value is always -1 for not
-                            elif tok.type == 'NUMBER' :
+                            elif tok.type == 'NUMBER':
                                 imm = two_complement(-1, 12)
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1294,12 +1463,12 @@ def second_pass():
                         # Tokenize the translated neg instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_r.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_r.Functions:
                                 func7 = type_r.Functions[tok.value][2]
                                 func3 = type_r.Functions[tok.value][1]
                                 opcode = type_r.Functions[tok.value][0]
                             # Extract register values for rd, rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 elif i == 1:
@@ -1310,9 +1479,12 @@ def second_pass():
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = func7 + format(rs2, '05b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = func7 + \
+                            format(rs2, '05b') + format(rs1, '05b') + \
+                            func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1326,25 +1498,27 @@ def second_pass():
                         # Tokenize the translated seqz instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_i.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_i.Functions:
                                 func3 = type_i.Functions[tok.value][1]
                                 opcode = type_i.Functions[tok.value][0]
                             # Extract register values for rd and rs1
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 elif i == 1:
                                     rs1 = register.register[tok.value]
                                 i += 1
                             # Immediate value is always 1 for seqz
-                            elif tok.type == 'NUMBER' :
+                            elif tok.type == 'NUMBER':
                                 imm = 1
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1357,12 +1531,12 @@ def second_pass():
                         i = 0
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_r.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_r.Functions:
                                 func7 = type_r.Functions[tok.value][2]
                                 func3 = type_r.Functions[tok.value][1]
                                 opcode = type_r.Functions[tok.value][0]
                             # Extract register values for rd, rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 elif i == 1:
@@ -1373,9 +1547,12 @@ def second_pass():
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = func7 + format(rs2, '05b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = func7 + \
+                            format(rs2, '05b') + format(rs1, '05b') + \
+                            func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1389,12 +1566,12 @@ def second_pass():
                         # Tokenize the translated sltz instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_r.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_r.Functions:
                                 func7 = type_r.Functions[tok.value][2]
                                 func3 = type_r.Functions[tok.value][1]
                                 opcode = type_r.Functions[tok.value][0]
                             # Extract register values for rd, rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 elif i == 1:
@@ -1405,9 +1582,12 @@ def second_pass():
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = func7 + format(rs2, '05b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = func7 + \
+                            format(rs2, '05b') + format(rs1, '05b') + \
+                            func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1421,12 +1601,12 @@ def second_pass():
                         # Tokenize the translated sgtz instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_r.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_r.Functions:
                                 func7 = type_r.Functions[tok.value][2]
                                 func3 = type_r.Functions[tok.value][1]
                                 opcode = type_r.Functions[tok.value][0]
                             # Extract register values for rd, rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 elif i == 1:
@@ -1437,9 +1617,12 @@ def second_pass():
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Generate binary and hexadecimal instructions
-                        binary_instruction = func7 + format(rs2, '05b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = func7 + \
+                            format(rs2, '05b') + format(rs1, '05b') + \
+                            func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1453,39 +1636,43 @@ def second_pass():
                         # Tokenize the translated beqz instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1498,39 +1685,43 @@ def second_pass():
                         # Tokenize the translated bnez instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1544,39 +1735,43 @@ def second_pass():
                         # Tokenize the translated blez instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1590,39 +1785,43 @@ def second_pass():
                         # Tokenize the translated bgez instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1636,39 +1835,43 @@ def second_pass():
                         # Tokenize the translated bltz instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1682,39 +1885,43 @@ def second_pass():
                         # Tokenize the translated bgtz instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1728,11 +1935,11 @@ def second_pass():
                         # Tokenize the translated bgt instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
@@ -1743,24 +1950,28 @@ def second_pass():
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1774,39 +1985,43 @@ def second_pass():
                         # Tokenize the translated ble instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-4096 <= imm <= 4094):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 13)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1820,36 +2035,40 @@ def second_pass():
                         # Tokenize the translated bgtu instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (0 <= imm <= 8192):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1863,36 +2082,40 @@ def second_pass():
                         # Tokenize the translated bleu instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_b.Functions:
                                 func3 = type_b.Functions[tok.value][1]
                                 opcode = type_b.Functions[tok.value][0]
                             # Extract register values for rs1 and rs2
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rs1 = register.register[tok.value]
                                 elif i == 1:
                                     rs2 = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate branch target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (0 <= imm <= 8192):
-                                        raise ValueError("Branch target address must be even and within range for 13 bits")
+                                        raise ValueError(
+                                            "Branch target address must be even and within range for 13 bits")
                                     else:
                                         imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for B-type instruction format
                         imm_12 = (imm >> 12) & 0x1
                         imm_10_5 = (imm >> 5) & 0x3F
                         imm_4_1 = (imm >> 1) & 0xF
                         imm_11 = (imm >> 11) & 0x1
-                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
+                        binary_instruction = format(imm_12, '01b') + format(imm_10_5, '06b') + format(rs2, '05b') + format(
+                            rs1, '05b') + func3 + format(imm_4_1, '04b') + format(imm_11, '01b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1906,36 +2129,40 @@ def second_pass():
                         # Tokenize the translated j instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract opcode and rd register
-                            if tok.type == 'INSTRUCTION' and tok.value in type_j.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_j.Functions:
                                 opcode = type_j.Functions[tok.value][0]
                             # Extract register value for rd
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate jump target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-1048576 <= imm <= 1048574):
-                                        raise ValueError("Jump target address must be even and within range for 21 bits")
+                                        raise ValueError(
+                                            "Jump target address must be even and within range for 21 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 21)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for J-type instruction format
-                        imm_20 = (imm >> 20) & 0x1  
+                        imm_20 = (imm >> 20) & 0x1
                         imm_10_1 = (imm >> 1) & 0x3FF
                         imm_11 = (imm >> 11) & 0x1
                         imm_19_12 = (imm >> 12) & 0xFF
-                        binary_instruction = format(imm_20, '01b') + format(imm_10_1, '010b') + format(imm_11, '01b') + format(imm_19_12, '08b') + format(rd, '05b') + opcode
+                        binary_instruction = format(imm_20, '01b') + format(imm_10_1, '010b') + format(
+                            imm_11, '01b') + format(imm_19_12, '08b') + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1949,36 +2176,40 @@ def second_pass():
                         # Tokenize the translated jal instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract opcode and rd register
-                            if tok.type == 'INSTRUCTION' and tok.value in type_j.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_j.Functions:
                                 opcode = type_j.Functions[tok.value][0]
                             # Extract register value for rd
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 i += 1
                             # Extract label and calculate jump target address
-                            elif tok.type == 'LABEL' :
+                            elif tok.type == 'LABEL':
                                 if tok.value in labels:
                                     imm = labels[tok.value] - pc
                                     if imm % 2 != 0 or not (-1048576 <= imm <= 1048574):
-                                        raise ValueError("Jump target address must be even and within range for 21 bits")
+                                        raise ValueError(
+                                            "Jump target address must be even and within range for 21 bits")
                                     else:
                                         if imm < 0:
                                             imm = two_complement(imm, 21)
                                         else:
                                             imm = imm
                                 else:
-                                    raise ValueError(f"Undefined label: {tok.value}")
+                                    raise ValueError(
+                                        f"Undefined label: {tok.value}")
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for J-type instruction format
-                        imm_20 = (imm >> 20) & 0x1  
+                        imm_20 = (imm >> 20) & 0x1
                         imm_10_1 = (imm >> 1) & 0x3FF
                         imm_11 = (imm >> 11) & 0x1
                         imm_19_12 = (imm >> 12) & 0xFF
-                        binary_instruction = format(imm_20, '01b') + format(imm_10_1, '010b') + format(imm_11, '01b') + format(imm_19_12, '08b') + format(rd, '05b') + opcode
+                        binary_instruction = format(imm_20, '01b') + format(imm_10_1, '010b') + format(
+                            imm_11, '01b') + format(imm_19_12, '08b') + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -1992,25 +2223,27 @@ def second_pass():
                         # Tokenize the translated jr instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_jr.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_jr.Functions:
                                 func3 = type_jr.Functions[tok.value][1]
                                 opcode = type_jr.Functions[tok.value][0]
                             # Extract register values for rd and rs1
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 elif i == 1:
                                     rs1 = register.register[tok.value]
                                 i += 1
                             # Immediate is always 0 for jr
-                            elif tok.type == 'NUMBER' :
+                            elif tok.type == 'NUMBER':
                                 imm = 0
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for J-type instruction format
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -2024,25 +2257,27 @@ def second_pass():
                         # Tokenize the translated jalr instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_jr.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_jr.Functions:
                                 func3 = type_jr.Functions[tok.value][1]
                                 opcode = type_jr.Functions[tok.value][0]
                             # Extract register values for rd and rs1
-                            elif tok.type == 'REGISTER' and tok.value in register.register :
+                            elif tok.type == 'REGISTER' and tok.value in register.register:
                                 if i == 0:
                                     rd = register.register[tok.value]
                                 elif i == 1:
                                     rs1 = register.register[tok.value]
                                 i += 1
                             # Immediate is always 0 for jalr
-                            elif tok.type == 'NUMBER' :
+                            elif tok.type == 'NUMBER':
                                 imm = 0
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for J-type instruction format
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
@@ -2055,7 +2290,7 @@ def second_pass():
                         # Tokenize the translated ret instruction
                         for tok in lexer.tokenize(real_line):
                             # Extract function codes and opcode for the instruction
-                            if tok.type == 'INSTRUCTION' and tok.value in type_jr.Functions :
+                            if tok.type == 'INSTRUCTION' and tok.value in type_jr.Functions:
                                 func3 = type_jr.Functions[tok.value][1]
                                 opcode = type_jr.Functions[tok.value][0]
                             # Extract register values for rd and rs1
@@ -2066,27 +2301,31 @@ def second_pass():
                                     rs1 = register.register[tok.value]
                                 i += 1
                             # Immediate is always 0 for ret
-                            elif tok.type == 'NUMBER' :
+                            elif tok.type == 'NUMBER':
                                 imm = 0
                             elif tok.type in ",":
                                 continue
                             else:
-                                raise ValueError("Invalid token or token not in expected position")
+                                raise ValueError(
+                                    "Invalid token or token not in expected position")
                         # Split immediate value into parts for J-type instruction format
-                        binary_instruction = format(imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
+                        binary_instruction = format(
+                            imm, '012b') + format(rs1, '05b') + func3 + format(rd, '05b') + opcode
                         binary_instruction_doc.write(binary_instruction + '\n')
                         hex_instruction = hex(int(binary_instruction, 2))
                         hex_instruction_doc.write(hex_instruction + '\n')
                         pc += 4
                     else:
-                        raise ValueError(f"Unknown instruction or wrong number of operands: {line}")
+                        raise ValueError(
+                            f"Unknown instruction or wrong number of operands: {line}")
         # Ignore labels
-                elif (parts[0].endswith(':') and parts[0][:-1] in labels) :
+                elif (parts[0].endswith(':') and parts[0][:-1] in labels):
                     continue
                 elif parts[1] == ':' and parts[0] in labels:
                     continue
                 else:
-                    raise ValueError(f"Invalid instruction: '{parts[0]}' is not a valid RV32I instruction or pseudoinstruction.")
+                    raise ValueError(
+                        f"Invalid instruction: '{parts[0]}' is not a valid RV32I instruction or pseudoinstruction.")
         for data in memory_bin:
             binary_instruction_doc.write(data + '\n')
             hex_data = hex(int(data, 2))
@@ -2097,7 +2336,19 @@ def second_pass():
 
 # Run the assembler
 if __name__ == "__main__":
-    first_pass()
-    second_pass()
+    # Check command line arguments
+    if len(sys.argv) != 4:
+        print("Usage: python assembler.py <input.asm> <output.bin> <output.hex>")
+        print("Example: python assembler.py program.asm program.bin program.hex")
+        sys.exit(1)
 
-    
+    input_file = sys.argv[1]
+    binary_file = sys.argv[3]
+    hex_file = sys.argv[2]
+
+    try:
+        first_pass(input_file)
+        second_pass(input_file, binary_file, hex_file)
+    except FileNotFoundError as e:
+        print(f"Error: File not found - {e}")
+        sys.exit(1)
