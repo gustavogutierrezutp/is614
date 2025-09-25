@@ -601,8 +601,6 @@ def second_pass(input_file, binary_file, hex_file):
                     # Handle .ascii directive (non-null-terminated string)
                     elif parts[1] == '.ascii' and len(parts) == 3:
                         string = parts[2].strip('"')
-                        # Reverse the string for correct byte order
-                        string = string[::-1]
                         for char in string:
                             byte = format(ord(char) & 0xFF, '08b')
                             memory_bin.append(byte)
@@ -612,8 +610,6 @@ def second_pass(input_file, binary_file, hex_file):
                     # Handle .asciiz and .string directives (null-terminated string)
                     elif (parts[1] == '.asciiz' or parts[1] == '.string') and len(parts) == 3:
                         string = parts[2].strip('"')
-                        # Reverse the string for correct byte order
-                        string = string[::-1]
                         string += '\0'  # Add null terminator
                         for char in string:
                             byte = format(ord(char) & 0xFF, '08b')
@@ -775,8 +771,6 @@ def second_pass(input_file, binary_file, hex_file):
                     # Handle .ascii directive (non-null-terminated string) with label
                     elif parts[2] == '.ascii' and len(parts) == 3:
                         string = parts[3].strip('"')
-                        # Reverse the string for correct byte order
-                        string = string[::-1]
                         for char in string:
                             byte = format(ord(char) & 0xFF, '08b')
                             memory_bin.append(byte)
@@ -786,8 +780,6 @@ def second_pass(input_file, binary_file, hex_file):
                     # Handle .asciiz and .string directives (null-terminated string) with label
                     elif (parts[2] == '.asciiz' or parts[2] == '.string') and len(parts) == 3:
                         string = parts[3].strip('"')
-                        # Reverse the string for correct byte order
-                        string = string[::-1]
                         string += '\0'
 
                         for char in string:
