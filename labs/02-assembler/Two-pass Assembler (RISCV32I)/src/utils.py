@@ -1,56 +1,73 @@
 import re
-ABI_REGISTERS = {
+
+# Mapa de registros ABI a número
+REGISTERS = {
     "zero":0, "ra":1, "sp":2, "gp":3, "tp":4,
-    "t0":5,"t1":6,"t2":7,
-    "s0":8,"fp":8,"s1":9,
-    "a0":10,"a1":11,"a2":12,"a3":13,"a4":14,"a5":15,"a6":16,"a7":17,
-    "s2":18,"s3":19,"s4":20,"s5":21,"s6":22,"s7":23,"s8":24,"s9":25,"s10":26,"s11":27,
-    "t3":28,"t4":29,"t5":30,"t6":31,
+    "t0":5, "t1":6, "t2":7,
+    "s0":8, "fp":8, "s1":9,
+    "a0":10, "a1":11, "a2":12, "a3":13, "a4":14, "a5":15, "a6":16, "a7":17,
+    "s2":18, "s3":19, "s4":20, "s5":21, "s6":22, "s7":23, "s8":24, "s9":25, "s10":26, "s11":27,
+    "t3":28, "t4":29, "t5":30, "t6":31
 }
 
-def clean_line(line: str) -> str:
-    line = re.split(r"[#;]|//", line)[0]
+# Eliminar comentarios y espacios innecesarios
+def clean_line(line):
+    line = line.split('#')[0]      # eliminar comentarios #
+    line = line.split(';')[0]      # eliminar comentarios ;
     return line.strip()
 
-def split_label_and_instr(line: str):
-    label, instr = None, line
-    if ":" in line:
-        parts = line.split(":", 1)
-        label = parts[0].strip()
-        instr = parts[1].strip()
-    return label, instr
+# Identificar si es una directiva
+def is_directive(line):
+    return line.startswith('.')
 
-def split_instruction(instr: str):
-    if not instr:
-        return None, []
-    parts = instr.replace(",", " ").split()
+# Parseo simple de instrucción
+def parse_instruction(line):
+    parts = line.replace(',', ' ').split()
+    if not parts:
+        return None
     mnemonic = parts[0]
     operands = parts[1:]
-    return mnemonic, operands
+    return {"mnemonic": mnemonic, "operands": operands}
 
-def reg_to_num(reg: str) -> int:
-    reg = reg.lower()
-    if reg.startswith("x") and reg[1:].isdigit():
-        n = int(reg[1:])
-        if 0 <= n <= 31:
-            return n
-    if reg in ABI_REGISTERS:
-        return ABI_REGISTERS[reg]
-    raise ValueError(f"Registro inválido: {reg}")
+# Parseo de registro
+def reg_name_to_num(name):
+    name = name.strip()
+    if name.startswith('x') and name[1:].isdigit():
+        val = int(name[1:])
+        if 0 <= val <= 31:
+            return val
+    elif name in REGISTERS:
+        return REGISTERS[name]
+    raise ValueError(f"Registro inválido: {name}")
 
-def parse_immediate(imm_str, symbol_table, pc):
-    imm_str = imm_str.strip()
-    if imm_str in symbol_table:
-        return symbol_table[imm_str]
-    if imm_str.startswith("0x"):
-        return int(imm_str,16)
-    elif imm_str.startswith("0b"):
-        return int(imm_str,2)
+# Parseo de inmediato
+def parse_immediate(val, symtab=None, current_addr=0):
+    val = val.strip()
+
+    # %hi
+    if val.startswith("%hi(") and val.endswith(")"):
+        label = val[4:-1]  # extrae el nombre entre paréntesis
+        if symtab is None:
+            raise ValueError("Se requiere tabla de símbolos para %hi()")
+        addr = symtab.get(label)
+        if addr is None:
+            raise ValueError(f"Etiqueta no definida: {label}")
+        return (addr >> 12) & 0xFFFFF  # 20 bits altos
+
+    # %lo
+    if val.startswith("%lo(") and val.endswith(")"):
+        label = val[4:-1]
+        if symtab is None:
+            raise ValueError("Se requiere tabla de símbolos para %lo()")
+        addr = symtab.get(label)
+        if addr is None:
+            raise ValueError(f"Etiqueta no definida: {label}")
+        return addr & 0xFFF  # 12 bits bajos
+
+    # Constantes normales
+    if val.startswith('0x'):
+        return int(val,16)
+    elif val.startswith('0b'):
+        return int(val,2)
     else:
-        return int(imm_str)
-
-def format_hex(word: int) -> str:
-    return f"{word:08x}"
-
-def format_bin(word: int) -> str:
-    return f"{word:032b}"
+        return int(val)  # decimal
