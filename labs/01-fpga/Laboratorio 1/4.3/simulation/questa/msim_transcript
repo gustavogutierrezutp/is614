@@ -1,0 +1,64 @@
+# Reading pref.tcl
+# do top_level_run_msim_gate_verilog.do
+# if {[file exists gate_work]} {
+# 	vdel -lib gate_work -all
+# }
+# vlib gate_work
+# vmap work gate_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work gate_work 
+# Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+. {top_level.vo}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:56:03 on Aug 26,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+." top_level.vo 
+# -- Compiling module top_level
+# 
+# Top level modules:
+# 	top_level
+# End time: 15:56:03 on Aug 26,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/santi/Arquitectura\ de\ computadores/Laboratorio\ 1/4.3 {C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/tb_top_level.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:56:03 on Aug 26,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3" C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/tb_top_level.v 
+# -- Compiling module tb_top_level
+# 
+# Top level modules:
+# 	tb_top_level
+# End time: 15:56:03 on Aug 26,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  tb_top_level
+# vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" tb_top_level 
+# Start time: 15:56:03 on Aug 26,2025
+# Loading work.tb_top_level
+# Loading work.top_level
+# Loading cyclonev_ver.cyclonev_io_obuf
+# Loading cyclonev_ver.cyclonev_io_ibuf
+# Loading cyclonev_ver.cyclonev_lcell_comb
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 200 ns
+# Ejercicio 4.3 - Números Grandes
+# SW   | Decimal
+#    0 |    0
+#    1 |    1
+#   42 |   42
+#  123 |  123
+#  255 |  255
+#  512 |  512
+# 1023 | 1023
+# ** Note: $finish    : C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/tb_top_level.v(44)
+#    Time: 70 ns  Iteration: 0  Instance: /tb_top_level
+# 1
+# Break in Module tb_top_level at C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/tb_top_level.v line 44
+# End time: 15:57:42 on Aug 26,2025, Elapsed time: 0:01:39
+# Errors: 0, Warnings: 0

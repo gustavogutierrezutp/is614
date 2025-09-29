@@ -1,0 +1,59 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/simulation/questa
+vtb_top_level
+Z1 !s110 1756241763
+!i10b 1
+!s100 <ZTj2Z>Ue>1eDh7:kI?PD2
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IQ@LM7BO0l^;J[VjEHiTB82
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1756241696
+8C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/tb_top_level.v
+FC:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/tb_top_level.v
+!i122 1
+L0 3 44
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1756241763.000000
+!s107 C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/tb_top_level.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3|C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3/tb_top_level.v|
+!i113 1
+Z6 o-vlog01compat -work work
+!s92 -vlog01compat -work work {+incdir+C:/Users/santi/Arquitectura de computadores/Laboratorio 1/4.3}
+Z7 tCvgOpt 0
+vtop_level
+R1
+!i10b 1
+!s100 <f6Z3ldBJ7hLXe2kaaPkG3
+R2
+IS7FS]@Um19fVVGfDT^4L81
+R3
+R0
+w1756241755
+8top_level.vo
+Ftop_level.vo
+!i122 0
+L0 32 9742
+R4
+r1
+!s85 0
+31
+R5
+!s107 top_level.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|top_level.vo|
+!i113 1
+R6
+!s92 -vlog01compat -work work +incdir+.
+R7
