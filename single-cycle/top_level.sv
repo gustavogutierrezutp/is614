@@ -5,19 +5,19 @@ module top_level(
   output wire [9:0] leds
 );
 
-  // Instantiate the pc module
-  wire [31:0] next_pc;
-  wire [31:0] address;
+  logic [31:0] pc;
 
-  pc pc_inst(
-    .clk(clk),
-    .rst_n(rst_n),
-    .next_pc(next_pc),
-    .address(address)
-  );
+  // This block will change when you implement branching.
+  always @(posedge clk) begin
+    if (!rst_n)
+      pc <= 32'b0;
+    else
+      pc <= pc + 4;
+  end
+
 
   hex7seg display0(
-    .val(address[3:0]),
+    .val(pc[3:0]),
     .display(display)
   );
 
