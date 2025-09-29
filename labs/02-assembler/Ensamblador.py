@@ -184,26 +184,85 @@ class RISCVTranslator:
         imm21 = self.to_binary(offset, 21)
         return imm21[0] + imm21[10:20] + imm21[9] + imm21[1:9] + rd + opcode
 
+
     def expand_pseudoinstructions(self, instruction):
-        """Expande pseudoinstrucciones a instrucciones base."""
+        """
+        Expande pseudoinstrucciones a instrucciones base.
+        Esta versión incluye el conjunto completo de pseudoinstrucciones estándar de RV32I.
+        """
         parts = re.split(r'[\s,]+', instruction.strip())
         opcode = parts[0].lower()
+        
+        # --- Carga de valores ---
         if opcode == 'li':
             rd, imm_str = parts[1].strip(','), parts[2]
-            try: imm = self.get_immediate_value(imm_str)
-            except ValueError: return [instruction]
-            if -2048 <= imm <= 2047: return [f"addi {rd}, zero, {imm}"]
+            try:
+                imm = self.get_immediate_value(imm_str)
+            except ValueError:
+                return [instruction]  # Dejar que el parser principal lo marque como error
+            if -2048 <= imm <= 2047:
+                return [f"addi {rd}, zero, {imm}"]
             else:
-                upper = (imm + 0x800) >> 12; lower = imm & 0xFFF
+                upper = (imm + 0x800) >> 12
+                lower = imm & 0xFFF
                 if lower > 2047: lower -= 4096
                 result = [f"lui {rd}, {upper}"]
-                if lower != 0: result.append(f"addi {rd}, {rd}, {lower}")
+                if lower != 0:
+                    result.append(f"addi {rd}, {rd}, {lower}")
                 return result
-        elif opcode == 'mv': return [f"addi {parts[1].strip(',')}, {parts[2]}, 0"]
-        elif opcode == 'j': return [f"jal zero, {parts[1]}"]
-        elif opcode == 'ret': return ["jalr zero, ra, 0"]
-        elif opcode == 'nop': return ["addi zero, zero, 0"]
+
+        # --- Operaciones entre registros ---
+        elif opcode == 'mv':
+            return [f"addi {parts[1].strip(',')}, {parts[2]}, 0"]
+        elif opcode == 'not':
+            return [f"xori {parts[1].strip(',')}, {parts[2]}, -1"]
+        elif opcode == 'neg':
+            return [f"sub {parts[1].strip(',')}, zero, {parts[2]}"]
+        
+        # --- Comparaciones con Cero (Set if...) ---
+        elif opcode == 'seqz':
+            return [f"sltiu {parts[1].strip(',')}, {parts[2]}, 1"]
+        elif opcode == 'snez':
+            return [f"sltu {parts[1].strip(',')}, zero, {parts[2]}"]
+        elif opcode == 'sltz':
+            return [f"slt {parts[1].strip(',')}, {parts[2]}, zero"]
+        elif opcode == 'sgtz':
+            return [f"slt {parts[1].strip(',')}, zero, {parts[2]}"]
+
+        # --- Saltos Condicionales contra Cero (Branch if...) ---
+        elif opcode == 'beqz':
+            return [f"beq {parts[1].strip(',')}, zero, {parts[2]}"]
+        elif opcode == 'bnez':
+            return [f"bne {parts[1].strip(',')}, zero, {parts[2]}"]
+        elif opcode == 'blez':
+            return [f"bge zero, {parts[1].strip(',')}, {parts[2]}"]
+        elif opcode == 'bgez':
+            return [f"bge {parts[1].strip(',')}, zero, {parts[2]}"]
+        elif opcode == 'bltz':
+            return [f"blt {parts[1].strip(',')}, zero, {parts[2]}"]
+        elif opcode == 'bgtz':
+            return [f"blt zero, {parts[1].strip(',')}, {parts[2]}"]
+            
+        # --- Saltos y Llamadas ---
+        elif opcode == 'j':
+            return [f"jal zero, {parts[1]}"]
+        elif opcode == 'jr':
+            return [f"jalr zero, {parts[1]}, 0"]
+        elif opcode == 'ret':
+            return ["jalr zero, ra, 0"]
+        elif opcode == 'call':
+            return [f"jal ra, {parts[1]}"]
+        elif opcode == 'tail':
+            return [f"jal zero, {parts[1]}"]
+        
+        # --- Misceláneos ---
+        elif opcode == 'nop':
+            return ["addi zero, zero, 0"]
+        
+        # Si no es una pseudoinstrucción conocida, la devuelve tal cual.
         return [instruction]
+
+
 
     def translate_instruction(self, instruction, current_addr):
         """Despachador principal: selecciona el parser adecuado para cada instrucción."""
