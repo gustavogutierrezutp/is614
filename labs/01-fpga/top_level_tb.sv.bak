@@ -1,0 +1,28 @@
+`timescale 1ns/1ps
+
+module tb_top_level;
+
+  // Señales de prueba
+  logic [9:0] switch;
+  logic [9:0] led;
+
+  // Instanciamos el módulo (DUT)
+  top_level uut (
+    .led(led),
+    .switch(switch)
+  );
+
+  // Generamos estímulos
+  initial begin
+    // Probar todos los valores posibles de switch (de 0 a 1023)
+    integer i;
+    for (i = 0; i < 1024; i = i + 1) begin
+      switch = i;     // Asignamos el valor binario de i al vector switch
+      #10;            // Esperamos 10 ns
+      $display("switch=%b -> led=%b", switch, led);
+    end
+
+    $finish;
+  end
+
+endmodule
