@@ -1,0 +1,19 @@
+`timescale 1ns/1ps
+
+module tb_top_level;
+    reg [9:0] SW;
+    wire [9:0] LEDR;
+    
+    top_level uut (
+        .SW(SW),
+        .LEDR(LEDR)
+    );
+    
+    initial begin
+        SW = 10'b0000000000;
+        #10 SW = 10'b0000000001; // Presionar SW0
+        #10 SW = 10'b0000000011; // Presionar SW0 y SW1
+        #10 SW = 10'b1111111111; // Todos presionados
+        #10 $stop;
+    end
+endmodule

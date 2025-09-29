@@ -1,0 +1,54 @@
+=== ENSAMBLADOR RISC-V CON PSEUDOINSTRUCCIONES Y DIRECTIVAS .data/.text ===
+Etiquetas encontradas: {'inputarray0': 0, 'inputarray1': 4, 'inputarray2': 8, 'inputarray3': 12, 'inputarray4': 16, 'inputarray5': 20, 'inputarray6': 24, 'inputarray7': 28}
+================================================================================
+
+
+=== SECCIÓN .DATA ===
+Etiqueta: inputarray0 (PC: 0x00000000)
+  PC:00000000 .word 64 -> Bin: 00000000000000000000000001000000 Hex: 0x00000040
+Etiqueta: inputarray1 (PC: 0x00000004)
+  PC:00000004 .half 25 -> Bin: 00000000000000000000000000011001 Hex: 0x00000019
+Etiqueta: inputarray2 (PC: 0x00000008)
+  PC:00000008 .word 12 -> Bin: 00000000000000000000000000001100 Hex: 0x0000000c
+Etiqueta: inputarray3 (PC: 0x0000000c)
+  PC:0000000c .byte 22 -> Bin: 00000000000000000000000000010110 Hex: 0x00000016
+Etiqueta: inputarray4 (PC: 0x00000010)
+  PC:00000010 .word 11 -> Bin: 00000000000000000000000000001011 Hex: 0x0000000b
+Etiqueta: inputarray5 (PC: 0x00000014)
+  PC:00000014 .word 90 -> Bin: 00000000000000000000000001011010 Hex: 0x0000005a
+Etiqueta: inputarray6 (PC: 0x00000018)
+  PC:00000018 .word 34 -> Bin: 00000000000000000000000000100010 Hex: 0x00000022
+Etiqueta: inputarray7 (PC: 0x0000001c)
+  PC:0000001c .word 78 -> Bin: 00000000000000000000000001001110 Hex: 0x0000004e
+
+=== SECCIÓN .TEXT ===
+Línea original: lui a5, %hi(inputarray1)
+  PC:00000000 lui a5, %hi(inputarray1)                 -> Bin: 00000000000000000000011110110111 Hex: 0x000007b7
+
+Línea original: addi a5, a5, %lo(inputarray1)
+  PC:00000004 addi a5, a5, %lo(inputarray1)            -> Bin: 00000000010001111000011110010011 Hex: 0x00478793
+
+Línea original: lw a0, 0(a5)     # Load inputarray[0] into a0
+  PC:00000008 lw a0, 0(a5)                             -> Bin: 00000000000001111010010100000011 Hex: 0x0007a503
+
+Línea original: lw a1, 4(a5)     # Load inputarray[1] into a1
+  PC:0000000c lw a1, 4(a5)                             -> Bin: 00000000010001111010010110000011 Hex: 0x0047a583
+
+Línea original: lw a2, 8(a5)     # Load inputarray[2] into a2
+  PC:00000010 lw a2, 8(a5)                             -> Bin: 00000000100001111010011000000011 Hex: 0x0087a603
+
+Línea original: lw a3, 12(a5)    # Load inputarray[3] into a3
+  PC:00000014 lw a3, 12(a5)                            -> Bin: 00000000110001111010011010000011 Hex: 0x00c7a683
+
+Línea original: lw t0, 16(a5)    # Load inputarray[4] into t0
+  PC:00000018 lw t0, 16(a5)                            -> Bin: 00000001000001111010001010000011 Hex: 0x0107a283
+
+Línea original: lw t1, 20(a5)    # Load inputarray[5] into t1
+  PC:0000001c lw t1, 20(a5)                            -> Bin: 00000001010001111010001100000011 Hex: 0x0147a303
+
+Línea original: lw t2, 24(a5)    # Load inputarray[6] into t2
+  PC:00000020 lw t2, 24(a5)                            -> Bin: 00000001100001111010001110000011 Hex: 0x0187a383
+
+Línea original: lw t3, 28(a5)    # Load inputarray[7] into t3
+  PC:00000024 lw t3, 28(a5)                            -> Bin: 00000001110001111010111000000011 Hex: 0x01c7ae03
+
