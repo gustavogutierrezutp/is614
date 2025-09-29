@@ -5,7 +5,8 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-azuretools.vscode-containers"
+        "ms-azuretools.vscode-containers",
+        "lramseyer.vaporview"
       ]
     }
   }
