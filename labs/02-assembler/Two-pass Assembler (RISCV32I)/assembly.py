@@ -8,9 +8,6 @@ def main():
 
     # Primera pasada
     symtab = first_pass(input_file)
-    print("Tabla de símbolos:")
-    for label, addr in symtab.dump().items():
-        print(f"{label}: {addr:08X}")
 
     # Segunda pasada
     program = second_pass(input_file, symtab)
