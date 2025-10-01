@@ -66,6 +66,10 @@ Where:
 node assembler.js program.asm program.hex program.bin
 ```
 
+### Instructions first, data after
+
+The assembler must produce a single sequential `.bin` and `.hex` file where each line represents one memory byte in increasing address order. Emit bytes for all assembled instructions first (instructions are 32-bit words; write each word in little-endian order, LSB first), then emit all data bytes declared in `.data` (including any alignment padding bytes `0x00`).
+
 ### Supported Instruction Set
 
 Your assembler must support all standard base integer instructions from the
@@ -85,10 +89,61 @@ Section 5.
 
 Your assembler should correctly handle the following basic directives:
 
-  - `.text`: Marks the beginning of the code segment. Instructions following this directive should be placed in memory starting from address 0x00000000.
+- `.text`: Marks the beginning of the code segment. Instructions following this directive should be placed in memory starting from address 0x00000000.
 
-  - `.data`: Marks the beginning of the data segment.
-  
+- `.equ`: Defines a symbolic constant. It associates a name with a numeric expression or value that can be used later in the source as a constant (not a memory location / label that occupies storage).
+
+- `.data`: Marks the beginning of the data segment.
+
+### Detailed notes about .data
+
+The `.data` directive signals that what follows are data declarations rather than instructions. Typical data directives include .byte, .half (or .hword), .word, .ascii/.asciz, and others.
+
+- **Location of data in output:** For this assignment, your generated output files (.hex and .bin) must place all instruction encodings first and then append the data bytes declared in the .data section. This means that when the assembler writes the final binary/hex image, it should write the sequence of instruction words (in the order they appear in the .text segment) first, and only after the last instruction write the bytes allocated in .data. Doing so simplifies loading and testing: code starts at address 0x00000000 and data appears at higher addresses after the code area.
+
+### Alignment by directive
+
+Alignment ensures each data object begins at an address that is a multiple of the required boundary, this avoids unaligned accesses and follows ABI conventions. Below is a recommended, practical mapping of data directives to alignment and clear examples of how they are laid out in memory.
+
+#### Rule by directive
+
+- `.byte / .db / .ascii / .asciz / .string`
+
+  - Alignment: 1 byte (no special alignment).
+  - Size per element: 1 byte.
+
+- `.half / .hword`
+
+  - Alignment: 2 bytes.
+  - Size per element: 2 bytes.
+
+- `.word`
+
+  - Alignment: 4 bytes.
+  - Size per element: 4 bytes.
+
+**Note:** Strings (.ascii, .asciz) write sequential bytes and do not realign automatically; apply .align explicitly if you need the next item aligned.
+
+#### Example
+
+`.byte` followed by `.word` (padding inserted)
+
+```asm
+.data
+a:  .byte 0x11      # a -> 0x0000
+b:  .word 0x12345678 # .word requires 4-byte alignment
+                      # assembler inserts 3 bytes of padding (0x0001..0x0003)
+                      # b -> 0x0004
+```
+
+#### Memory (little-endian) result:
+
+- 0x0000: 0x11
+
+- 0x0001..0x0003: 0x00 (padding)
+
+- 0x0004..0x0007: 0x78 0x56 0x34 0x12
+
 ### Error Handling
 
 A robust assembler must provide useful feedback. Your program should detect and
