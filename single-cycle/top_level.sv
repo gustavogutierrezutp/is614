@@ -6,6 +6,7 @@ module top_level(
 );
 
   logic [31:0] pc;
+  logic [31:0] instr;
 
   // This block will change when you implement branching.
   always @(posedge clk or negedge rst_n) begin
