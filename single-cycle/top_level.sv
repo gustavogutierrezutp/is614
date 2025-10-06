@@ -8,7 +8,7 @@ module top_level(
   logic [31:0] pc;
 
   // This block will change when you implement branching.
-  always @(posedge clk) begin
+  always @(posedge clk or negedge rst_n) begin
     if (!rst_n)
       pc <= 32'b0;
     else
@@ -21,5 +21,5 @@ module top_level(
     .display(display)
   );
 
-  assign leds = 10'b1010101010;
+  assign leds = instr[9:0]; // Para mostrar los 10 bits menos significativos de la instrucción leida
 endmodule 
