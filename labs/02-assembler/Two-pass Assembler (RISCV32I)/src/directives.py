@@ -1,3 +1,4 @@
+# Calcula cuántos bytes ocupa una directiva
 def directive_size(directive, operands):
     if directive == '.word':
         return 4 * len(operands)
@@ -5,7 +6,7 @@ def directive_size(directive, operands):
         return 2 * len(operands)
     elif directive == '.byte':
         return 1 * len(operands)
-    elif directive in ('.text', '.data'):
+    elif directive in ('.text', '.data', '.bss'):
         return 0  # no incrementa LC, solo cambia sección
     elif directive == '.align':
         n = int(operands[0])
