@@ -1,6 +1,6 @@
 module instruction_memory #(
     parameter MEM_DEPTH = 256,               // cantidad de instrucciones
-    parameter INIT_FILE = "instructions.hex" // archivo con las instrucciones
+    parameter INIT_FILE = "instructions.mem" // archivo con las instrucciones
 )(
     input  logic [31:0] addr,    // dirección (viene del PC)
     output logic [31:0] instr    // instrucción leída
