@@ -12,7 +12,7 @@ module instruction_memory #(
     // Inicializa el contenido de la memoria desde un archivo HEX
     initial begin
         $display("Loading instructions from %s ...", INIT_FILE);
-        $readmemh(INIT_FILE, mem);
+        $readmemb(INIT_FILE, mem);
     end
 
     // Se asume que addr está alineado a 4 bytes
