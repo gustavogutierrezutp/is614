@@ -1,5 +1,7 @@
 # RISC-V RV32I Two-Pass Assembler
 
+Nombres: Juan David García Arce y Maximiliano Giraldo Ocampo
+
 Este proyecto implementa un ensamblador de dos pasadas completo para el conjunto de instrucciones RISC-V RV32I, desarrollado en C utilizando Flex y Bison.
 
 ## Características Implementadas
