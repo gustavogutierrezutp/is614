@@ -1,0 +1,17 @@
+// pc_unit.sv
+// Contador de programa que avanza de 4 en 4.
+module pc_unit (
+    input  logic clk,
+    input  logic rst,
+    output logic [31:0] pc_addr
+);
+
+    always_ff @(posedge clk, posedge rst) begin
+        if (rst) begin
+            pc_addr <= 32'b0;
+        end else begin
+            pc_addr <= pc_addr + 4;
+        end
+    end
+
+endmodule

@@ -1,0 +1,50 @@
+// control_unit.sv
+// Genera la señal de operación para la ALU a partir de la instrucción.
+module control_unit (
+    input  logic [6:0] funct7,
+    input  logic [2:0] funct3,
+    input  logic [6:0] opcode,
+    output logic [3:0] alu_op // Salida de 4 bits para la operación de la ALU
+);
+
+    // Definición de operaciones de la ALU (ALUOp)
+    localparam ALU_ADD  = 4'b0000;
+    localparam ALU_SUB  = 4'b0001;
+    localparam ALU_SLL  = 4'b0010;
+    localparam ALU_SLT  = 4'b0011;
+    localparam ALU_SLTU = 4'b0100;
+    localparam ALU_XOR  = 4'b0101;
+    localparam ALU_SRL  = 4'b0110;
+    localparam ALU_SRA  = 4'b0111;
+    localparam ALU_OR   = 4'b1000;
+    localparam ALU_AND  = 4'b1001;
+
+    always_comb begin
+        if (opcode == 7'b0110011) begin // Es una instrucción Tipo-R
+            case (funct3)
+                3'b000: begin // ADD o SUB
+                    if (funct7 == 7'b0100000)
+                        alu_op = ALU_SUB;
+                    else
+                        alu_op = ALU_ADD;
+                end
+                3'b001: alu_op = ALU_SLL;  // SLL
+                3'b010: alu_op = ALU_SLT;  // SLT
+                3'b011: alu_op = ALU_SLTU; // SLTU
+                3'b100: alu_op = ALU_XOR;  // XOR
+                3'b101: begin // SRL o SRA
+                    if (funct7 == 7'b0100000)
+                        alu_op = ALU_SRA;
+                    else
+                        alu_op = ALU_SRL;
+                end
+                3'b110: alu_op = ALU_OR;   // OR
+                3'b111: alu_op = ALU_AND;  // AND
+                default: alu_op = 4'bxxxx; // Operación desconocida
+            endcase
+        end else begin
+            alu_op = 4'bxxxx; // No es Tipo-R
+        end
+    end
+
+endmodule
