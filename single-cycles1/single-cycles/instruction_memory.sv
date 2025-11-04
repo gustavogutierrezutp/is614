@@ -10,7 +10,7 @@ module instruction_memory(
         for (i = 0; i < 256; i = i + 1)
             mem_inst[i] = 32'b0;
         
-        $readmemb("../salida_binario.txt", mem_inst);
+        $readmemb("../program.bin", mem_inst);
     end
     
     assign instruction = mem_inst[pc[9:2]];
