@@ -5,3 +5,8 @@ labs/01-fpga/output_files/*
 labs/01-fpga/simulation/*
 labs/01-fpga/c5_pin_model_dump.txt
 labs/01-fpga/fpga.qws
+single-cycle/db/*
+single-cycle/incremental_db/*
+single-cycle/output_files/*
+single-cycle/simulation/*
+single-cycle/c5_pin_model_dump.txt
