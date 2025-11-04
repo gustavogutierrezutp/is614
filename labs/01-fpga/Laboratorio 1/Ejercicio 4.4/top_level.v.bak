@@ -1,0 +1,18 @@
+module top_level (
+    input [9:0] SW,
+    input KEY0,
+    output [6:0] HEX0,
+    output [6:0] HEX1,
+    output [6:0] HEX2
+);
+
+    wire signed [9:0] num_signed = SW;
+    wire [9:0] num_unsigned = SW;
+    wire mode = KEY0;
+
+    wire [9:0] display_num = mode ? num_unsigned : num_signed;
+
+    hex_decoder dec0(.bin(display_num[3:0]), .HEX0(HEX0));
+    hex_decoder dec1(.bin(display_num[7:4]), .HEX0(HEX1));
+    hex_decoder dec2(.bin({2'b00, display_num[9:8]}), .HEX0(HEX2));
+endmodule
