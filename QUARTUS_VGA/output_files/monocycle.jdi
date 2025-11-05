@@ -1,0 +1,16 @@
+<sld_project_info>
+  <project>
+    <hash md5_digest_80b="41d309ca45346692b3d7"/>
+  </project>
+  <file_info>
+    <file device="5CSEMA5F31C6" path="monocycle.sof" usercode="0xFFFFFFFF"/>
+  </file_info>
+  <sld_infos>
+    <sld_info hpath="risc_debug_display:vga_debug|vgaClock:vgaclock" name="vgaclock">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME vgaClock HAS_SOPCINFO 1 GENERATION_ID 1745791527"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
+</sld_project_info>
