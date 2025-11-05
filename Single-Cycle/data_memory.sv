@@ -13,7 +13,7 @@ module data_memory (
     wire [9:0] word_addr  = address[11:2];
     wire [1:0] byte_offset = address[1:0];
 
-    
+    initial begin
        
         $display("data_memory: reading init file program_data.hex...");
         $readmemh("C:/Users/tomas/Documents/GitHub/Assembler/Assembler/program_data.hex", memory);

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for riscvpc
-Wed Nov  5 11:03:08 2025
+Wed Nov  5 15:39:52 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -54,7 +54,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Nov  5 11:03:08 2025           ;
+; Analysis & Synthesis Status     ; Successful - Wed Nov  5 15:39:52 2025           ;
 ; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                   ; riscvpc                                         ;
 ; Top-level Entity Name           ; top_level                                       ;
@@ -189,17 +189,17 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                    ; Library ;
 +--------------------------------------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------+
-; top_level.sv                                                       ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv                                 ;         ;
-; pc.sv                                                              ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/pc.sv                                        ;         ;
-; hex7seg.sv                                                         ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/hex7seg.sv                                   ;         ;
-; registers_unit.sv                                                  ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/registers_unit.sv                            ;         ;
-; alu.sv                                                             ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/alu.sv                                       ;         ;
-; data_memory.sv                                                     ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv                               ;         ;
-; control_unit.sv                                                    ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/control_unit.sv                              ;         ;
-; imm_gen.sv                                                         ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/imm_gen.sv                                   ;         ;
-; branch_unit.sv                                                     ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/branch_unit.sv                               ;         ;
+; top_level.sv                                                       ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv                                 ;         ;
+; pc.sv                                                              ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/pc.sv                                        ;         ;
+; hex7seg.sv                                                         ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/hex7seg.sv                                   ;         ;
+; registers_unit.sv                                                  ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/registers_unit.sv                            ;         ;
+; alu.sv                                                             ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/alu.sv                                       ;         ;
+; data_memory.sv                                                     ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/data_memory.sv                               ;         ;
+; control_unit.sv                                                    ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/control_unit.sv                              ;         ;
+; imm_gen.sv                                                         ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/imm_gen.sv                                   ;         ;
+; branch_unit.sv                                                     ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/branch_unit.sv                               ;         ;
 ; /users/tomas/documents/github/assembler/assembler/program_data.hex ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; /users/tomas/documents/github/assembler/assembler/program_data.hex                              ;         ;
-; instruction_memory.sv                                              ; yes             ; Auto-Found SystemVerilog HDL File                     ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv                        ;         ;
+; instruction_memory.sv                                              ; yes             ; Auto-Found SystemVerilog HDL File                     ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv                        ;         ;
 ; /users/tomas/documents/github/assembler/assembler/program.hex      ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; /users/tomas/documents/github/assembler/assembler/program.hex                                   ;         ;
 ; altsyncram.tdf                                                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altsyncram.tdf                        ;         ;
 ; stratix_ram_block.inc                                              ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                 ;         ;
@@ -210,8 +210,8 @@ on the Quartus Prime software download page.
 ; altrom.inc                                                         ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altrom.inc                            ;         ;
 ; altram.inc                                                         ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altram.inc                            ;         ;
 ; altdpram.inc                                                       ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altdpram.inc                          ;         ;
-; db/altsyncram_9cs1.tdf                                             ; yes             ; Auto-Generated Megafunction                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/db/altsyncram_9cs1.tdf                       ;         ;
-; db/riscvpc.ram0_data_memory_8ae84398.hdl.mif                       ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/db/riscvpc.ram0_data_memory_8ae84398.hdl.mif ;         ;
+; db/altsyncram_9cs1.tdf                                             ; yes             ; Auto-Generated Megafunction                           ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/altsyncram_9cs1.tdf                       ;         ;
+; db/riscvpc.ram0_data_memory_8ae84398.hdl.mif                       ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/riscvpc.ram0_data_memory_8ae84398.hdl.mif ;         ;
 +--------------------------------------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------+
 
 
@@ -1522,7 +1522,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:07     ;
+; Top            ; 00:00:10     ;
 +----------------+--------------+
 
 
@@ -1532,52 +1532,52 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Wed Nov  5 11:02:53 2025
+    Info: Processing started: Wed Nov  5 15:39:34 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off riscvpc -c riscvpc
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file top_level.sv
-    Info (12023): Found entity 1: top_level File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 1
+    Info (12023): Found entity 1: top_level File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file pc.sv
-    Info (12023): Found entity 1: pc File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/pc.sv Line: 1
+    Info (12023): Found entity 1: pc File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/pc.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hex7seg.sv
-    Info (12023): Found entity 1: hex7seg File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/hex7seg.sv Line: 2
+    Info (12023): Found entity 1: hex7seg File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/hex7seg.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file registers_unit.sv
-    Info (12023): Found entity 1: registers_unit File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/registers_unit.sv Line: 1
+    Info (12023): Found entity 1: registers_unit File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/registers_unit.sv Line: 1
 Warning (12019): Can't analyze file -- file output_files/instruction_memory.sv is missing
 Info (12021): Found 1 design units, including 1 entities, in source file alu.sv
-    Info (12023): Found entity 1: alu File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/alu.sv Line: 1
+    Info (12023): Found entity 1: alu File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/alu.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file data_memory.sv
-    Info (12023): Found entity 1: data_memory File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv Line: 1
+    Info (12023): Found entity 1: data_memory File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/data_memory.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit.sv
-    Info (12023): Found entity 1: control_unit File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/control_unit.sv Line: 1
+    Info (12023): Found entity 1: control_unit File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/control_unit.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file imm_gen.sv
-    Info (12023): Found entity 1: imm_gen File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/imm_gen.sv Line: 1
+    Info (12023): Found entity 1: imm_gen File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/imm_gen.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file branch_unit.sv
-    Info (12023): Found entity 1: branch_unit File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/branch_unit.sv Line: 1
+    Info (12023): Found entity 1: branch_unit File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/branch_unit.sv Line: 1
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Info (12128): Elaborating entity "pc" for hierarchy "pc:pc_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 23
+Info (12128): Elaborating entity "pc" for hierarchy "pc:pc_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 23
 Warning (12125): Using design file instruction_memory.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: instruction_memory File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 1
-Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:imem_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 32
-Warning (10850): Verilog HDL warning at instruction_memory.sv(13): number of words (16) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 13
-Warning (10030): Net "mem.data_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 8
-Warning (10030): Net "mem.waddr_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 8
-Warning (10030): Net "mem.we_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 8
-Info (12128): Elaborating entity "imm_gen" for hierarchy "imm_gen:imm_gen_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 59
-Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 83
-Info (12128): Elaborating entity "registers_unit" for hierarchy "registers_unit:regfile_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 100
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 113
-Info (12128): Elaborating entity "branch_unit" for hierarchy "branch_unit:branch_unit_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 124
-Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:dmem_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 143
-Info (10648): Verilog HDL Display System Task info at data_memory.sv(23): data_memory: reading init file program_data.hex... File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv Line: 23
-Warning (10850): Verilog HDL warning at data_memory.sv(24): number of words (3) in memory file does not match the number of elements in the address range [0:1023] File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv Line: 24
-Info (10648): Verilog HDL Display System Task info at data_memory.sv(25): data_memory: finished reading init file (if present) File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv Line: 25
-Info (12128): Elaborating entity "hex7seg" for hierarchy "hex7seg:display0" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 192
-Warning (10272): Verilog HDL Case Statement warning at hex7seg.sv(19): case item expression covers a value already covered by a previous case item File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/hex7seg.sv Line: 19
+    Info (12023): Found entity 1: instruction_memory File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 1
+Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:imem_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 32
+Warning (10850): Verilog HDL warning at instruction_memory.sv(13): number of words (16) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 13
+Warning (10030): Net "mem.data_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 8
+Warning (10030): Net "mem.waddr_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 8
+Warning (10030): Net "mem.we_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 8
+Info (12128): Elaborating entity "imm_gen" for hierarchy "imm_gen:imm_gen_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 59
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 83
+Info (12128): Elaborating entity "registers_unit" for hierarchy "registers_unit:regfile_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 100
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 113
+Info (12128): Elaborating entity "branch_unit" for hierarchy "branch_unit:branch_unit_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 124
+Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:dmem_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 143
+Info (10648): Verilog HDL Display System Task info at data_memory.sv(18): data_memory: reading init file program_data.hex... File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/data_memory.sv Line: 18
+Warning (10850): Verilog HDL warning at data_memory.sv(19): number of words (3) in memory file does not match the number of elements in the address range [0:1023] File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/data_memory.sv Line: 19
+Info (10648): Verilog HDL Display System Task info at data_memory.sv(20): data_memory: finished reading init file (if present) File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/data_memory.sv Line: 20
+Info (12128): Elaborating entity "hex7seg" for hierarchy "hex7seg:display0" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 192
+Warning (10272): Verilog HDL Case Statement warning at hex7seg.sv(19): case item expression covers a value already covered by a previous case item File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/hex7seg.sv Line: 19
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276004): RAM logic "instruction_memory:imem_inst|mem" is uninferred due to inappropriate RAM size File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 8
-Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/tomas/Downloads/single-cycle/Single-Cycle/db/riscvpc.ram0_instruction_memory_68fd8bb8.hdl.mif" contains "don't care" values -- overwriting them with 0s
+    Info (276004): RAM logic "instruction_memory:imem_inst|mem" is uninferred due to inappropriate RAM size File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 8
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/riscvpc.ram0_instruction_memory_68fd8bb8.hdl.mif" contains "don't care" values -- overwriting them with 0s
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "data_memory:dmem_inst|memory_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
@@ -1615,7 +1615,7 @@ Info (12133): Instantiated megafunction "data_memory:dmem_inst|altsyncram:memory
     Info (12134): Parameter "INIT_FILE" = "db/riscvpc.ram0_data_memory_8ae84398.hdl.mif"
     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9cs1.tdf
-    Info (12023): Found entity 1: altsyncram_9cs1 File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/db/altsyncram_9cs1.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_9cs1 File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/altsyncram_9cs1.tdf Line: 28
 Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 512 registers lost all their fanouts during netlist optimizations.
@@ -1628,8 +1628,8 @@ Info (21057): Implemented 1677 device resources after synthesis - the final reso
     Info (21064): Implemented 32 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
     Info: Peak virtual memory: 4907 megabytes
-    Info: Processing ended: Wed Nov  5 11:03:08 2025
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Processing ended: Wed Nov  5 15:39:52 2025
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:26
 
 

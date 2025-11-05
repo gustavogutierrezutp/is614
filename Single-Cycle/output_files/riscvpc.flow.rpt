@@ -1,5 +1,5 @@
 Flow report for riscvpc
-Wed Nov  5 11:06:28 2025
+Wed Nov  5 15:42:58 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -41,7 +41,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Flow Status                     ; Successful - Wed Nov  5 11:06:21 2025           ;
+; Flow Status                     ; Successful - Wed Nov  5 15:42:51 2025           ;
 ; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                   ; riscvpc                                         ;
 ; Top-level Entity Name           ; top_level                                       ;
@@ -68,7 +68,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/05/2025 11:02:54 ;
+; Start date & time ; 11/05/2025 15:39:34 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; riscvpc             ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ on the Quartus Prime software download page.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 132839585759571.176235857418696        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 132839585759571.176237517426564        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -101,11 +101,11 @@ on the Quartus Prime software download page.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:15     ; 1.0                     ; 4907 MB             ; 00:00:22                           ;
-; Fitter               ; 00:03:06     ; 1.0                     ; 6979 MB             ; 00:11:59                           ;
+; Analysis & Synthesis ; 00:00:17     ; 1.0                     ; 4907 MB             ; 00:00:26                           ;
+; Fitter               ; 00:02:52     ; 1.0                     ; 6981 MB             ; 00:11:15                           ;
 ; Assembler            ; 00:00:04     ; 1.0                     ; 5240 MB             ; 00:00:04                           ;
 ; Timing Analyzer      ; 00:00:06     ; 2.0                     ; 5418 MB             ; 00:00:10                           ;
-; Total                ; 00:03:31     ; --                      ; --                  ; 00:12:35                           ;
+; Total                ; 00:03:19     ; --                      ; --                  ; 00:11:55                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
