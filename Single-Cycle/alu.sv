@@ -3,7 +3,7 @@ module alu (
     input  logic [31:0] B,
     input  logic [3:0]  ALU_op,
     output logic [31:0] ALU_res,
-    output logic        zero   
+    output logic        zero   // Bandera para comparaciones (BEQ/BNE)
 );
 
     always_comb begin

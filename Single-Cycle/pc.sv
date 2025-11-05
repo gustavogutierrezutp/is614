@@ -1,8 +1,8 @@
 module pc (
     input  logic        clk,
-    input  logic        rst,       
-    input  logic [31:0] next_pc,   
-    output logic [31:0] pc_out    
+    input  logic        rst,        // reset activo en alto (más común en RISC-V)
+    input  logic [31:0] next_pc,    // dirección siguiente
+    output logic [31:0] pc_out      // dirección actual
 );
 
     always_ff @(posedge clk or posedge rst) begin

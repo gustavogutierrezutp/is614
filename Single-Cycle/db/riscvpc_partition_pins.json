@@ -116,6 +116,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "sw9",
+					"strict" : false
+				},
+				{
 					"name" : "sw6",
 					"strict" : false
 				},
@@ -125,10 +129,6 @@
 				},
 				{
 					"name" : "sw7",
-					"strict" : false
-				},
-				{
-					"name" : "sw9",
 					"strict" : false
 				},
 				{

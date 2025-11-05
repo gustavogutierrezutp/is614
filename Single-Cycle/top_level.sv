@@ -17,17 +17,16 @@ module top_level(
 
   pc pc_inst(
     .clk(clk),
-    .rst(~rst_n),      
+    .rst(~rst_n),      // Convertir rst_n (activo bajo) a rst (activo alto)
     .next_pc(next_pc),
-    .pc_out(address)   
+    .pc_out(address)   // Salida del PC conectada a address
   );
 
   // Instruction Memory
   wire [31:0] instr;
 
     instruction_memory imem_inst (
-      .clk(clk),
-      .address(address[6:2]),
+      .address(address[7:2]),
       .instruction(instr)
     );
 

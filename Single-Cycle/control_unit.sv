@@ -11,7 +11,7 @@ module control_unit (
     output logic       branch,
     output logic       jump,
     output logic [2:0] branch_type,
-    output logic [2:0] immsrc     
+    output logic [2:0] immsrc     // agregado para controlar el imm_gen
 );
 
     always_comb begin

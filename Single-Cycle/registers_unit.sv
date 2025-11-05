@@ -20,29 +20,15 @@ module registers_unit (
     logic [31:0] registers [0:31];
     integer i;
 
-   
+    // Escritura sincrónica y reset
     always_ff @(posedge clk) begin
         if (rst) begin
             for (i = 0; i < 32; i++) begin
                 registers[i] <= 32'b0;
             end
-            registers[2] <= 32'h0000_0024; 
-        end else begin
-            // Ignorar escrituras a x0
-            if (ru_wr && (rd != 5'd0)) begin
-                registers[rd] <= data_wr;
-            end
-           
-            registers[0] <= 32'b0;
+        end else if (ru_wr && (rd != 5'd0)) begin
+            registers[rd] <= data_wr;  // x0 siempre permanece en 0
         end
-    end
-
-    // Inicialización para simulación (opcional): asegura que x2 arranque con 0x24
-    initial begin
-        for (i = 0; i < 32; i = i + 1) begin
-            registers[i] = 32'b0;
-        end
-        registers[2] = 32'h0000_0024;
     end
 
     // Lectura asíncrona
