@@ -1,4 +1,6 @@
+
 module data_memory (
+
     input        clk,            // reloj
     input [31:0] address,        // dirección (byte address)
     input [31:0] DatamW,         // dato a escribir
@@ -6,12 +8,13 @@ module data_memory (
     input  [2:0] DMCTRL,         // control de tipo de acceso (funct3)
     input        mem_write,      // señal de escritura
     output reg [31:0] Datard     // dato leído
+	 
 );
 
 // ===============================================================
 // Parámetros de memoria
 // ===============================================================
-parameter MEM_SIZE = 50;         
+parameter MEM_SIZE = 32;         
 reg [31:0] memory [0:MEM_SIZE-1];
 
 // ===============================================================

@@ -1,7 +1,10 @@
+
 module imm_gen (
+
     input  logic [31:0] instruction,
     input  logic [2:0]  immsrc,   // Selector de tipo de inmediato
     output logic [31:0] imm_out
+	 
 );
 
     always_comb begin

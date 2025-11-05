@@ -1,6 +1,8 @@
+
 module pc (
+
     input  logic        clk,
-    input  logic        rst,        // reset activo en alto (más común en RISC-V)
+    input  logic        rst,        // reset activo en alto
     input  logic [31:0] next_pc,    // dirección siguiente
     output logic [31:0] pc_out      // dirección actual
 );

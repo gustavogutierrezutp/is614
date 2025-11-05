@@ -1,4 +1,6 @@
+
 module control_unit (
+
     input  logic [6:0] opcode,
     input  logic [2:0] funct3,
     input  logic [6:0] funct7,
@@ -11,7 +13,8 @@ module control_unit (
     output logic       branch,
     output logic       jump,
     output logic [2:0] branch_type,
-    output logic [2:0] immsrc     // agregado para controlar el imm_gen
+    output logic [2:0] immsrc     
+	 
 );
 
     always_comb begin
@@ -134,7 +137,7 @@ module control_unit (
             end
 
             default: begin
-                // NOP o instrucción inválida
+               
             end
         endcase
     end

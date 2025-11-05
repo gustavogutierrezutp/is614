@@ -1,4 +1,6 @@
+
 module registers_unit (
+
     input  logic        clk,
     input  logic        rst,      
 
@@ -14,6 +16,7 @@ module registers_unit (
     // Salidas
     output logic [31:0] rs1_data,
     output logic [31:0] rs2_data
+	 
 );
 
     // Banco de registros (32 x 32 bits)

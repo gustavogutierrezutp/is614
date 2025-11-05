@@ -1,9 +1,12 @@
+
 module alu (
+
     input  logic [31:0] A,
     input  logic [31:0] B,
     input  logic [3:0]  ALU_op,
     output logic [31:0] ALU_res,
-    output logic        zero   // Bandera para comparaciones (BEQ/BNE)
+    output logic        zero  
+	 
 );
 
     always_comb begin
@@ -23,7 +26,6 @@ module alu (
         endcase
     end
 
-    // Bandera de cero para ramas BEQ/BNE
     assign zero = (ALU_res == 32'b0);
 
 endmodule

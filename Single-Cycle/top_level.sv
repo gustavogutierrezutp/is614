@@ -1,4 +1,6 @@
+
 module top_level(
+
   input  wire       clk,
   input  wire       rst_n,
   input  wire       sw9,
@@ -9,11 +11,13 @@ module top_level(
   output wire [6:0] displayB,
   output wire [6:0] displayC,
   output wire [6:0] displayD
+  
 );
 
   // PC
   wire [31:0] next_pc;
   wire [31:0] address;
+  wire [31:0] pc_plus_4 = address + 4;
 
   pc pc_inst(
     .clk(clk),
@@ -21,12 +25,20 @@ module top_level(
     .next_pc(next_pc),
     .pc_out(address)   // Salida del PC conectada a address
   );
+  
+    // PC Logic
+  wire [31:0] pc_branch = address + imm_extended;
+  wire        pc_src = (branch_taken | jump);
+  wire        is_jalr = (opcode == 7'b1100111);
+  wire [31:0] jump_target = is_jalr ? ALU_res : pc_branch;
+  assign next_pc = pc_src ? jump_target : pc_plus_4;
+  
 
   // Instruction Memory
   wire [31:0] instr;
 
     instruction_memory imem_inst (
-      .address(address[7:2]),
+      .address(address[6:2]),
       .instruction(instr)
     );
 
@@ -81,9 +93,8 @@ module top_level(
     .branch_type(branch_type)
   );
 
-  // Register File
+  // Register Unit
   wire [31:0] rs1_data, rs2_data;
-  wire [31:0] pc_plus_4 = address + 4;
   wire [31:0] data_wr = jump ? pc_plus_4 : (mem_to_reg ? mem_data : ALU_res);
 
   registers_unit regfile_inst (
@@ -122,12 +133,6 @@ module top_level(
     .branch_taken(branch_taken)
   );
 
-  // PC Logic
-  wire [31:0] pc_branch = address + imm_extended;
-  wire        pc_src = (branch_taken | jump);
-  wire        is_jalr = (opcode == 7'b1100111);
-  wire [31:0] jump_target = is_jalr ? ALU_res : pc_branch;
-  assign next_pc = pc_src ? jump_target : pc_plus_4;
 
   // Data Memory
   wire [31:0] mem_data;
