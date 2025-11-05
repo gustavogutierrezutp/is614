@@ -1,0 +1,145 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "displayA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "displayA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "displayA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "displayA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "displayA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "displayA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "displayA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "displayB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "displayB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "displayB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "displayB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "displayB[4]",
+					"strict" : false
+				},
+				{
+					"name" : "displayB[5]",
+					"strict" : false
+				},
+				{
+					"name" : "displayB[6]",
+					"strict" : false
+				},
+				{
+					"name" : "displayC[0]",
+					"strict" : false
+				},
+				{
+					"name" : "displayC[1]",
+					"strict" : false
+				},
+				{
+					"name" : "displayC[2]",
+					"strict" : false
+				},
+				{
+					"name" : "displayC[3]",
+					"strict" : false
+				},
+				{
+					"name" : "displayC[4]",
+					"strict" : false
+				},
+				{
+					"name" : "displayC[5]",
+					"strict" : false
+				},
+				{
+					"name" : "displayC[6]",
+					"strict" : false
+				},
+				{
+					"name" : "displayD[0]",
+					"strict" : false
+				},
+				{
+					"name" : "displayD[1]",
+					"strict" : false
+				},
+				{
+					"name" : "displayD[2]",
+					"strict" : false
+				},
+				{
+					"name" : "displayD[3]",
+					"strict" : false
+				},
+				{
+					"name" : "displayD[4]",
+					"strict" : false
+				},
+				{
+					"name" : "displayD[5]",
+					"strict" : false
+				},
+				{
+					"name" : "displayD[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sw6",
+					"strict" : false
+				},
+				{
+					"name" : "sw8",
+					"strict" : false
+				},
+				{
+					"name" : "sw7",
+					"strict" : false
+				},
+				{
+					"name" : "sw9",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

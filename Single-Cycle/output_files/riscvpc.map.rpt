@@ -1,0 +1,1635 @@
+Analysis & Synthesis report for riscvpc
+Wed Nov  5 11:03:08 2025
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Registers Packed Into Inferred Megafunctions
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for data_memory:dmem_inst|altsyncram:memory_rtl_0|altsyncram_9cs1:auto_generated
+ 16. Parameter Settings for Inferred Entity Instance: data_memory:dmem_inst|altsyncram:memory_rtl_0
+ 17. altsyncram Parameter Settings by Entity Instance
+ 18. Port Connectivity Checks: "alu:alu_inst"
+ 19. Port Connectivity Checks: "control_unit:control_inst"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed Nov  5 11:03:08 2025           ;
+; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Revision Name                   ; riscvpc                                         ;
+; Top-level Entity Name           ; top_level                                       ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 530                                             ;
+; Total pins                      ; 34                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 32,768                                          ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; top_level          ; riscvpc            ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                   ;
++--------------------------------------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                    ; Library ;
++--------------------------------------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------+
+; top_level.sv                                                       ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv                                 ;         ;
+; pc.sv                                                              ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/pc.sv                                        ;         ;
+; hex7seg.sv                                                         ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/hex7seg.sv                                   ;         ;
+; registers_unit.sv                                                  ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/registers_unit.sv                            ;         ;
+; alu.sv                                                             ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/alu.sv                                       ;         ;
+; data_memory.sv                                                     ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv                               ;         ;
+; control_unit.sv                                                    ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/control_unit.sv                              ;         ;
+; imm_gen.sv                                                         ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/imm_gen.sv                                   ;         ;
+; branch_unit.sv                                                     ; yes             ; User SystemVerilog HDL File                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/branch_unit.sv                               ;         ;
+; /users/tomas/documents/github/assembler/assembler/program_data.hex ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; /users/tomas/documents/github/assembler/assembler/program_data.hex                              ;         ;
+; instruction_memory.sv                                              ; yes             ; Auto-Found SystemVerilog HDL File                     ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv                        ;         ;
+; /users/tomas/documents/github/assembler/assembler/program.hex      ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; /users/tomas/documents/github/assembler/assembler/program.hex                                   ;         ;
+; altsyncram.tdf                                                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altsyncram.tdf                        ;         ;
+; stratix_ram_block.inc                                              ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                 ;         ;
+; lpm_mux.inc                                                        ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/lpm_mux.inc                           ;         ;
+; lpm_decode.inc                                                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/lpm_decode.inc                        ;         ;
+; aglobal241.inc                                                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/aglobal241.inc                        ;         ;
+; a_rdenreg.inc                                                      ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/a_rdenreg.inc                         ;         ;
+; altrom.inc                                                         ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altrom.inc                            ;         ;
+; altram.inc                                                         ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altram.inc                            ;         ;
+; altdpram.inc                                                       ; yes             ; Megafunction                                          ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altdpram.inc                          ;         ;
+; db/altsyncram_9cs1.tdf                                             ; yes             ; Auto-Generated Megafunction                           ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/db/altsyncram_9cs1.tdf                       ;         ;
+; db/riscvpc.ram0_data_memory_8ae84398.hdl.mif                       ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/tomas/Downloads/single-cycle/Single-Cycle/db/riscvpc.ram0_data_memory_8ae84398.hdl.mif ;         ;
++--------------------------------------------------------------------+-----------------+-------------------------------------------------------+-------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 905       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 1133      ;
+;     -- 7 input functions                    ; 33        ;
+;     -- 6 input functions                    ; 593       ;
+;     -- 5 input functions                    ; 184       ;
+;     -- 4 input functions                    ; 131       ;
+;     -- <=3 input functions                  ; 192       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 530       ;
+;                                             ;           ;
+; I/O pins                                    ; 34        ;
+; Total MLAB memory bits                      ; 0         ;
+; Total block memory bits                     ; 32768     ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 562       ;
+; Total fan-out                               ; 8273      ;
+; Average fan-out                             ; 4.69      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                              ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                     ; Entity Name        ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------+--------------------+--------------+
+; |top_level                                ; 1133 (213)          ; 530 (0)                   ; 32768             ; 0          ; 34   ; 0            ; |top_level                                                                              ; top_level          ; work         ;
+;    |alu:alu_inst|                         ; 383 (383)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|alu:alu_inst                                                                 ; alu                ; work         ;
+;    |control_unit:control_inst|            ; 18 (18)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|control_unit:control_inst                                                    ; control_unit       ; work         ;
+;    |data_memory:dmem_inst|                ; 105 (105)           ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |top_level|data_memory:dmem_inst                                                        ; data_memory        ; work         ;
+;       |altsyncram:memory_rtl_0|           ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |top_level|data_memory:dmem_inst|altsyncram:memory_rtl_0                                ; altsyncram         ; work         ;
+;          |altsyncram_9cs1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |top_level|data_memory:dmem_inst|altsyncram:memory_rtl_0|altsyncram_9cs1:auto_generated ; altsyncram_9cs1    ; work         ;
+;    |hex7seg:display0|                     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|hex7seg:display0                                                             ; hex7seg            ; work         ;
+;    |hex7seg:display1|                     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|hex7seg:display1                                                             ; hex7seg            ; work         ;
+;    |hex7seg:display2|                     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|hex7seg:display2                                                             ; hex7seg            ; work         ;
+;    |hex7seg:display3|                     ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|hex7seg:display3                                                             ; hex7seg            ; work         ;
+;    |imm_gen:imm_gen_inst|                 ; 17 (17)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|imm_gen:imm_gen_inst                                                         ; imm_gen            ; work         ;
+;    |instruction_memory:imem_inst|         ; 20 (20)             ; 20 (20)                   ; 0                 ; 0          ; 0    ; 0            ; |top_level|instruction_memory:imem_inst                                                 ; instruction_memory ; work         ;
+;    |pc:pc_inst|                           ; 0 (0)               ; 30 (30)                   ; 0                 ; 0          ; 0    ; 0            ; |top_level|pc:pc_inst                                                                   ; pc                 ; work         ;
+;    |registers_unit:regfile_inst|          ; 349 (349)           ; 480 (480)                 ; 0                 ; 0          ; 0    ; 0            ; |top_level|registers_unit:regfile_inst                                                  ; registers_unit     ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                     ;
++-----------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------------------+
+; Name                                                                                    ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                                          ;
++-----------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------------------+
+; data_memory:dmem_inst|altsyncram:memory_rtl_0|altsyncram_9cs1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1024         ; 32           ; 1024         ; 32           ; 32768 ; db/riscvpc.ram0_data_memory_8ae84398.hdl.mif ;
++-----------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                   ;
++--------------------------------------------------------------+-------------------------------------------------------+
+; Register name                                                ; Reason for Removal                                    ;
++--------------------------------------------------------------+-------------------------------------------------------+
+; registers_unit:regfile_inst|registers[0][0]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][1]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][2]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][3]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][4]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][5]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][6]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][7]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][8]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][9]                  ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][10]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][11]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][12]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][13]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][14]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][15]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][16]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][17]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][18]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][19]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][20]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][21]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][22]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][23]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][24]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][25]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][26]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][27]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][28]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][29]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][30]                 ; Stuck at GND due to stuck port data_in                ;
+; registers_unit:regfile_inst|registers[0][31]                 ; Stuck at GND due to stuck port data_in                ;
+; instruction_memory:imem_inst|instr_reg[1]                    ; Merged with instruction_memory:imem_inst|instr_reg[0] ;
+; instruction_memory:imem_inst|instr_reg[28]                   ; Merged with instruction_memory:imem_inst|instr_reg[2] ;
+; instruction_memory:imem_inst|instr_reg[6,11,19,24..27,29,31] ; Merged with instruction_memory:imem_inst|instr_reg[3] ;
+; instruction_memory:imem_inst|instr_reg[3]                    ; Stuck at GND due to stuck port data_in                ;
+; pc:pc_inst|pc_out[0,1]                                       ; Stuck at GND due to stuck port clock_enable           ;
+; registers_unit:regfile_inst|registers[16][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][3]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][0]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][1]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][2]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][4]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][5]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][6]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][7]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][8]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][9]                 ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][10]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][11]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][12]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][13]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][14]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][15]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][16]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][17]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][18]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][19]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][20]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][21]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][22]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][23]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][24]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][25]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][26]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][27]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][28]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][29]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][30]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[16][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[17][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[18][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[19][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[20][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[21][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[22][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[23][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[24][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[25][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[26][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[27][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[28][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[29][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[30][31]                ; Lost fanout                                           ;
+; registers_unit:regfile_inst|registers[31][31]                ; Lost fanout                                           ;
+; Total Number of Removed Registers = 558                      ;                                                       ;
++--------------------------------------------------------------+-------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                              ;
++---------------------------------------------+---------------------------+------------------------------------------------+
+; Register name                               ; Reason for Removal        ; Registers Removed due to This Register         ;
++---------------------------------------------+---------------------------+------------------------------------------------+
+; registers_unit:regfile_inst|registers[0][1] ; Stuck at GND              ; registers_unit:regfile_inst|registers[16][3],  ;
+;                                             ; due to stuck port data_in ; registers_unit:regfile_inst|registers[17][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][3],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][2],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][4],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][5],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][6],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][7],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][8],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][9],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][10], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][11], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][12], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][13], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][14], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][15], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][16], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][17], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][18], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][19], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][20], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][21], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][22], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][23], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][24], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][25], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][25]  ;
+; registers_unit:regfile_inst|registers[0][0] ; Stuck at GND              ; registers_unit:regfile_inst|registers[16][29], ;
+;                                             ; due to stuck port data_in ; registers_unit:regfile_inst|registers[17][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][29], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[16][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[17][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][30], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][30]  ;
+; registers_unit:regfile_inst|registers[0][2] ; Stuck at GND              ; registers_unit:regfile_inst|registers[16][1],  ;
+;                                             ; due to stuck port data_in ; registers_unit:regfile_inst|registers[17][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][1],  ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][1]   ;
+; instruction_memory:imem_inst|instr_reg[3]   ; Stuck at GND              ; registers_unit:regfile_inst|registers[16][28], ;
+;                                             ; due to stuck port data_in ; registers_unit:regfile_inst|registers[17][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[18][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[19][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[20][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[21][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[22][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[23][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[24][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[25][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[26][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[27][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[28][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[29][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[30][28], ;
+;                                             ;                           ; registers_unit:regfile_inst|registers[31][28]  ;
++---------------------------------------------+---------------------------+------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 530   ;
+; Number of registers using Synchronous Clear  ; 490   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 30    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 480   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------+
+; Inverted Register Statistics                          ;
++---------------------------------------------+---------+
+; Inverted Register                           ; Fan out ;
++---------------------------------------------+---------+
+; registers_unit:regfile_inst|registers[2][2] ; 2       ;
+; registers_unit:regfile_inst|registers[2][5] ; 2       ;
+; Total number of inverted registers = 2      ;         ;
++---------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                       ;
++----------------------------------------+------------------------------------+------+
+; Register Name                          ; Megafunction                       ; Type ;
++----------------------------------------+------------------------------------+------+
+; data_memory:dmem_inst|read_word[0..31] ; data_memory:dmem_inst|memory_rtl_0 ; RAM  ;
++----------------------------------------+------------------------------------+------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[8][3]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[4][3]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[12][29] ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[2][9]   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[10][0]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[6][17]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[14][9]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[1][10]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[9][10]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[5][30]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[13][5]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[3][13]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[11][31] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[7][13]  ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |top_level|registers_unit:regfile_inst|registers[15][13] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |top_level|registers_unit:regfile_inst|registers[2][2]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |top_level|data_memory:dmem_inst|Mux3                    ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |top_level|immsrc                                        ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |top_level|imm_gen:imm_gen_inst|Mux21                    ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |top_level|alu:alu_inst|ShiftRight0                      ;
+; 4:1                ; 49 bits   ; 98 LEs        ; 98 LEs               ; 0 LEs                  ; No         ; |top_level|alu:alu_inst|ShiftLeft0                       ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_level|alu:alu_inst|ShiftRight0                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_level|alu:alu_inst|ShiftRight1                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_level|alu:alu_inst|ShiftLeft0                       ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_level|alu:alu_inst|ShiftLeft0                       ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top_level|alu:alu_inst|ShiftLeft0                       ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |top_level|data_memory:dmem_inst|Mux22                   ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |top_level|data_memory:dmem_inst|Mux35                   ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 352 LEs              ; 0 LEs                  ; No         ; |top_level|registers_unit:regfile_inst|rs2_data[3]       ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 352 LEs              ; 0 LEs                  ; No         ; |top_level|registers_unit:regfile_inst|rs1_data[27]      ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; No         ; |top_level|data_memory:dmem_inst|Mux42                   ;
+; 22:1               ; 8 bits    ; 112 LEs       ; 72 LEs               ; 40 LEs                 ; No         ; |top_level|alu:alu_inst|Mux13                            ;
+; 21:1               ; 5 bits    ; 70 LEs        ; 40 LEs               ; 30 LEs                 ; No         ; |top_level|alu:alu_inst|Mux23                            ;
+; 21:1               ; 3 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; No         ; |top_level|alu:alu_inst|Mux17                            ;
+; 23:1               ; 2 bits    ; 30 LEs        ; 18 LEs               ; 12 LEs                 ; No         ; |top_level|alu:alu_inst|Mux22                            ;
+; 25:1               ; 3 bits    ; 48 LEs        ; 33 LEs               ; 15 LEs                 ; No         ; |top_level|alu:alu_inst|Mux3                             ;
+; 24:1               ; 2 bits    ; 32 LEs        ; 20 LEs               ; 12 LEs                 ; No         ; |top_level|alu:alu_inst|Mux5                             ;
+; 24:1               ; 3 bits    ; 48 LEs        ; 30 LEs               ; 18 LEs                 ; No         ; |top_level|alu:alu_inst|Mux30                            ;
+; 18:1               ; 3 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |top_level|value_to_display[5]                           ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |top_level|value_to_display[11]                          ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |top_level|value_to_display[8]                           ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |top_level|value_to_display[1]                           ;
+; 18:1               ; 3 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |top_level|value_to_display[12]                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Source assignments for data_memory:dmem_inst|altsyncram:memory_rtl_0|altsyncram_9cs1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------+
+; Assignment                      ; Value              ; From ; To                                    ;
++---------------------------------+--------------------+------+---------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                     ;
++---------------------------------+--------------------+------+---------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: data_memory:dmem_inst|altsyncram:memory_rtl_0     ;
++------------------------------------+----------------------------------------------+----------------+
+; Parameter Name                     ; Value                                        ; Type           ;
++------------------------------------+----------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                            ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                           ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                          ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                           ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                          ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                            ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                                    ; Untyped        ;
+; WIDTH_A                            ; 32                                           ; Untyped        ;
+; WIDTHAD_A                          ; 10                                           ; Untyped        ;
+; NUMWORDS_A                         ; 1024                                         ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                 ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                         ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                         ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                         ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                         ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                         ; Untyped        ;
+; WIDTH_B                            ; 32                                           ; Untyped        ;
+; WIDTHAD_B                          ; 10                                           ; Untyped        ;
+; NUMWORDS_B                         ; 1024                                         ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                       ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                       ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                       ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0                                       ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                 ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                       ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                         ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                         ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                         ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                         ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                         ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                         ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                            ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                            ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                         ; Untyped        ;
+; BYTE_SIZE                          ; 8                                            ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                     ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                         ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                         ; Untyped        ;
+; INIT_FILE                          ; db/riscvpc.ram0_data_memory_8ae84398.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                       ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                            ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                       ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                       ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                       ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                       ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                              ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                              ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                        ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                        ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                            ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                                    ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_9cs1                              ; Untyped        ;
++------------------------------------+----------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                          ;
++-------------------------------------------+-----------------------------------------------+
+; Name                                      ; Value                                         ;
++-------------------------------------------+-----------------------------------------------+
+; Number of entity instances                ; 1                                             ;
+; Entity Instance                           ; data_memory:dmem_inst|altsyncram:memory_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                     ;
+;     -- WIDTH_A                            ; 32                                            ;
+;     -- NUMWORDS_A                         ; 1024                                          ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                  ;
+;     -- WIDTH_B                            ; 32                                            ;
+;     -- NUMWORDS_B                         ; 1024                                          ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                      ;
++-------------------------------------------+-----------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:alu_inst"                                                                                            ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                  ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; zero ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "control_unit:control_inst"                                                                                 ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                  ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; immsrc ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 530                         ;
+;     CLR               ; 30                          ;
+;     ENA               ; 2                           ;
+;     ENA SCLR          ; 478                         ;
+;     SCLR              ; 12                          ;
+;     plain             ; 8                           ;
+; arriav_lcell_comb     ; 1137                        ;
+;     arith             ; 63                          ;
+;         1 data inputs ; 30                          ;
+;         3 data inputs ; 1                           ;
+;         5 data inputs ; 32                          ;
+;     extend            ; 33                          ;
+;         7 data inputs ; 33                          ;
+;     normal            ; 1041                        ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 73                          ;
+;         3 data inputs ; 87                          ;
+;         4 data inputs ; 131                         ;
+;         5 data inputs ; 152                         ;
+;         6 data inputs ; 593                         ;
+; boundary_port         ; 34                          ;
+; stratixv_ram_block    ; 32                          ;
+;                       ;                             ;
+; Max LUT depth         ; 16.00                       ;
+; Average LUT depth     ; 13.27                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Processing started: Wed Nov  5 11:02:53 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off riscvpc -c riscvpc
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file top_level.sv
+    Info (12023): Found entity 1: top_level File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file pc.sv
+    Info (12023): Found entity 1: pc File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/pc.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hex7seg.sv
+    Info (12023): Found entity 1: hex7seg File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/hex7seg.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file registers_unit.sv
+    Info (12023): Found entity 1: registers_unit File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/registers_unit.sv Line: 1
+Warning (12019): Can't analyze file -- file output_files/instruction_memory.sv is missing
+Info (12021): Found 1 design units, including 1 entities, in source file alu.sv
+    Info (12023): Found entity 1: alu File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/alu.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file data_memory.sv
+    Info (12023): Found entity 1: data_memory File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file control_unit.sv
+    Info (12023): Found entity 1: control_unit File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/control_unit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file imm_gen.sv
+    Info (12023): Found entity 1: imm_gen File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/imm_gen.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file branch_unit.sv
+    Info (12023): Found entity 1: branch_unit File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/branch_unit.sv Line: 1
+Info (12127): Elaborating entity "top_level" for the top level hierarchy
+Info (12128): Elaborating entity "pc" for hierarchy "pc:pc_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 23
+Warning (12125): Using design file instruction_memory.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: instruction_memory File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 1
+Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:imem_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 32
+Warning (10850): Verilog HDL warning at instruction_memory.sv(13): number of words (16) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 13
+Warning (10030): Net "mem.data_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 8
+Warning (10030): Net "mem.waddr_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 8
+Warning (10030): Net "mem.we_a" at instruction_memory.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 8
+Info (12128): Elaborating entity "imm_gen" for hierarchy "imm_gen:imm_gen_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 59
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 83
+Info (12128): Elaborating entity "registers_unit" for hierarchy "registers_unit:regfile_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 100
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 113
+Info (12128): Elaborating entity "branch_unit" for hierarchy "branch_unit:branch_unit_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 124
+Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:dmem_inst" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 143
+Info (10648): Verilog HDL Display System Task info at data_memory.sv(23): data_memory: reading init file program_data.hex... File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv Line: 23
+Warning (10850): Verilog HDL warning at data_memory.sv(24): number of words (3) in memory file does not match the number of elements in the address range [0:1023] File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv Line: 24
+Info (10648): Verilog HDL Display System Task info at data_memory.sv(25): data_memory: finished reading init file (if present) File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/data_memory.sv Line: 25
+Info (12128): Elaborating entity "hex7seg" for hierarchy "hex7seg:display0" File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/top_level.sv Line: 192
+Warning (10272): Verilog HDL Case Statement warning at hex7seg.sv(19): case item expression covers a value already covered by a previous case item File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/hex7seg.sv Line: 19
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "instruction_memory:imem_inst|mem" is uninferred due to inappropriate RAM size File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/instruction_memory.sv Line: 8
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/tomas/Downloads/single-cycle/Single-Cycle/db/riscvpc.ram0_instruction_memory_68fd8bb8.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "data_memory:dmem_inst|memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/riscvpc.ram0_data_memory_8ae84398.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12130): Elaborated megafunction instantiation "data_memory:dmem_inst|altsyncram:memory_rtl_0"
+Info (12133): Instantiated megafunction "data_memory:dmem_inst|altsyncram:memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/riscvpc.ram0_data_memory_8ae84398.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9cs1.tdf
+    Info (12023): Found entity 1: altsyncram_9cs1 File: C:/Users/tomas/Downloads/single-cycle/Single-Cycle/db/altsyncram_9cs1.tdf Line: 28
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 512 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1677 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 28 output pins
+    Info (21061): Implemented 1611 logic cells
+    Info (21064): Implemented 32 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 4907 megabytes
+    Info: Processing ended: Wed Nov  5 11:03:08 2025
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:22
+
+
