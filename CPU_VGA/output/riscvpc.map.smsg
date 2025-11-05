@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at write_vga.sv(233): always construct contains both blocking and non-blocking assignments File: C:/Users/jorge/OneDrive/Documentos/2025-2/Arquitectura de Computadores/Compilador_Assembler/Delta_EPrime_V3.DATAssembler/single-cycleVGA_5Nov/write_vga.sv Line: 233
