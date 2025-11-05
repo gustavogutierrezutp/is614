@@ -1,56 +1,59 @@
-    .text
-    # --- Inicio del programa ---
-start:
-    nop                     # pseudoinstrucción
-    li x5, 1234             # cargar inmediato en un registro
-    li x6, 0xABCD           # inmediato hexadecimal
-    mv x7, x5               # mover registros
-    not x8, x7              # NOT
-    neg x9, x8              # NEG
-    add x10, x5, x6         # suma (R-type)
-    sub x11, x10, x6        # resta
-    and x12, x5, x6         # AND
-    or  x13, x5, x6         # OR
-    xor x14, x5, x6         # XOR
+# Programa de prueba para procesador RISC-V 32 bits
+# Incluye instrucciones tipo R, I, Load y Store
 
-    # --- Saltos y comparaciones ---
-    beqz x5, else_block     # branch if equal to zero
-    bnez x6, then_block     # branch if not equal to zero
+# ==== INSTRUCCIONES TIPO I (Inmediatas) ====
+ADDI x1, x0, 10      # x1 = 0 + 10 = 10
+ADDI x2, x0, 20      # x2 = 0 + 20 = 20
+ADDI x3, x0, 5       # x3 = 0 + 5 = 5
+ADDI x4, x0, -3      # x4 = 0 + (-3) = -3
 
-then_block:
-    sgtz x15, x5            # set greater than zero
-    j end_if                # salto incondicional
+ANDI x5, x1, 15      # x5 = x1 & 15
+ORI x6, x2, 3        # x6 = x2 | 3
+XORI x7, x3, 7       # x7 = x3 ^ 7
 
-else_block:
-    sltz x15, x6            # set less than zero
+SLLI x8, x1, 2       # x8 = x1 << 2 = 40
+SRLI x9, x2, 1       # x9 = x2 >> 1 = 10
+SRAI x10, x4, 1      # x10 = x4 >>> 1 (aritmético)
 
-end_if:
-    # --- Jump & Link ---
-    jal ra, func_call       # llamar a función
-    ret                     # regresar (jalr x0, ra)
+SLTI x11, x1, 15     # x11 = (x1 < 15) ? 1 : 0
+SLTIU x12, x2, 25    # x12 = (x2 < 25) ? 1 : 0 (sin signo)
 
-    # --- Función ---
-func_call:
-    addi x5, x5, 1          # incrementar x5
-    jr ra                   # regresar al caller
+# ==== INSTRUCCIONES TIPO R (Registro-Registro) ====
+ADD x13, x1, x2      # x13 = x1 + x2 = 30
+SUB x14, x2, x1      # x14 = x2 - x1 = 10
+AND x15, x1, x2      # x15 = x1 & x2
+OR x16, x1, x3       # x16 = x1 | x3
+XOR x17, x2, x3      # x17 = x2 ^ x3
 
-    # --- Cargar y guardar en memoria ---
-    la x20, var1            # cargar dirección de var1
-    lw x21, 0(x20)          # cargar valor
-    addi x21, x21, 10       # sumarle 10
-    sw x21, var1            # guardar valor actualizado
+SLL x18, x1, x3      # x18 = x1 << x3
+SRL x19, x2, x3      # x19 = x2 >> x3
+SRA x20, x4, x3      # x20 = x4 >>> x3
 
-    # --- Bucle ---
-loop:
-    addi x22, x22, 1
-    blt x22, x21, loop      # repetir hasta x22 >= x21
+SLT x21, x1, x2      # x21 = (x1 < x2) ? 1 : 0
+SLTU x22, x4, x1     # x22 = (x4 < x1) ? 1 : 0 (sin signo)
 
-    # --- Fin ---
-    j end
+# ==== INSTRUCCIONES STORE (Tipo S) ====
+ADDI x23, x0, 0      # x23 = dirección base = 0
 
-end:
-    nop
+SW x1, 0(x23)        # memoria[0] = x1
+SW x2, 4(x23)        # memoria[4] = x2
+SW x13, 8(x23)       # memoria[8] = x13
 
-    .data
-var1:   .word 42
-var2:   .word 100, 200, 300
+SH x3, 12(x23)       # memoria[12] = x3 (halfword)
+SB x5, 14(x23)       # memoria[14] = x5 (byte)
+
+# ==== INSTRUCCIONES LOAD (Tipo I) ====
+LW x24, 0(x23)       # x24 = memoria[0]
+LW x25, 4(x23)       # x25 = memoria[4]
+LW x26, 8(x23)       # x26 = memoria[8]
+
+LH x27, 12(x23)      # x27 = memoria[12] (halfword con signo)
+LHU x28, 12(x23)     # x28 = memoria[12] (halfword sin signo)
+
+LB x29, 14(x23)      # x29 = memoria[14] (byte con signo)
+LBU x30, 14(x23)     # x30 = memoria[14] (byte sin signo)
+
+# ==== OPERACIONES FINALES ====
+ADD x31, x24, x25    # x31 = x24 + x25
+
+# Fin del programa
