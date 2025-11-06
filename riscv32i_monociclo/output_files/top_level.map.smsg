@@ -1,0 +1,3 @@
+Warning (10273): Verilog HDL warning at data_memory.v(70): extended using "x" or "z" File: C:/Users/Velasquez/Documents/Programacion/Verilog/Procesador RiscV32i - 5/src/data_memory.v Line: 70
+Warning (10273): Verilog HDL warning at mux_3.v(16): extended using "x" or "z" File: C:/Users/Velasquez/Documents/Programacion/Verilog/Procesador RiscV32i - 5/src/mux_3.v Line: 16
+Warning (10273): Verilog HDL warning at alu.v(43): extended using "x" or "z" File: C:/Users/Velasquez/Documents/Programacion/Verilog/Procesador RiscV32i - 5/src/alu.v Line: 43
