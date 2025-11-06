@@ -1,0 +1,28 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/char_rom.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/data_memory.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/sum4.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/pc.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/mux_3.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/mux_2.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/imm_generator.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/control_unit.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/branch_unit.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/alu.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/top_level.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/clock50_25.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/vga_controller.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/top_vga_display.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/to_ascii.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/ascii_test.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/core.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/register_unit.v}
+vlog -vlog01compat -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/instruction_memory.v}
+vlog -sv -work work +incdir+C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src {C:/Users/juanb/OneDrive/Documentos/GitHub/QUARTUS-PROCESSOR-MONOCYCLE/src/bin_to_hex_ascii.sv}
+
