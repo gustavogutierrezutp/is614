@@ -15,9 +15,10 @@ module alu(
     5'b00111: AluRes = AluA & AluB;	//AND
     5'b00101: AluRes = AluA >> AluB;	//Desplazamiento a la derecha
     5'b00001: AluRes = AluA << AluB;	//Desplazamiento a la izquierda
-	 5'b01101: AluRes = AluA >>> AluB;
+	 5'b01101: AluRes = $signed(AluA) >>> AluB;
     5'b00010: AluRes = $signed(AluA) < $signed(AluB);	
     5'b00011: AluRes = AluA < AluB;
+	 5'b11111: AluRes = AluB;
   endcase
 
 endmodule
