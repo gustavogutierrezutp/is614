@@ -428,8 +428,8 @@ module font_rom (
         mem[120*16 + 9]  = 8'b01000010;
     end
     
-    always_ff @(posedge clk) begin
-        data <= mem[addr];
-    end
+    
+     assign    data = mem[addr];
+    
 
 endmodule
