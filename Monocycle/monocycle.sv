@@ -73,7 +73,7 @@ module monocycle (
   logic [31:0] memReadData;
   logic        subsra;
   
-  // Para VGA debug
+  // ← NUEVO: Para VGA debug
   logic [31:0] registers [0:31];
   logic [31:0] reg_changed_mask;
   
@@ -107,7 +107,6 @@ module monocycle (
   assign LEDR[7:0] = pc_current[7:0];
   assign LEDR[9:8] = instruction[1:0];
   
-
   // ========== MÓDULOS DEL PROCESADOR ==========
   
   assign pc_next = pc_src ? pc_target : pc_sum;
@@ -223,12 +222,13 @@ module monocycle (
     // PC e Instrucción
     .pc_value(pc_current),
     .instruction(instruction),
+	  .br_op(br_op), 
 	 
     // ALU
     .alu_operand_a(aluOperandA),
     .alu_operand_b(aluOperandB),
     .alu_result(aluResult),
-	 .alu_op(alu_op),
+	  .alu_op(alu_op),
     
     // Inmediato
     .immediate(immediate),
