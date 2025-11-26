@@ -1,6 +1,9 @@
+
 module instruction_memory(
+
     input  logic [31:0] address,        
-    output logic [31:0] instruction       
+    output logic [31:0] instruction 
+	 
 );
 
     // Memoria ROM de 64 palabras de 32 bits
@@ -9,7 +12,7 @@ module instruction_memory(
     // Cargar desde archivo .hex
     initial begin
 
-        $readmemh("C:/Users/tomas/Documents/GitHub/Assembler/Assembler/program.hex", mem);
+        $readmemh("C:/Users/santi/OneDrive/Escritorio/Datos/Programacion/Assembler/program.hex", mem);
     end
 	 
     assign instruction = mem[address];

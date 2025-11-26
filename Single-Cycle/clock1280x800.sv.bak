@@ -1,0 +1,15 @@
+module clock1280x800 (
+    input  logic clock50,
+    input  logic reset,
+    output logic vgaclk
+);
+    logic unused_reset;
+
+    // Instancia del IP de PLL generado en Quartus (vgaClock.qip)
+    vgaClock clk (
+        .ref_clk_clk        (clock50),
+        .ref_reset_reset    (reset),
+        .reset_source_reset (unused_reset),
+        .vga_clk_clk        (vgaclk)
+    );
+endmodule

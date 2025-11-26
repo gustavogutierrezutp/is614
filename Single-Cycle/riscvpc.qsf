@@ -42,7 +42,7 @@ set_global_assignment -name DEVICE 5CSEMA5F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY top_level
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 23.1STD.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:13:37  MARCH 11, 2024"
-set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name BOARD "DE1-SoC Board"
 set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
@@ -57,78 +57,66 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_D11 -to VGA_VS
+set_location_assignment PIN_A13 -to VGA_R[0]
+set_location_assignment PIN_C13 -to VGA_R[1]
+set_location_assignment PIN_E13 -to VGA_R[2]
+set_location_assignment PIN_B12 -to VGA_R[3]
+set_location_assignment PIN_C12 -to VGA_R[4]
+set_location_assignment PIN_D12 -to VGA_R[5]
+set_location_assignment PIN_E12 -to VGA_R[6]
+set_location_assignment PIN_F13 -to VGA_R[7]
+set_location_assignment PIN_B11 -to VGA_HS
+set_location_assignment PIN_J9 -to VGA_G[0]
+set_location_assignment PIN_J10 -to VGA_G[1]
+set_location_assignment PIN_H12 -to VGA_G[2]
+set_location_assignment PIN_G10 -to VGA_G[3]
+set_location_assignment PIN_G11 -to VGA_G[4]
+set_location_assignment PIN_G12 -to VGA_G[5]
+set_location_assignment PIN_F11 -to VGA_G[6]
+set_location_assignment PIN_E11 -to VGA_G[7]
+set_location_assignment PIN_A11 -to VGA_CLK
+set_location_assignment PIN_B13 -to VGA_B[0]
+set_location_assignment PIN_G13 -to VGA_B[1]
+set_location_assignment PIN_H13 -to VGA_B[2]
+set_location_assignment PIN_F14 -to VGA_B[3]
+set_location_assignment PIN_H14 -to VGA_B[4]
+set_location_assignment PIN_F15 -to VGA_B[5]
+set_location_assignment PIN_G15 -to VGA_B[6]
+set_location_assignment PIN_J14 -to VGA_B[7]
+set_location_assignment PIN_AF14 -to CLOCK_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_CLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_HS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_VS
 set_location_assignment PIN_AA14 -to rst_n
 set_location_assignment PIN_AA15 -to clk
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayA[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayA[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayA[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayA[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayA[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayA[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayA[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayB[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayB[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayB[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayB[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayB[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayB[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayB[0]
-set_location_assignment PIN_AE26 -to displayA[0]
-set_location_assignment PIN_AE27 -to displayA[1]
-set_location_assignment PIN_AE28 -to displayA[2]
-set_location_assignment PIN_AG27 -to displayA[3]
-set_location_assignment PIN_AF28 -to displayA[4]
-set_location_assignment PIN_AG28 -to displayA[5]
-set_location_assignment PIN_AH28 -to displayA[6]
-set_location_assignment PIN_AJ29 -to displayB[0]
-set_location_assignment PIN_AH29 -to displayB[1]
-set_location_assignment PIN_AH30 -to displayB[2]
-set_location_assignment PIN_AG30 -to displayB[3]
-set_location_assignment PIN_AF29 -to displayB[4]
-set_location_assignment PIN_AF30 -to displayB[5]
-set_location_assignment PIN_AD27 -to displayB[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayC[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayC[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayC[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayC[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayC[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayC[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayC[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayD[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayD[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayD[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayD[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayD[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayD[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to displayD[0]
-set_location_assignment PIN_AB23 -to displayC[0]
-set_location_assignment PIN_AE29 -to displayC[1]
-set_location_assignment PIN_AD29 -to displayC[2]
-set_location_assignment PIN_AC28 -to displayC[3]
-set_location_assignment PIN_AD30 -to displayC[4]
-set_location_assignment PIN_AC29 -to displayC[5]
-set_location_assignment PIN_AC30 -to displayC[6]
-set_location_assignment PIN_AD26 -to displayD[0]
-set_location_assignment PIN_AC27 -to displayD[1]
-set_location_assignment PIN_AD25 -to displayD[2]
-set_location_assignment PIN_AC25 -to displayD[3]
-set_location_assignment PIN_AB28 -to displayD[4]
-set_location_assignment PIN_AB25 -to displayD[5]
-set_location_assignment PIN_AB22 -to displayD[6]
-set_location_assignment PIN_AE12 -to sw9
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sw9
-set_location_assignment PIN_AD10 -to sw8
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sw8
-set_location_assignment PIN_AC9 -to sw7
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sw7
-set_location_assignment PIN_AE11 -to sw6
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sw6
-set_global_assignment -name SYSTEMVERILOG_FILE instruction_memory.sv
 set_global_assignment -name SYSTEMVERILOG_FILE top_level.sv
 set_global_assignment -name SYSTEMVERILOG_FILE pc.sv
-set_global_assignment -name SYSTEMVERILOG_FILE hex7seg.sv
 set_global_assignment -name CDF_FILE output_files/Chain2.cdf
 set_global_assignment -name SYSTEMVERILOG_FILE registers_unit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE alu.sv
@@ -136,4 +124,12 @@ set_global_assignment -name SYSTEMVERILOG_FILE data_memory.sv
 set_global_assignment -name SYSTEMVERILOG_FILE control_unit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE imm_gen.sv
 set_global_assignment -name SYSTEMVERILOG_FILE branch_unit.sv
+set_global_assignment -name QSYS_FILE vgaClock.qsys
+set_global_assignment -name SYSTEMVERILOG_FILE instruction_memory.sv
+set_global_assignment -name SYSTEMVERILOG_FILE color.sv
+set_global_assignment -name SYSTEMVERILOG_FILE vga_controller_1280x800.sv
+set_global_assignment -name SYSTEMVERILOG_FILE font_rom.sv
+set_global_assignment -name SYSTEMVERILOG_FILE clock1280x800.sv
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

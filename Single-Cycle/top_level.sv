@@ -1,201 +1,278 @@
 
 module top_level(
 
-  input  wire       clk,
-  input  wire       rst_n,
-  input  wire       sw9,
-  input  wire       sw8,
-  input  wire       sw7,
-  input  wire       sw6,
-  output wire [6:0] displayA,
-  output wire [6:0] displayB,
-  output wire [6:0] displayC,
-  output wire [6:0] displayD
-  
+    input  logic CLOCK_50,      // Reloj base de la FPGA (50 MHz) 
+    input  logic clk,           // Reloj manual 
+    input  logic rst_n,         // Reset 
+    
+    output logic [7:0] VGA_R,   // Canal Rojo
+    output logic [7:0] VGA_G,   // Canal Verde
+    output logic [7:0] VGA_B,   // Canal Azul
+    output logic VGA_HS,        // Sincronismo Horizontal
+    output logic VGA_VS,        // Sincronismo Vertical
+    output logic VGA_CLK        // Reloj  
+	 
 );
 
-  // PC
-  wire [31:0] next_pc;
-  wire [31:0] address;
-  wire [31:0] pc_plus_4 = address + 4;
+    // ============================================================
+    // 1. PROGRAM COUNTER 
+    // ============================================================
+    
+    wire [31:0] next_pc;       // Próxima dirección a ejecutar
+    wire [31:0] address;       // Dirección actual
+    wire [31:0] pc_plus_4 = address + 4; // Dirección secuencial (PC+4)
 
-  pc pc_inst(
-    .clk(clk),
-    .rst(~rst_n),      // Convertir rst_n (activo bajo) a rst (activo alto)
-    .next_pc(next_pc),
-    .pc_out(address)   // Salida del PC conectada a address
-  );
+    pc pc_inst(
+        .clk     (clk),
+        .rst     (~rst_n),     
+        .next_pc (next_pc),
+        .pc_out  (address)   
+    );
+	 
+	     wire pc_src;
   
-    // PC Logic
-  wire [31:0] pc_branch = address + imm_extended;
-  wire        pc_src = (branch_taken | jump);
-  wire        is_jalr = (opcode == 7'b1100111);
-  wire [31:0] jump_target = is_jalr ? ALU_res : pc_branch;
-  assign next_pc = pc_src ? jump_target : pc_plus_4;
+    // Lógica de Detención del Procesador 
+    logic processor_stopped;
+    
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) 
+            processor_stopped <= 1'b0; 
+        else if (ctrl_halt) 
+            processor_stopped <= 1'b1;
+    end
   
+    assign pc_src = branch_taken;
+    
+    // Dirección destino del salto 
+    wire [31:0] jump_target = ALU_res;
 
-  // Instruction Memory
-  wire [31:0] instr;
+    // Selección del próximo PC:
+    // 1. Si está detenido -> Mantener actual
+    // 2. Si hay salto -> Ir a target
+    // 3. Sino -> Siguiente instrucción secuencial (PC+4)
+    assign next_pc = processor_stopped ? address : (pc_src ? jump_target : pc_plus_4);
+  
+    // ============================================================
+    // 2. MEMORIA DE INSTRUCCIONES 
+    // ============================================================
+
+    wire [31:0] instr;
 
     instruction_memory imem_inst (
-      .address(address[6:2]),
-      .instruction(instr)
+        .address     (address), 
+        .instruction (instr)
     );
 
-  // Instruction fields
-  wire [6:0] funct7 = instr[31:25];
-  wire [4:0] rs2    = instr[24:20];
-  wire [4:0] rs1    = instr[19:15];
-  wire [2:0] funct3 = instr[14:12];
-  wire [4:0] rd     = instr[11:7];
-  wire [6:0] opcode = instr[6:0];
+    // Decodificación de Campo de la instrucción RISC-V
+	 
+    wire [6:0] funct7 = instr[31:25];
+    wire [4:0] rs2    = instr[24:20];
+    wire [4:0] rs1    = instr[19:15];
+    wire [2:0] funct3 = instr[14:12];
+    wire [4:0] rd     = instr[11:7];
+    wire [6:0] opcode = instr[6:0];
 
-  // Immediate Generator
-  wire [31:0] imm_extended;
-  wire [2:0] immsrc;
+    // ============================================================
+    // 3. UNIDAD DE CONTROL
+    // ============================================================
 
-  assign immsrc = (opcode == 7'b0010011) ? 3'b000 :
-                   (opcode == 7'b0000011) ? 3'b000 :
-                   (opcode == 7'b0100011) ? 3'b001 :
-                   (opcode == 7'b1100011) ? 3'b010 :
-                   (opcode == 7'b0110111) ? 3'b011 :
-                   (opcode == 7'b0010111) ? 3'b011 :
-                   (opcode == 7'b1101111) ? 3'b100 :
-                   3'b000;
+    wire [3:0] ALU_op;
+    wire       ALU_Bsrc;       // Mux selección fuente B de ALU
+    wire       ALU_Asrc;      // Mux selección fuente A de ALU
+    wire       reg_write;
+    wire       mem_to_reg;
+    wire       mem_write;
+    wire       branch;
+    wire       jump;
+    wire [2:0] branch_type;
+    wire [2:0] immsrc;       
+  
+    // Señales filtradas para visualización en VGA
+    wire [6:0] clean_funct7; 
+    wire [2:0] clean_dmctrl; 
+    wire       ctrl_halt;     // Señal de parada (EBREAK)
 
-  imm_gen imm_gen_inst (
-    .instruction(instr),
-    .immsrc(immsrc),
-    .imm_out(imm_extended)
-  );
+    control_unit control_inst (
+        .opcode       (opcode),
+        .funct3       (funct3),
+        .funct7       (funct7),
+        
+        // Señales de Control Datapath
+        .ALU_op       (ALU_op),
+        .ALU_src      (ALU_Bsrc),
+        .ALU_Asrc     (ALU_Asrc),   
+        .reg_write    (reg_write),
+        .mem_to_reg   (mem_to_reg),
+        .mem_write    (mem_write),
+        .branch       (branch),
+        .jump         (jump),
+        .branch_type  (branch_type),
+        .immsrc       (immsrc),
+        
+        // Señales para VGA
+        .funct7_out   (clean_funct7),
+        .mem_ctrl_out (clean_dmctrl),
+        .is_halted    (ctrl_halt) 
+    );
 
-  // Control Unit
-  wire [3:0] ALU_op;
-  wire       ALU_src;
-  wire       reg_write;
-  wire       mem_to_reg;
-  wire       mem_write;
-  wire       branch;
-  wire       jump;
-  wire [2:0] branch_type;
+    // ============================================================
+    // 4. GENERADOR DE INMEDIATOS 
+    // ============================================================
 
-  control_unit control_inst (
-    .opcode(opcode),
-    .funct3(funct3),
-    .funct7(funct7),
-    .ALU_op(ALU_op),
-    .ALU_src(ALU_src),
-    .reg_write(reg_write),
-    .mem_to_reg(mem_to_reg),
-    .mem_write(mem_write),
-    .branch(branch),
-    .jump(jump),
-    .branch_type(branch_type)
-  );
+    wire [31:0] imm_extended;
 
-  // Register Unit
-  wire [31:0] rs1_data, rs2_data;
-  wire [31:0] data_wr = jump ? pc_plus_4 : (mem_to_reg ? mem_data : ALU_res);
+    imm_gen imm_gen_inst (
+        .instruction (instr),
+        .immsrc      (immsrc),      
+        .imm_out     (imm_extended)
+    );
 
-  registers_unit regfile_inst (
-    .clk(clk),
-    .rst(~rst_n),      
-    .rs1(rs1),
-    .rs2(rs2),
-    .rd(rd),
-    .ru_wr(reg_write),
-    .data_wr(data_wr),
-    .rs1_data(rs1_data),
-    .rs2_data(rs2_data)
-  );
+    // ============================================================
+    // 5. BANCO DE REGISTROS 
+    // ============================================================
+	 
+    wire [31:0] rs1_data;     // Dato leído puerto 1
+    wire [31:0] rs2_data;     // Dato leído puerto 2
+    wire [31:0] mem_data;     // Dato leído de memoria
+    wire [31:0] ALU_res;      // Resultado de la ALU
+  
+    wire [31:0] data_wr = jump ? pc_plus_4 : (mem_to_reg ? mem_data : ALU_res);
+  
+    logic [31:0] all_registers [0:31]; 
 
-  // ALU
-  wire [31:0] ALU_res;
-  wire [31:0] ALU_B;
+    registers_unit regfile_inst (
+        .clk             (clk),
+        .rst             (~rst_n),      
+        .rs1             (rs1),
+        .rs2             (rs2),
+        .rd              (rd),
+        .ru_wr           (reg_write), 
+        .data_wr         (data_wr),
+        .rs1_data        (rs1_data),
+        .rs2_data        (rs2_data),
+        .debug_registers (all_registers) 
+    );
 
-  assign ALU_B = ALU_src ? imm_extended : rs2_data;
+    // ============================================================
+    // 6. ALU 
+    // ============================================================
+	 
+    wire [31:0] ALU_A; 
+    wire [31:0] ALU_B; 
 
-  alu alu_inst (
-    .A(rs1_data),
-    .B(ALU_B),
-    .ALU_op(ALU_op),
-    .ALU_res(ALU_res)
-  );
+    // Mux Entrada A: rs1 o PC Actual (para saltos)
+    assign ALU_A = ALU_Asrc ? address : rs1_data;
 
-  // Branch Unit
-  wire branch_taken;
+    // Mux Entrada B: rs2 o Inmediato extendido
+    assign ALU_B = ALU_Bsrc ? imm_extended : rs2_data;
 
-  branch_unit branch_unit_inst (
-    .rs1_data(rs1_data),
-    .rs2_data(rs2_data),
-    .branch_type(branch_type),
-    .branch(branch),
-    .branch_taken(branch_taken)
-  );
+    alu alu_inst (
+        .A       (ALU_A),
+        .B       (ALU_B),
+        .ALU_op  (ALU_op),
+        .ALU_res (ALU_res)
+    );
+
+    // ============================================================
+    // 7. BRANCH UNIT 
+    // ============================================================
+
+    wire branch_taken;
+  
+    branch_unit branch_unit_inst (
+        .rs1_data     (rs1_data),
+        .rs2_data     (rs2_data),
+        .branch_type  (branch_type),
+        .branch       (branch),
+        .jump         (jump),          
+        .branch_taken (branch_taken)
+    );
+
+    // ============================================================
+    // 8. MEMORIA DE DATOS 
+    // ============================================================
+    
+    logic [31:0] all_memory [0:31]; 
+
+    data_memory dmem_inst (
+        .clk          (clk),
+		  .rst          (~rst_n), 
+        .address      (ALU_res),    // Dirección calculada por ALU
+        .DatamW       (rs2_data),   // Dato a escribir 
+        .DMCTRL       (funct3),     // Control de tamaño (Byte/Half/Word)
+        .mem_write    (mem_write), 
+        .Datard       (mem_data),
+        .debug_memory (all_memory)  
+    );
+  
 
 
-  // Data Memory
-  wire [31:0] mem_data;
+    // ============================================================
+    // 9. CONTROLADOR VGA 
+    // ============================================================
+    
+    wire [31:0] vga_dm_wr_display;
+    assign vga_dm_wr_display = {31'd0, mem_write};
 
-  data_memory dmem_inst (
-    .clk(clk),
-    .address(ALU_res),
-    .DMWR(rs2_data),
-    .DMCTRL(funct3),
-    .mem_write(mem_write),
-    .Datard(mem_data)
-  );
+    color vga_inst (
+        .clock           (CLOCK_50),
+        .rst             (~rst_n),
 
-  // Display selector
-  // sw9: muestra mitad alta/baja
-  // sw8-sw6: selecciona señal
-  //   000: PC
-  //   001: Instrucción
-  //   010: rs1_data
-  //   011: rs2_data
-  //   100: Immediate
-  //   101: Resultado ALU
-  //   110: Memoria de datos
-  //   111: Dato escrito a rd
+        // Señales PC e Instrucción
+        .next_pc_value   (next_pc),
+        .address_value   (address),
+        .instr_value     (instr),
+        
+        // Decodificación
+        .rs1_idx         (rs1),
+        .rs2_idx         (rs2),
+        .rd_idx          (rd),
+        
+        // Control
+        .data_wr_value   (data_wr),
+        .ru_wr_value     (reg_write),
+        .immsrc_value    (immsrc),
+        .opcode_value    (opcode),
+        .funct3_value    (funct3),      
+        .funct7_value    (clean_funct7), 
+        .dm_ctrl_value   (clean_dmctrl), 
+        .imm_value       (imm_extended),
+        
+        // ALU
+        .alu_a_value     (ALU_A),      
+        .alu_b_value     (ALU_B),      
+        .alu_res_value   (ALU_res),
+        .alu_op_value    (ALU_op),
+        .alu_asrc_value  (ALU_Asrc),   
+        .alu_bsrc_value  (ALU_Bsrc),    
+        
+        // Saltos
+        .br_op_value     (branch_type), 
+        .branch_value    (branch | jump),
+        
+       
+        .dm_wr_value     (vga_dm_wr_display),   
+        
+        
+        .data_rd_value   (mem_data),   
+        
+        // Mux Source
+        .ru_wr_src_value (jump ? 2'd2 : (mem_to_reg ? 2'd1 : 2'd0)), 
+        .branch_a_value  ( (branch | jump) ? rs1_data : 32'd0 ), 
+        .branch_b_value  ( (branch | jump) ? rs2_data : 32'd0 ),
+        
+        // Debug
+        .program_ended   (processor_stopped),
+        .register_values (all_registers),
+        .memory_values   (all_memory), 
 
-  // Señales intermedias explícitas para depuración
-  wire sel_pc         = (~sw8 & ~sw7 & ~sw6);  // 000
-  wire sel_instr      = (~sw8 & ~sw7 &  sw6);  // 001
-  wire sel_rs1        = (~sw8 &  sw7 & ~sw6);  // 010
-  wire sel_rs2        = (~sw8 &  sw7 &  sw6);  // 011
-  wire sel_imm        = ( sw8 & ~sw7 & ~sw6);  // 100
-  wire sel_alu_res    = ( sw8 & ~sw7 &  sw6);  // 101
-  wire sel_mem_data   = ( sw8 &  sw7 & ~sw6);  // 110
-  wire sel_data_wr    = ( sw8 &  sw7 &  sw6);  // 111
-
-  reg [31:0] selected_value;
-  always @(*) begin
-    if (sel_pc)
-      selected_value = address;           // 000: PC
-    else if (sel_instr)
-      selected_value = instr;             // 001: Instrucción
-    else if (sel_rs1)
-      selected_value = rs1_data;          // 010: Fuente 1
-    else if (sel_rs2)
-      selected_value = rs2_data;          // 011: Fuente 2
-    else if (sel_imm)
-      selected_value = imm_extended;      // 100: Inmediato
-    else if (sel_alu_res)
-      selected_value = ALU_res;           // 101: Resultado ALU
-    else if (sel_mem_data)
-      selected_value = mem_data;          // 110: Dato memoria
-    else if (sel_data_wr)
-      selected_value = data_wr;           // 111: Dato escrito en rd
-    else
-      selected_value = 32'hDEADBEEF;      // Default (no debería ocurrir)
-  end
-
-  wire [15:0] value_to_display = sw9 ? selected_value[31:16] : selected_value[15:0];
-
-  // Displays
-  hex7seg display0(.val(value_to_display[3:0]),   .display(displayA));
-  hex7seg display1(.val(value_to_display[7:4]),   .display(displayB));
-  hex7seg display2(.val(value_to_display[11:8]),  .display(displayC));
-  hex7seg display3(.val(value_to_display[15:12]), .display(displayD));
+        // Salidas
+        .vga_red   (VGA_R),
+        .vga_green (VGA_G),
+        .vga_blue  (VGA_B),
+        .vga_hsync (VGA_HS),
+        .vga_vsync (VGA_VS),
+        .vga_clock (VGA_CLK)
+    );
 
 endmodule

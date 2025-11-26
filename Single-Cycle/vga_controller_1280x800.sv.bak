@@ -1,0 +1,63 @@
+// ============================================================
+// vga_controller_1280x800.sv
+// Controlador VGA para resolución 1280x800 @60Hz
+// Compatible con Quartus / Intel FPGAs
+// ============================================================
+
+module vga_controller_1280x800 (
+    input  logic       clk,
+    input  logic       reset,
+    output logic       hsync,
+    output logic       vsync,
+    output logic [10:0] hcount,
+    output logic [9:0]  vcount,
+    output logic       video_on
+);
+
+    // ===============================
+    // Parámetros de temporización VGA
+    // ===============================
+    localparam int H_VISIBLE = 1280;
+    localparam int H_FP      = 48;   // front porch
+    localparam int H_SYNC    = 32;   // sync pulse
+    localparam int H_BP      = 80;   // back porch
+    localparam int H_TOTAL   = H_VISIBLE + H_FP + H_SYNC + H_BP;
+
+    localparam int V_VISIBLE = 800;
+    localparam int V_FP      = 3;
+    localparam int V_SYNC    = 6;
+    localparam int V_BP      = 22;
+    localparam int V_TOTAL   = V_VISIBLE + V_FP + V_SYNC + V_BP;
+
+    // ===============================
+    // Contadores horizontales y verticales
+    // ===============================
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            hcount <= 11'd0;
+            vcount <= 10'd0;
+        end else begin
+            if (hcount == H_TOTAL - 1) begin
+                hcount <= 0;
+                if (vcount == V_TOTAL - 1)
+                    vcount <= 0;
+                else
+                    vcount <= vcount + 1;
+            end else begin
+                hcount <= hcount + 1;
+            end
+        end
+    end
+
+    // ===============================
+    // Señales de sincronización y video
+    // ===============================
+    assign hsync = (hcount >= H_VISIBLE + H_FP) &&
+                   (hcount <  H_VISIBLE + H_FP + H_SYNC);
+
+    assign vsync = (vcount >= V_VISIBLE + V_FP) &&
+                   (vcount <  V_VISIBLE + V_FP + V_SYNC);
+
+    assign video_on = (hcount < H_VISIBLE) && (vcount < V_VISIBLE);
+
+endmodule

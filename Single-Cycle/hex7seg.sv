@@ -1,7 +1,9 @@
 
 module hex7seg(
+
     input  wire [3:0] val,
     output reg  [6:0] display
+	 
 );
     always @(*) begin
         case (val)
