@@ -1,6 +1,6 @@
 Analysis & Synthesis report for riscvpc
-Wed Nov 26 17:51:50 2025
-Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Fri Nov 28 15:53:05 2025
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
 ---------------------
@@ -35,44 +35,44 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2020  Intel Corporation. All rights reserved.
-Your use of Intel Corporation's design tools, logic functions 
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Intel Program License 
-Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Nov 26 17:51:50 2025       ;
-; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
-; Revision Name                   ; riscvpc                                     ;
-; Top-level Entity Name           ; top_level                                   ;
-; Family                          ; Cyclone V                                   ;
-; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 1395                                        ;
-; Total pins                      ; 30                                          ;
-; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 0                                           ;
-; Total DSP Blocks                ; 0                                           ;
-; Total HSSI RX PCSs              ; 0                                           ;
-; Total HSSI PMA RX Deserializers ; 0                                           ;
-; Total HSSI TX PCSs              ; 0                                           ;
-; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 1                                           ;
-; Total DLLs                      ; 0                                           ;
-+---------------------------------+---------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri Nov 28 15:53:05 2025           ;
+; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Revision Name                   ; riscvpc                                         ;
+; Top-level Entity Name           ; top_level                                       ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 1395                                            ;
+; Total pins                      ; 30                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 1                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -167,54 +167,58 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 8           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.0%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                               ;
-+-------------------------------------------------------------------------------------------------------------+-----------------+---------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------+
-; File Name with User-Entered Path                                                                            ; Used in Netlist ; File Type                                   ; File Name with Absolute Path                                                                                ; Library  ;
-+-------------------------------------------------------------------------------------------------------------+-----------------+---------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------+
-; top_level.sv                                                                                                ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/top_level.sv                                                          ;          ;
-; pc.sv                                                                                                       ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/pc.sv                                                                 ;          ;
-; registers_unit.sv                                                                                           ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/registers_unit.sv                                                     ;          ;
-; alu.sv                                                                                                      ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/alu.sv                                                                ;          ;
-; data_memory.sv                                                                                              ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/data_memory.sv                                                        ;          ;
-; control_unit.sv                                                                                             ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/control_unit.sv                                                       ;          ;
-; imm_gen.sv                                                                                                  ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/imm_gen.sv                                                            ;          ;
-; branch_unit.sv                                                                                              ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/branch_unit.sv                                                        ;          ;
-; instruction_memory.sv                                                                                       ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/instruction_memory.sv                                                 ;          ;
-; color.sv                                                                                                    ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/color.sv                                                              ;          ;
-; vga_controller_1280x800.sv                                                                                  ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/vga_controller_1280x800.sv                                            ;          ;
-; font_rom.sv                                                                                                 ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/font_rom.sv                                                           ;          ;
-; clock1280x800.sv                                                                                            ; yes             ; User SystemVerilog HDL File                 ; C:/Users/santi/Downloads/Single-Cycle/clock1280x800.sv                                                      ;          ;
-; c:/users/santi/downloads/single-cycle/db/ip/vgaclock/submodules/altera_up_avalon_reset_from_locked_signal.v ; yes             ; Auto-Found Verilog HDL File                 ; c:/users/santi/downloads/single-cycle/db/ip/vgaclock/submodules/altera_up_avalon_reset_from_locked_signal.v ; vgaClock ;
-; c:/users/santi/downloads/single-cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v                      ; yes             ; Auto-Found Verilog HDL File                 ; c:/users/santi/downloads/single-cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v                      ; vgaClock ;
-; c:/users/santi/downloads/single-cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v            ; yes             ; Auto-Found Verilog HDL File                 ; c:/users/santi/downloads/single-cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v            ; vgaClock ;
-; c:/users/santi/downloads/single-cycle/db/ip/vgaclock/vgaclock.v                                             ; yes             ; Auto-Found Verilog HDL File                 ; c:/users/santi/downloads/single-cycle/db/ip/vgaclock/vgaclock.v                                             ; vgaClock ;
-; /users/santi/onedrive/escritorio/datos/programacion/assembler/program.hex                                   ; yes             ; Auto-Found Hexadecimal (Intel-Format) File  ; /users/santi/onedrive/escritorio/datos/programacion/assembler/program.hex                                   ;          ;
-; /users/santi/onedrive/escritorio/datos/programacion/assembler/program_data.hex                              ; yes             ; Auto-Found Hexadecimal (Intel-Format) File  ; /users/santi/onedrive/escritorio/datos/programacion/assembler/program_data.hex                              ;          ;
-; altera_pll.v                                                                                                ; yes             ; Megafunction                                ; c:/users/santi/onedrive/escritorio/datos/quartus/quartus/libraries/megafunctions/altera_pll.v               ;          ;
-; lpm_divide.tdf                                                                                              ; yes             ; Megafunction                                ; c:/users/santi/onedrive/escritorio/datos/quartus/quartus/libraries/megafunctions/lpm_divide.tdf             ;          ;
-; abs_divider.inc                                                                                             ; yes             ; Megafunction                                ; c:/users/santi/onedrive/escritorio/datos/quartus/quartus/libraries/megafunctions/abs_divider.inc            ;          ;
-; sign_div_unsign.inc                                                                                         ; yes             ; Megafunction                                ; c:/users/santi/onedrive/escritorio/datos/quartus/quartus/libraries/megafunctions/sign_div_unsign.inc        ;          ;
-; aglobal201.inc                                                                                              ; yes             ; Megafunction                                ; c:/users/santi/onedrive/escritorio/datos/quartus/quartus/libraries/megafunctions/aglobal201.inc             ;          ;
-; db/lpm_divide_nbm.tdf                                                                                       ; yes             ; Auto-Generated Megafunction                 ; C:/Users/santi/Downloads/Single-Cycle/db/lpm_divide_nbm.tdf                                                 ;          ;
-; db/sign_div_unsign_tlh.tdf                                                                                  ; yes             ; Auto-Generated Megafunction                 ; C:/Users/santi/Downloads/Single-Cycle/db/sign_div_unsign_tlh.tdf                                            ;          ;
-; db/alt_u_div_00f.tdf                                                                                        ; yes             ; Auto-Generated Megafunction                 ; C:/Users/santi/Downloads/Single-Cycle/db/alt_u_div_00f.tdf                                                  ;          ;
-; db/lpm_divide_q3m.tdf                                                                                       ; yes             ; Auto-Generated Megafunction                 ; C:/Users/santi/Downloads/Single-Cycle/db/lpm_divide_q3m.tdf                                                 ;          ;
-+-------------------------------------------------------------------------------------------------------------+-----------------+---------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                                                         ;
++--------------------------------------------------------------------------------------------------------------------------+-----------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+----------+
+; File Name with User-Entered Path                                                                                         ; Used in Netlist ; File Type                                   ; File Name with Absolute Path                                                                                             ; Library  ;
++--------------------------------------------------------------------------------------------------------------------------+-----------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+----------+
+; top_level.sv                                                                                                             ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv                                                          ;          ;
+; pc.sv                                                                                                                    ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/pc.sv                                                                 ;          ;
+; registers_unit.sv                                                                                                        ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/registers_unit.sv                                                     ;          ;
+; alu.sv                                                                                                                   ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/alu.sv                                                                ;          ;
+; data_memory.sv                                                                                                           ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/data_memory.sv                                                        ;          ;
+; control_unit.sv                                                                                                          ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/control_unit.sv                                                       ;          ;
+; imm_gen.sv                                                                                                               ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/imm_gen.sv                                                            ;          ;
+; branch_unit.sv                                                                                                           ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/branch_unit.sv                                                        ;          ;
+; instruction_memory.sv                                                                                                    ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv                                                 ;          ;
+; color.sv                                                                                                                 ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv                                                              ;          ;
+; vga_controller_1280x800.sv                                                                                               ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/vga_controller_1280x800.sv                                            ;          ;
+; font_rom.sv                                                                                                              ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/font_rom.sv                                                           ;          ;
+; clock1280x800.sv                                                                                                         ; yes             ; User SystemVerilog HDL File                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/clock1280x800.sv                                                      ;          ;
+; c:/users/tomas/documents/github/lab-1/single-cycle/db/ip/vgaclock/submodules/altera_up_avalon_reset_from_locked_signal.v ; yes             ; Auto-Found Verilog HDL File                 ; c:/users/tomas/documents/github/lab-1/single-cycle/db/ip/vgaclock/submodules/altera_up_avalon_reset_from_locked_signal.v ; vgaClock ;
+; c:/users/tomas/documents/github/lab-1/single-cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v                      ; yes             ; Auto-Found Verilog HDL File                 ; c:/users/tomas/documents/github/lab-1/single-cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v                      ; vgaClock ;
+; c:/users/tomas/documents/github/lab-1/single-cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v            ; yes             ; Auto-Found Verilog HDL File                 ; c:/users/tomas/documents/github/lab-1/single-cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v            ; vgaClock ;
+; c:/users/tomas/documents/github/lab-1/single-cycle/db/ip/vgaclock/vgaclock.v                                             ; yes             ; Auto-Found Verilog HDL File                 ; c:/users/tomas/documents/github/lab-1/single-cycle/db/ip/vgaclock/vgaclock.v                                             ; vgaClock ;
+; /users/tomas/documents/github/lab-1/assembler/program.hex                                                                ; yes             ; Auto-Found Hexadecimal (Intel-Format) File  ; /users/tomas/documents/github/lab-1/assembler/program.hex                                                                ;          ;
+; /users/tomas/documents/github/lab-1/assembler/program_data.hex                                                           ; yes             ; Auto-Found Hexadecimal (Intel-Format) File  ; /users/tomas/documents/github/lab-1/assembler/program_data.hex                                                           ;          ;
+; altera_pll.v                                                                                                             ; yes             ; Megafunction                                ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altera_pll.v                                                   ;          ;
+; lpm_divide.tdf                                                                                                           ; yes             ; Megafunction                                ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/lpm_divide.tdf                                                 ;          ;
+; abs_divider.inc                                                                                                          ; yes             ; Megafunction                                ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/abs_divider.inc                                                ;          ;
+; sign_div_unsign.inc                                                                                                      ; yes             ; Megafunction                                ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/sign_div_unsign.inc                                            ;          ;
+; aglobal241.inc                                                                                                           ; yes             ; Megafunction                                ; c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/aglobal241.inc                                                 ;          ;
+; db/lpm_divide_nbm.tdf                                                                                                    ; yes             ; Auto-Generated Megafunction                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/lpm_divide_nbm.tdf                                                 ;          ;
+; db/sign_div_unsign_tlh.tdf                                                                                               ; yes             ; Auto-Generated Megafunction                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/sign_div_unsign_tlh.tdf                                            ;          ;
+; db/alt_u_div_00f.tdf                                                                                                     ; yes             ; Auto-Generated Megafunction                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/alt_u_div_00f.tdf                                                  ;          ;
+; db/lpm_divide_q3m.tdf                                                                                                    ; yes             ; Auto-Generated Megafunction                 ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/lpm_divide_q3m.tdf                                                 ;          ;
++--------------------------------------------------------------------------------------------------------------------------+-----------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+----------+
 
 
 +-----------------------------------------------------------+
@@ -224,12 +228,12 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Estimate of Logic utilization (ALMs needed) ; 2292        ;
 ;                                             ;             ;
-; Combinational ALUT usage for logic          ; 2686        ;
-;     -- 7 input functions                    ; 87          ;
-;     -- 6 input functions                    ; 1230        ;
-;     -- 5 input functions                    ; 354         ;
-;     -- 4 input functions                    ; 385         ;
-;     -- <=3 input functions                  ; 630         ;
+; Combinational ALUT usage for logic          ; 2703        ;
+;     -- 7 input functions                    ; 85          ;
+;     -- 6 input functions                    ; 1213        ;
+;     -- 5 input functions                    ; 422         ;
+;     -- 4 input functions                    ; 359         ;
+;     -- <=3 input functions                  ; 624         ;
 ;                                             ;             ;
 ; Dedicated logic registers                   ; 1395        ;
 ;                                             ;             ;
@@ -242,7 +246,7 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; rst_n~input ;
 ; Maximum fan-out                             ; 1374        ;
-; Total fan-out                               ; 19377       ;
+; Total fan-out                               ; 19467       ;
 ; Average fan-out                             ; 4.68        ;
 +---------------------------------------------+-------------+
 
@@ -252,16 +256,16 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------+
 ; Compilation Hierarchy Node                                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                      ; Entity Name                    ; Library Name ;
 +-----------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------+
-; |top_level                                                ; 2686 (252)          ; 1395 (1)                  ; 0                 ; 0          ; 30   ; 0            ; |top_level                                                                                                                                                               ; top_level                      ; work         ;
+; |top_level                                                ; 2703 (249)          ; 1395 (1)                  ; 0                 ; 0          ; 30   ; 0            ; |top_level                                                                                                                                                               ; top_level                      ; work         ;
 ;    |alu:alu_inst|                                         ; 81 (81)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|alu:alu_inst                                                                                                                                                  ; alu                            ; work         ;
 ;    |branch_unit:branch_unit_inst|                         ; 20 (20)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|branch_unit:branch_unit_inst                                                                                                                                  ; branch_unit                    ; work         ;
-;    |color:vga_inst|                                       ; 1360 (1037)         ; 50 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst                                                                                                                                                ; color                          ; work         ;
+;    |color:vga_inst|                                       ; 1366 (1042)         ; 50 (29)                   ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst                                                                                                                                                ; color                          ; work         ;
 ;       |clock1280x800:vgaclock|                            ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|clock1280x800:vgaclock                                                                                                                         ; clock1280x800                  ; work         ;
 ;          |vgaClock:clk_pll_inst|                          ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst                                                                                                   ; vgaClock                       ; vgaClock     ;
 ;             |vgaClock_video_pll_0:video_pll_0|            ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0                                                                  ; vgaClock_video_pll_0           ; vgaClock     ;
 ;                |vgaClock_video_pll_0_video_pll:video_pll| ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll                         ; vgaClock_video_pll_0_video_pll ; vgaClock     ;
 ;                   |altera_pll:altera_pll_i|               ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i ; altera_pll                     ; work         ;
-;       |font_rom:font_inst|                                ; 177 (177)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|font_rom:font_inst                                                                                                                             ; font_rom                       ; work         ;
+;       |font_rom:font_inst|                                ; 178 (178)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|font_rom:font_inst                                                                                                                             ; font_rom                       ; work         ;
 ;       |lpm_divide:Div0|                                   ; 57 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|lpm_divide:Div0                                                                                                                                ; lpm_divide                     ; work         ;
 ;          |lpm_divide_nbm:auto_generated|                  ; 57 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|lpm_divide:Div0|lpm_divide_nbm:auto_generated                                                                                                  ; lpm_divide_nbm                 ; work         ;
 ;             |sign_div_unsign_tlh:divider|                 ; 57 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|color:vga_inst|lpm_divide:Div0|lpm_divide_nbm:auto_generated|sign_div_unsign_tlh:divider                                                                      ; sign_div_unsign_tlh            ; work         ;
@@ -274,20 +278,20 @@ https://fpgasoftware.intel.com/eula.
 ;    |control_unit:control_inst|                            ; 14 (14)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|control_unit:control_inst                                                                                                                                     ; control_unit                   ; work         ;
 ;    |data_memory:dmem_inst|                                ; 615 (615)           ; 1024 (1024)               ; 0                 ; 0          ; 0    ; 0            ; |top_level|data_memory:dmem_inst                                                                                                                                         ; data_memory                    ; work         ;
 ;    |imm_gen:imm_gen_inst|                                 ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|imm_gen:imm_gen_inst                                                                                                                                          ; imm_gen                        ; work         ;
-;    |instruction_memory:imem_inst|                         ; 22 (22)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|instruction_memory:imem_inst                                                                                                                                  ; instruction_memory             ; work         ;
+;    |instruction_memory:imem_inst|                         ; 21 (21)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top_level|instruction_memory:imem_inst                                                                                                                                  ; instruction_memory             ; work         ;
 ;    |pc:pc_inst|                                           ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |top_level|pc:pc_inst                                                                                                                                                    ; pc                             ; work         ;
-;    |registers_unit:regfile_inst|                          ; 314 (314)           ; 288 (288)                 ; 0                 ; 0          ; 0    ; 0            ; |top_level|registers_unit:regfile_inst                                                                                                                                   ; registers_unit                 ; work         ;
+;    |registers_unit:regfile_inst|                          ; 329 (329)           ; 288 (288)                 ; 0                 ; 0          ; 0    ; 0            ; |top_level|registers_unit:regfile_inst                                                                                                                                   ; registers_unit                 ; work         ;
 +-----------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                                                                        ;
-+--------+--------------+---------+--------------+--------------+------------------------------------------------------------------------+-----------------------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                        ; IP Include File                                     ;
-+--------+--------------+---------+--------------+--------------+------------------------------------------------------------------------+-----------------------------------------------------+
-; N/A    ; altera_pll   ; 20.1    ; N/A          ; N/A          ; |top_level|color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst ; C:/Users/santi/Downloads/Single-Cycle/vgaClock.qsys ;
-+--------+--------------+---------+--------------+--------------+------------------------------------------------------------------------+-----------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                                                     ;
++--------+--------------+---------+--------------+--------------+------------------------------------------------------------------------+------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                        ; IP Include File                                                  ;
++--------+--------------+---------+--------------+--------------+------------------------------------------------------------------------+------------------------------------------------------------------+
+; N/A    ; altera_pll   ; 24.1    ; N/A          ; N/A          ; |top_level|color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst ; C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/vgaClock.qsys ;
++--------+--------------+---------+--------------+--------------+------------------------------------------------------------------------+------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------+
@@ -455,6 +459,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; registers_unit:regfile_inst|registers[3][10]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[3][6]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[3][2]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][30]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][26]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][22]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][18]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][14]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][10]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][6]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][2]   ; Stuck at VCC due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][29] ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][25] ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][21] ; Stuck at GND due to stuck port clock_enable ;
@@ -615,6 +627,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; registers_unit:regfile_inst|registers[3][9]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[3][5]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[3][1]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][29]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][25]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][21]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][17]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][13]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][9]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][5]   ; Stuck at VCC due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][1]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][28] ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][24] ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][20] ; Stuck at GND due to stuck port clock_enable ;
@@ -775,6 +795,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; registers_unit:regfile_inst|registers[3][8]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[3][4]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[3][0]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][28]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][24]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][20]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][16]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][12]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][8]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][4]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][0]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][31] ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][27] ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[30][23] ; Stuck at GND due to stuck port clock_enable ;
@@ -935,14 +963,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; registers_unit:regfile_inst|registers[3][11]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[3][7]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[3][3]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][29]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][21]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][25]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][17]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][13]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][5]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][9]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][1]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][31]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][27]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][23]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][19]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][15]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][11]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][7]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[2][3]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][29]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][21]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][25]  ; Stuck at GND due to stuck port clock_enable ;
@@ -951,22 +979,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; registers_unit:regfile_inst|registers[4][5]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][9]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][1]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[8][29]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[8][21]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[8][25]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[8][17]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][13]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][5]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][9]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][1]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][30]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][22]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][26]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][18]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][14]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][6]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][10]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][2]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[8][29]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[8][21]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[8][25]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[8][17]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][30]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][22]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][26]  ; Stuck at GND due to stuck port clock_enable ;
@@ -975,22 +995,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; registers_unit:regfile_inst|registers[4][6]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][10]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][2]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[8][30]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[8][22]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[8][26]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[8][18]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][14]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][6]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][10]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][2]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][28]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][20]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][24]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][16]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][12]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][4]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][8]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][0]   ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[8][30]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[8][22]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[8][26]  ; Stuck at GND due to stuck port clock_enable ;
+; registers_unit:regfile_inst|registers[8][18]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][28]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][20]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][24]  ; Stuck at GND due to stuck port clock_enable ;
@@ -1007,14 +1019,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; registers_unit:regfile_inst|registers[8][4]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][8]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[8][0]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][31]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][23]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][27]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][19]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][15]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][7]   ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][11]  ; Stuck at GND due to stuck port clock_enable ;
-; registers_unit:regfile_inst|registers[0][3]   ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][31]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][23]  ; Stuck at GND due to stuck port clock_enable ;
 ; registers_unit:regfile_inst|registers[4][27]  ; Stuck at GND due to stuck port clock_enable ;
@@ -1050,23 +1054,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------------+
-; Inverted Register Statistics                          ;
-+---------------------------------------------+---------+
-; Inverted Register                           ; Fan out ;
-+---------------------------------------------+---------+
-; registers_unit:regfile_inst|registers[2][5] ; 1       ;
-; registers_unit:regfile_inst|registers[2][2] ; 1       ;
-; data_memory:dmem_inst|memory[0][3]          ; 2       ;
-; data_memory:dmem_inst|memory[2][3]          ; 2       ;
-; data_memory:dmem_inst|memory[1][2]          ; 2       ;
-; data_memory:dmem_inst|memory[2][2]          ; 2       ;
-; data_memory:dmem_inst|memory[0][1]          ; 2       ;
-; data_memory:dmem_inst|memory[2][1]          ; 2       ;
-; data_memory:dmem_inst|memory[1][4]          ; 2       ;
-; data_memory:dmem_inst|memory[2][4]          ; 2       ;
-; Total number of inverted registers = 10     ;         ;
-+---------------------------------------------+---------+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; data_memory:dmem_inst|memory[0][3]     ; 2       ;
+; data_memory:dmem_inst|memory[2][3]     ; 2       ;
+; data_memory:dmem_inst|memory[1][2]     ; 2       ;
+; data_memory:dmem_inst|memory[2][2]     ; 2       ;
+; data_memory:dmem_inst|memory[0][1]     ; 2       ;
+; data_memory:dmem_inst|memory[2][1]     ; 2       ;
+; data_memory:dmem_inst|memory[1][4]     ; 2       ;
+; data_memory:dmem_inst|memory[2][4]     ; 2       ;
+; Total number of inverted registers = 8 ;         ;
++----------------------------------------+---------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1230,7 +1232,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; 25:1               ; 3 bits    ; 48 LEs        ; 33 LEs               ; 15 LEs                 ; No         ; |top_level|alu:alu_inst|Mux2                        ;
 ; 24:1               ; 2 bits    ; 32 LEs        ; 20 LEs               ; 12 LEs                 ; No         ; |top_level|alu:alu_inst|Mux6                        ;
 ; 24:1               ; 3 bits    ; 48 LEs        ; 30 LEs               ; 18 LEs                 ; No         ; |top_level|alu:alu_inst|Mux29                       ;
-; 244:1              ; 4 bits    ; 648 LEs       ; 312 LEs              ; 336 LEs                ; No         ; |top_level|color:vga_inst|Mux229                    ;
+; 229:1              ; 2 bits    ; 304 LEs       ; 144 LEs              ; 160 LEs                ; No         ; |top_level|color:vga_inst|Mux229                    ;
+; 229:1              ; 2 bits    ; 304 LEs       ; 144 LEs              ; 160 LEs                ; No         ; |top_level|color:vga_inst|Mux231                    ;
 ; 544:1              ; 4 bits    ; 1448 LEs      ; 768 LEs              ; 680 LEs                ; No         ; |top_level|color:vga_inst|Mux361                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
 
@@ -1609,30 +1612,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA CLR SLD       ; 512                         ;
 ;     SCLR              ; 2                           ;
 ;     plain             ; 27                          ;
-; arriav_lcell_comb     ; 2688                        ;
+; arriav_lcell_comb     ; 2705                        ;
 ;     arith             ; 255                         ;
 ;         0 data inputs ; 27                          ;
 ;         1 data inputs ; 154                         ;
 ;         2 data inputs ; 38                          ;
 ;         3 data inputs ; 28                          ;
 ;         4 data inputs ; 8                           ;
-;     extend            ; 87                          ;
-;         7 data inputs ; 87                          ;
-;     normal            ; 2336                        ;
-;         1 data inputs ; 12                          ;
-;         2 data inputs ; 171                         ;
-;         3 data inputs ; 192                         ;
-;         4 data inputs ; 377                         ;
-;         5 data inputs ; 354                         ;
-;         6 data inputs ; 1230                        ;
+;     extend            ; 85                          ;
+;         7 data inputs ; 85                          ;
+;     normal            ; 2355                        ;
+;         1 data inputs ; 10                          ;
+;         2 data inputs ; 187                         ;
+;         3 data inputs ; 172                         ;
+;         4 data inputs ; 351                         ;
+;         5 data inputs ; 422                         ;
+;         6 data inputs ; 1213                        ;
 ;     shared            ; 10                          ;
 ;         0 data inputs ; 4                           ;
 ;         1 data inputs ; 6                           ;
 ; boundary_port         ; 30                          ;
 ; generic_pll           ; 2                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 26.50                       ;
-; Average LUT depth     ; 18.99                       ;
+; Max LUT depth         ; 25.50                       ;
+; Average LUT depth     ; 18.83                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1641,7 +1644,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:20     ;
+; Top            ; 00:00:13     ;
 +----------------+--------------+
 
 
@@ -1650,87 +1653,87 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Wed Nov 26 17:51:06 2025
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Processing started: Fri Nov 28 15:52:34 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off riscvpc -c riscvpc
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12248): Elaborating Platform Designer system entity "vgaClock.qsys"
-Info (12250): 2025.11.26.17:51:18 Progress: Loading Single-Cycle/vgaClock.qsys
-Info (12250): 2025.11.26.17:51:19 Progress: Reading input file
-Info (12250): 2025.11.26.17:51:19 Progress: Adding video_pll_0 [altera_up_avalon_video_pll 18.0]
-Info (12250): 2025.11.26.17:51:19 Progress: Parameterizing module video_pll_0
-Info (12250): 2025.11.26.17:51:19 Progress: Building connections
-Info (12250): 2025.11.26.17:51:19 Progress: Parameterizing connections
-Info (12250): 2025.11.26.17:51:19 Progress: Validating
-Info (12250): 2025.11.26.17:51:22 Progress: Done reading input file
-Info (12250): VgaClock: Generating vgaClock "vgaClock" for QUARTUS_SYNTH
+Info (12250): 2025.11.28.15:52:43 Progress: Loading Single-Cycle/vgaClock.qsys
+Info (12250): 2025.11.28.15:52:43 Progress: Reading input file
+Info (12250): 2025.11.28.15:52:43 Progress: Adding video_pll_0 [altera_up_avalon_video_pll 18.0]
+Info (12250): 2025.11.28.15:52:43 Progress: Parameterizing module video_pll_0
+Info (12250): 2025.11.28.15:52:43 Progress: Building connections
+Info (12250): 2025.11.28.15:52:43 Progress: Parameterizing connections
+Info (12250): 2025.11.28.15:52:43 Progress: Validating
+Info (12250): 2025.11.28.15:52:45 Progress: Done reading input file
+Info (12250): VgaClock: Generating "vgaClock" for QUARTUS_SYNTH
 Info (12250): Video_pll_0: "vgaClock" instantiated altera_up_avalon_video_pll "video_pll_0"
 Info (12250): Video_pll: "video_pll_0" instantiated altera_pll "video_pll"
 Info (12250): Reset_from_locked: "video_pll_0" instantiated altera_up_avalon_reset_from_locked_signal "reset_from_locked"
 Info (12250): VgaClock: Done "vgaClock" with 4 modules, 5 files
 Info (12249): Finished elaborating Platform Designer system entity "vgaClock.qsys"
 Info (12021): Found 1 design units, including 1 entities, in source file top_level.sv
-    Info (12023): Found entity 1: top_level File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 2
+    Info (12023): Found entity 1: top_level File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file pc.sv
-    Info (12023): Found entity 1: pc File: C:/Users/santi/Downloads/Single-Cycle/pc.sv Line: 2
+    Info (12023): Found entity 1: pc File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/pc.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file registers_unit.sv
-    Info (12023): Found entity 1: registers_unit File: C:/Users/santi/Downloads/Single-Cycle/registers_unit.sv Line: 2
+    Info (12023): Found entity 1: registers_unit File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/registers_unit.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file alu.sv
-    Info (12023): Found entity 1: alu File: C:/Users/santi/Downloads/Single-Cycle/alu.sv Line: 2
+    Info (12023): Found entity 1: alu File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/alu.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file data_memory.sv
-    Info (12023): Found entity 1: data_memory File: C:/Users/santi/Downloads/Single-Cycle/data_memory.sv Line: 2
+    Info (12023): Found entity 1: data_memory File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/data_memory.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit.sv
-    Info (12023): Found entity 1: control_unit File: C:/Users/santi/Downloads/Single-Cycle/control_unit.sv Line: 2
+    Info (12023): Found entity 1: control_unit File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/control_unit.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file imm_gen.sv
-    Info (12023): Found entity 1: imm_gen File: C:/Users/santi/Downloads/Single-Cycle/imm_gen.sv Line: 2
+    Info (12023): Found entity 1: imm_gen File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/imm_gen.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file branch_unit.sv
-    Info (12023): Found entity 1: branch_unit File: C:/Users/santi/Downloads/Single-Cycle/branch_unit.sv Line: 2
+    Info (12023): Found entity 1: branch_unit File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/branch_unit.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file instruction_memory.sv
-    Info (12023): Found entity 1: instruction_memory File: C:/Users/santi/Downloads/Single-Cycle/instruction_memory.sv Line: 2
+    Info (12023): Found entity 1: instruction_memory File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file color.sv
-    Info (12023): Found entity 1: color File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 7
+    Info (12023): Found entity 1: color File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file vga_controller_1280x800.sv
-    Info (12023): Found entity 1: vga_controller_1280x800 File: C:/Users/santi/Downloads/Single-Cycle/vga_controller_1280x800.sv Line: 7
+    Info (12023): Found entity 1: vga_controller_1280x800 File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/vga_controller_1280x800.sv Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file font_rom.sv
-    Info (12023): Found entity 1: font_rom File: C:/Users/santi/Downloads/Single-Cycle/font_rom.sv Line: 10
+    Info (12023): Found entity 1: font_rom File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/font_rom.sv Line: 10
 Info (12021): Found 1 design units, including 1 entities, in source file clock1280x800.sv
-    Info (12023): Found entity 1: clock1280x800 File: C:/Users/santi/Downloads/Single-Cycle/clock1280x800.sv Line: 8
+    Info (12023): Found entity 1: clock1280x800 File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/clock1280x800.sv Line: 8
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/vgaclock/submodules/altera_up_avalon_reset_from_locked_signal.v
-    Info (12023): Found entity 1: altera_up_avalon_reset_from_locked_signal File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/submodules/altera_up_avalon_reset_from_locked_signal.v Line: 28
+    Info (12023): Found entity 1: altera_up_avalon_reset_from_locked_signal File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/submodules/altera_up_avalon_reset_from_locked_signal.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/vgaclock/submodules/vgaclock_video_pll_0.v
-    Info (12023): Found entity 1: vgaClock_video_pll_0 File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v Line: 9
+    Info (12023): Found entity 1: vgaClock_video_pll_0 File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v
-    Info (12023): Found entity 1: vgaClock_video_pll_0_video_pll File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v Line: 2
+    Info (12023): Found entity 1: vgaClock_video_pll_0_video_pll File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/vgaclock/vgaclock.v
-    Info (12023): Found entity 1: vgaClock File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/vgaclock.v Line: 6
+    Info (12023): Found entity 1: vgaClock File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/vgaclock.v Line: 6
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Info (12128): Elaborating entity "pc" for hierarchy "pc:pc_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 30
-Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:imem_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 64
-Warning (10850): Verilog HDL warning at instruction_memory.sv(14): number of words (20) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/santi/Downloads/Single-Cycle/instruction_memory.sv Line: 14
-Warning (10030): Net "mem.data_a" at instruction_memory.sv(10) has no driver or initial value, using a default initial value '0' File: C:/Users/santi/Downloads/Single-Cycle/instruction_memory.sv Line: 10
-Warning (10030): Net "mem.waddr_a" at instruction_memory.sv(10) has no driver or initial value, using a default initial value '0' File: C:/Users/santi/Downloads/Single-Cycle/instruction_memory.sv Line: 10
-Warning (10030): Net "mem.we_a" at instruction_memory.sv(10) has no driver or initial value, using a default initial value '0' File: C:/Users/santi/Downloads/Single-Cycle/instruction_memory.sv Line: 10
-Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 116
-Info (12128): Elaborating entity "imm_gen" for hierarchy "imm_gen:imm_gen_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 128
-Info (12128): Elaborating entity "registers_unit" for hierarchy "registers_unit:regfile_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 154
-Warning (10240): Verilog HDL Always Construct warning at registers_unit.sv(24): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct File: C:/Users/santi/Downloads/Single-Cycle/registers_unit.sv Line: 24
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 174
-Info (12128): Elaborating entity "branch_unit" for hierarchy "branch_unit:branch_unit_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 189
-Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:dmem_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 206
-Warning (10850): Verilog HDL warning at data_memory.sv(27): number of words (5) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/santi/Downloads/Single-Cycle/data_memory.sv Line: 27
-Info (12128): Elaborating entity "color" for hierarchy "color:vga_inst" File: C:/Users/santi/Downloads/Single-Cycle/top_level.sv Line: 276
-Warning (10230): Verilog HDL assignment warning at color.sv(230): truncated value with size 32 to match size of target (8) File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 230
-Warning (10230): Verilog HDL assignment warning at color.sv(232): truncated value with size 32 to match size of target (8) File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 232
-Warning (10230): Verilog HDL assignment warning at color.sv(299): truncated value with size 12 to match size of target (11) File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 299
-Info (12128): Elaborating entity "clock1280x800" for hierarchy "color:vga_inst|clock1280x800:vgaclock" File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 76
-Info (12128): Elaborating entity "vgaClock" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst" File: C:/Users/santi/Downloads/Single-Cycle/clock1280x800.sv Line: 28
-Info (12128): Elaborating entity "vgaClock_video_pll_0" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0" File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/vgaclock.v Line: 18
-Info (12128): Elaborating entity "vgaClock_video_pll_0_video_pll" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll" File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v Line: 25
-Info (12128): Elaborating entity "altera_pll" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i" File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v Line: 91
+Info (12128): Elaborating entity "pc" for hierarchy "pc:pc_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 30
+Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:imem_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 64
+Warning (10850): Verilog HDL warning at instruction_memory.sv(14): number of words (20) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 14
+Warning (10030): Net "mem.data_a" at instruction_memory.sv(10) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 10
+Warning (10030): Net "mem.waddr_a" at instruction_memory.sv(10) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 10
+Warning (10030): Net "mem.we_a" at instruction_memory.sv(10) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 10
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 116
+Info (12128): Elaborating entity "imm_gen" for hierarchy "imm_gen:imm_gen_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 128
+Info (12128): Elaborating entity "registers_unit" for hierarchy "registers_unit:regfile_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 154
+Warning (10240): Verilog HDL Always Construct warning at registers_unit.sv(24): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/registers_unit.sv Line: 24
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 174
+Info (12128): Elaborating entity "branch_unit" for hierarchy "branch_unit:branch_unit_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 189
+Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:dmem_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 206
+Warning (10850): Verilog HDL warning at data_memory.sv(27): number of words (3) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/data_memory.sv Line: 27
+Info (12128): Elaborating entity "color" for hierarchy "color:vga_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/top_level.sv Line: 276
+Warning (10230): Verilog HDL assignment warning at color.sv(230): truncated value with size 32 to match size of target (8) File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 230
+Warning (10230): Verilog HDL assignment warning at color.sv(232): truncated value with size 32 to match size of target (8) File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 232
+Warning (10230): Verilog HDL assignment warning at color.sv(299): truncated value with size 12 to match size of target (11) File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 299
+Info (12128): Elaborating entity "clock1280x800" for hierarchy "color:vga_inst|clock1280x800:vgaclock" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 76
+Info (12128): Elaborating entity "vgaClock" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/clock1280x800.sv Line: 28
+Info (12128): Elaborating entity "vgaClock_video_pll_0" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/vgaclock.v Line: 18
+Info (12128): Elaborating entity "vgaClock_video_pll_0_video_pll" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v Line: 25
+Info (12128): Elaborating entity "altera_pll" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v Line: 91
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
-Info (12130): Elaborated megafunction instantiation "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i" File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v Line: 91
-Info (12133): Instantiated megafunction "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v Line: 91
+Info (12130): Elaborated megafunction instantiation "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v Line: 91
+Info (12133): Instantiated megafunction "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0_video_pll.v Line: 91
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -1791,59 +1794,59 @@ Info (12133): Instantiated megafunction "color:vga_inst|clock1280x800:vgaclock|v
     Info (12134): Parameter "duty_cycle17" = "50"
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
-Info (12128): Elaborating entity "altera_up_avalon_reset_from_locked_signal" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|altera_up_avalon_reset_from_locked_signal:reset_from_locked" File: C:/Users/santi/Downloads/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v Line: 30
-Info (12128): Elaborating entity "vga_controller_1280x800" for hierarchy "color:vga_inst|vga_controller_1280x800:ctrl" File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 88
-Warning (10230): Verilog HDL assignment warning at vga_controller_1280x800.sv(54): truncated value with size 32 to match size of target (10) File: C:/Users/santi/Downloads/Single-Cycle/vga_controller_1280x800.sv Line: 54
-Warning (10230): Verilog HDL assignment warning at vga_controller_1280x800.sv(56): truncated value with size 32 to match size of target (11) File: C:/Users/santi/Downloads/Single-Cycle/vga_controller_1280x800.sv Line: 56
-Info (12128): Elaborating entity "font_rom" for hierarchy "color:vga_inst|font_rom:font_inst" File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 305
-Warning (10030): Net "mem.data_a" at font_rom.sv(18) has no driver or initial value, using a default initial value '0' File: C:/Users/santi/Downloads/Single-Cycle/font_rom.sv Line: 18
-Warning (10030): Net "mem.waddr_a" at font_rom.sv(18) has no driver or initial value, using a default initial value '0' File: C:/Users/santi/Downloads/Single-Cycle/font_rom.sv Line: 18
-Warning (10030): Net "mem.we_a" at font_rom.sv(18) has no driver or initial value, using a default initial value '0' File: C:/Users/santi/Downloads/Single-Cycle/font_rom.sv Line: 18
+Info (12128): Elaborating entity "altera_up_avalon_reset_from_locked_signal" for hierarchy "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|altera_up_avalon_reset_from_locked_signal:reset_from_locked" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/ip/vgaclock/submodules/vgaclock_video_pll_0.v Line: 30
+Info (12128): Elaborating entity "vga_controller_1280x800" for hierarchy "color:vga_inst|vga_controller_1280x800:ctrl" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 88
+Warning (10230): Verilog HDL assignment warning at vga_controller_1280x800.sv(54): truncated value with size 32 to match size of target (10) File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/vga_controller_1280x800.sv Line: 54
+Warning (10230): Verilog HDL assignment warning at vga_controller_1280x800.sv(56): truncated value with size 32 to match size of target (11) File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/vga_controller_1280x800.sv Line: 56
+Info (12128): Elaborating entity "font_rom" for hierarchy "color:vga_inst|font_rom:font_inst" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 305
+Warning (10030): Net "mem.data_a" at font_rom.sv(18) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/font_rom.sv Line: 18
+Warning (10030): Net "mem.waddr_a" at font_rom.sv(18) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/font_rom.sv Line: 18
+Warning (10030): Net "mem.we_a" at font_rom.sv(18) has no driver or initial value, using a default initial value '0' File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/font_rom.sv Line: 18
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following PLL node(s):
-        Warning (14320): Synthesized away node "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i|outclk_wire[2]" File: c:/users/santi/onedrive/escritorio/datos/quartus/quartus/libraries/megafunctions/altera_pll.v Line: 749
+        Warning (14320): Synthesized away node "color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i|outclk_wire[2]" File: c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altera_pll.v Line: 749
 Info (276014): Found 2 instances of uninferred RAM logic
-    Info (276007): RAM logic "color:vga_inst|font_rom:font_inst|mem" is uninferred due to asynchronous read logic File: C:/Users/santi/Downloads/Single-Cycle/font_rom.sv Line: 18
-    Info (276004): RAM logic "instruction_memory:imem_inst|mem" is uninferred due to inappropriate RAM size File: C:/Users/santi/Downloads/Single-Cycle/instruction_memory.sv Line: 10
-Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/santi/Downloads/Single-Cycle/db/riscvpc.ram0_instruction_memory_68fd8bb8.hdl.mif" contains "don't care" values -- overwriting them with 0s
+    Info (276007): RAM logic "color:vga_inst|font_rom:font_inst|mem" is uninferred due to asynchronous read logic File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/font_rom.sv Line: 18
+    Info (276004): RAM logic "instruction_memory:imem_inst|mem" is uninferred due to inappropriate RAM size File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/instruction_memory.sv Line: 10
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/riscvpc.ram0_instruction_memory_68fd8bb8.hdl.mif" contains "don't care" values -- overwriting them with 0s
 Info (278001): Inferred 2 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "color:vga_inst|Div0" File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 231
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "color:vga_inst|Mod0" File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 232
-Info (12130): Elaborated megafunction instantiation "color:vga_inst|lpm_divide:Div0" File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 231
-Info (12133): Instantiated megafunction "color:vga_inst|lpm_divide:Div0" with the following parameter: File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 231
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "color:vga_inst|Div0" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 231
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "color:vga_inst|Mod0" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 232
+Info (12130): Elaborated megafunction instantiation "color:vga_inst|lpm_divide:Div0" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 231
+Info (12133): Instantiated megafunction "color:vga_inst|lpm_divide:Div0" with the following parameter: File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 231
     Info (12134): Parameter "LPM_WIDTHN" = "28"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_nbm.tdf
-    Info (12023): Found entity 1: lpm_divide_nbm File: C:/Users/santi/Downloads/Single-Cycle/db/lpm_divide_nbm.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_nbm File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/lpm_divide_nbm.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_tlh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_tlh File: C:/Users/santi/Downloads/Single-Cycle/db/sign_div_unsign_tlh.tdf Line: 25
+    Info (12023): Found entity 1: sign_div_unsign_tlh File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/sign_div_unsign_tlh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_00f.tdf
-    Info (12023): Found entity 1: alt_u_div_00f File: C:/Users/santi/Downloads/Single-Cycle/db/alt_u_div_00f.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "color:vga_inst|lpm_divide:Mod0" File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 232
-Info (12133): Instantiated megafunction "color:vga_inst|lpm_divide:Mod0" with the following parameter: File: C:/Users/santi/Downloads/Single-Cycle/color.sv Line: 232
+    Info (12023): Found entity 1: alt_u_div_00f File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/alt_u_div_00f.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "color:vga_inst|lpm_divide:Mod0" File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 232
+Info (12133): Instantiated megafunction "color:vga_inst|lpm_divide:Mod0" with the following parameter: File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/color.sv Line: 232
     Info (12134): Parameter "LPM_WIDTHN" = "28"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_q3m.tdf
-    Info (12023): Found entity 1: lpm_divide_q3m File: C:/Users/santi/Downloads/Single-Cycle/db/lpm_divide_q3m.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_q3m File: C:/Users/tomas/Documents/GitHub/Lab-1/Single-Cycle/db/lpm_divide_q3m.tdf Line: 25
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 8 node(s), including 0 DDIO, 2 PLL, 0 transceiver and 0 LCELL
-Warning: OUTCLK port on the PLL is not properly connected on instance color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i|general[0].gpll. The output clock port on the PLL must be connected. File: c:/users/santi/onedrive/escritorio/datos/quartus/quartus/libraries/megafunctions/altera_pll.v Line: 749
+Warning: OUTCLK port on the PLL is not properly connected on instance color:vga_inst|clock1280x800:vgaclock|vgaClock:clk_pll_inst|vgaClock_video_pll_0:video_pll_0|vgaClock_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i|general[0].gpll. The output clock port on the PLL must be connected. File: c:/intelfpga_lite/24.1std/quartus/libraries/megafunctions/altera_pll.v Line: 749
     Info: Must be connected
-Info (21057): Implemented 4076 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 4095 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 27 output pins
-    Info (21061): Implemented 4044 logic cells
+    Info (21061): Implemented 4063 logic cells
     Info (21065): Implemented 2 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 4885 megabytes
-    Info: Processing ended: Wed Nov 26 17:51:50 2025
-    Info: Elapsed time: 00:00:44
-    Info: Total CPU time (on all processors): 00:01:13
+    Info: Peak virtual memory: 4943 megabytes
+    Info: Processing ended: Fri Nov 28 15:53:06 2025
+    Info: Elapsed time: 00:00:32
+    Info: Total CPU time (on all processors): 00:00:43
 
 

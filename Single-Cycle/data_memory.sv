@@ -24,7 +24,7 @@ module data_memory (
         
         for (int i=0; i<MEM_SIZE; i++) init_rom[i] = 32'h0;
         
-        $readmemh("C:/Users/santi/OneDrive/Escritorio/Datos/Programacion/Assembler/program_data.hex", init_rom); 
+        $readmemh("C:/Users/tomas/Documents/GitHub/Lab-1/Assembler/program_data.hex", init_rom); 
     end
 
     // =================================================================

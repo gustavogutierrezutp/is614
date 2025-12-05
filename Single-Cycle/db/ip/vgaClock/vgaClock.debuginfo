@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<EnsembleReport name="vgaClock" kind="system" version="20.1" fabric="QSYS">
- <!-- Format version 20.1 711 (Future versions may contain additional information.) -->
- <!-- 2025.11.26.17:51:26 -->
+<EnsembleReport name="vgaClock" kind="system" version="24.1" fabric="QSYS">
+ <!-- Format version 24.1 1077 (Future versions may contain additional information.) -->
+ <!-- 2025.11.28.15:52:49 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1764197483</value>
+  <value>1764363166</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -269,7 +269,7 @@ the requested settings for a module instance. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <interface name="ref_clk" kind="clock_sink" version="20.1">
+  <interface name="ref_clk" kind="clock_sink" version="24.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -314,7 +314,7 @@ parameters are a RESULT of the module parameters. -->
     <role>clk</role>
    </port>
   </interface>
-  <interface name="ref_reset" kind="reset_sink" version="20.1">
+  <interface name="ref_reset" kind="reset_sink" version="24.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -359,7 +359,7 @@ parameters are a RESULT of the module parameters. -->
     <role>reset</role>
    </port>
   </interface>
-  <interface name="vga_clk" kind="clock_source" version="20.1">
+  <interface name="vga_clk" kind="clock_source" version="24.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -428,7 +428,7 @@ parameters are a RESULT of the module parameters. -->
     <role>clk</role>
    </port>
   </interface>
-  <interface name="reset_source" kind="reset_source" version="20.1">
+  <interface name="reset_source" kind="reset_source" version="24.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -504,7 +504,7 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Clock Input</displayName>
-  <version>20.1</version>
+  <version>24.1</version>
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
@@ -512,7 +512,7 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Reset Input</displayName>
-  <version>20.1</version>
+  <version>24.1</version>
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
@@ -520,7 +520,7 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Clock Output</displayName>
-  <version>20.1</version>
+  <version>24.1</version>
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
@@ -528,8 +528,8 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Reset Output</displayName>
-  <version>20.1</version>
+  <version>24.1</version>
  </plugin>
- <reportVersion>20.1 711</reportVersion>
- <uniqueIdentifier>2811A800037B0000019AC25D49D3</uniqueIdentifier>
+ <reportVersion>24.1 1077</reportVersion>
+ <uniqueIdentifier>AA41F433D1A10000019ACC3D6778</uniqueIdentifier>
 </EnsembleReport>

@@ -11,7 +11,7 @@ module instruction_memory(
 
     initial begin
 
-        $readmemh("C:/Users/santi/OneDrive/Escritorio/Datos/Programacion/Assembler/program.hex", mem);
+        $readmemh("C:/Users/tomas/Documents/GitHub/Lab-1/Assembler/program.hex", mem);
 		  
     end
 	 

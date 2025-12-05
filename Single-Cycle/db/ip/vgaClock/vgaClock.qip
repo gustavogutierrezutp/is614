@@ -1,8 +1,8 @@
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_TOOL_NAME "Qsys"
-set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_TOOL_VERSION "20.1"
+set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_TOOL_VERSION "24.1"
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "vgaClock" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../../vgaClock.sopcinfo"]
-set_global_assignment -entity "vgaClock" -library "vgaClock" -name SLD_INFO "QSYS_NAME vgaClock HAS_SOPCINFO 1 GENERATION_ID 1764197483"
+set_global_assignment -entity "vgaClock" -library "vgaClock" -name SLD_INFO "QSYS_NAME vgaClock HAS_SOPCINFO 1 GENERATION_ID 1764363166"
 set_global_assignment -library "vgaClock" -name SLD_FILE [file join $::quartus(qip_path) "vgaClock.debuginfo"]
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_TARGETED_DEVICE_FAMILY "Cyclone V"
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone V}"
@@ -14,7 +14,7 @@ set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc2NDE5NzQ4Mw==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc2NDM2MzE2Ng==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTRU1BNUYzMUM2::QXV0byBERVZJQ0U="
 set_global_assignment -entity "vgaClock" -library "vgaClock" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -49,7 +49,7 @@ set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaCloc
 set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
 set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
-set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_COMPONENT_VERSION "MjAuMQ=="
+set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_COMPONENT_VERSION "MjQuMQ=="
 set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_COMPONENT_DESCRIPTION "SW50ZWwgUGhhc2UtTG9ja2VkIExvb3A="
 set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_COMPONENT_PARAMETER "ZGVidWdfcHJpbnRfb3V0cHV0::ZmFsc2U=::ZGVidWdfcHJpbnRfb3V0cHV0"
 set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_COMPONENT_PARAMETER "ZGVidWdfdXNlX3JiY190YWZfbWV0aG9k::ZmFsc2U=::ZGVidWdfdXNlX3JiY190YWZfbWV0aG9k"
@@ -366,5 +366,5 @@ set_global_assignment -library "vgaClock" -name VERILOG_FILE [file join $::quart
 set_global_assignment -library "vgaClock" -name QIP_FILE [file join $::quartus(qip_path) "submodules/vgaClock_video_pll_0_video_pll.qip"]
 
 set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_TOOL_NAME "altera_pll"
-set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_TOOL_VERSION "20.1"
+set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_TOOL_VERSION "24.1"
 set_global_assignment -entity "vgaClock_video_pll_0_video_pll" -library "vgaClock" -name IP_TOOL_ENV "Qsys"
