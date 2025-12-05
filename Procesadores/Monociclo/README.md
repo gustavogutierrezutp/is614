@@ -4,11 +4,12 @@
 
 Este proyecto implementa un **procesador monociclo RISC-V RV32I** usando **SystemVerilog y Verilog**, diseñado para ejecutarse en una FPGA con VGA.  
 Soporta **todas las instrucciones RV32I excepto `ecall`**.  
-La salida VGA muestra señales internas, registros y memoria.  
+La salida VGA muestra señales internas, memoria del programa, registros y memoria.  
 La ejecución se controla con botones físicos de la FPGA:
 
 - **KEY0** → Clock manual: avanza 1 instrucción por pulsación  
 - **KEY1** → Reset del procesador  
+- **SW1** → Activo: el procesador funciona con el clock manual / Inactivo: el procesador funciona con el clock de 50Hz de la board  
 - Si la CPU encuentra un **`ebreak`**, se muestra en la VGA: **“El programa ha terminado”** y el procesador se congela hasta el siguiente reset.
 
 ---
