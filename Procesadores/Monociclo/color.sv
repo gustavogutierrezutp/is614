@@ -36,6 +36,7 @@ module color(
 
   input [31:0] registers [0:31],
   input [7:0] memory [0:31],
+  input [31:0] instructions [0:31],
   
   output reg [7:0] vga_red,
   output reg [7:0] vga_green,
@@ -95,11 +96,11 @@ module color(
   parameter COL1_X = 250;
   parameter COL1_Y = 20;
   
-  // Columna 2: Registros x0-x15
+  // Columna 2: Memoria del programa
   parameter COL2_X = 500;
   parameter COL2_Y = 20;
   
-  // Columna 3: Registros x16-x31
+  // Columna 3: Registros x0-x31
   parameter COL3_X = 750;
   parameter COL3_Y = 20;
   
@@ -117,11 +118,11 @@ module color(
   // Columna 1: Estado
   reg [7:0] col1_line [0:22] [0:19];
   
-  // Columna 2: Registros x0-x15
-  reg [7:0] col2_line [0:16] [0:19];
+  // Columna 2: Memoria del programa
+  reg [7:0] col2_line [0:32] [0:19];
   
   // Columna 3: Registros x16-x31
-  reg [7:0] col3_line [0:16] [0:19];
+  reg [7:0] col3_line [0:32] [0:19];
   
   // Columna 4: Memoria 
   reg [7:0] col4_line [0:32] [0:19];
@@ -203,7 +204,7 @@ module color(
 
 
   // Actualizar buffers de texto
-  integer i, j, reg_idx;
+  integer i, j, idx;
   
   always @(posedge vgaclk) begin
     if (frame_update) begin
@@ -513,52 +514,68 @@ module color(
 			for (i = 13; i < 20; i = i + 1) col1_line[22][i] <= 8'd32;
 
 			
-			// COLUMNA 2: REGISTROS x0-x15
-			// Título
-			col2_line[0][0] <= 8'd82;  col2_line[0][1] <= 8'd69;  col2_line[0][2] <= 8'd71;
-			col2_line[0][3] <= 8'd73;  col2_line[0][4] <= 8'd83;  col2_line[0][5] <= 8'd84;
-			col2_line[0][6] <= 8'd69;  col2_line[0][7] <= 8'd82;  col2_line[0][8] <= 8'd83;
-			for (i = 9; i < 20; i = i + 1) col2_line[0][i] <= 8'd32;
+			// COLUMNA 2: INSTRUCCIONES
+			col2_line[0][0]<=8'd73;  //I
+			col2_line[0][1]<=8'd78;  //N
+			col2_line[0][2]<=8'd83;  //S
+			col2_line[0][3]<=8'd84;  //T
+			col2_line[0][4]<=8'd82;  //R
+			col2_line[0][5]<=8'd85;  //U
+			col2_line[0][6]<=8'd67;  //C
+			col2_line[0][7]<=8'd84;  //T
+			col2_line[0][8]<=8'd73;  //I
+			col2_line[0][9]<=8'd79;  //O
+			col2_line[0][10]<=8'd78; //N
+			col2_line[0][11]<=8'd83; //S
+			for (i = 12; i < 18; i = i + 1) col2_line[0][i] <= 8'd32;
 			
-			// Registros x0-x15
-			for (reg_idx = 0; reg_idx < 16; reg_idx = reg_idx + 1) begin
-			  col2_line[reg_idx+1][0] <= 8'd120;  // x
-			  col2_line[reg_idx+1][1] <= dec_to_ascii_tens(reg_idx);
-			  col2_line[reg_idx+1][2] <= dec_to_ascii_ones(reg_idx);
-			  col2_line[reg_idx+1][3] <= 8'd58;  // :
-			  col2_line[reg_idx+1][4] <= nibble_to_hex(registers[reg_idx][31:28]);
-			  col2_line[reg_idx+1][5] <= nibble_to_hex(registers[reg_idx][27:24]);
-			  col2_line[reg_idx+1][6] <= nibble_to_hex(registers[reg_idx][23:20]);
-			  col2_line[reg_idx+1][7] <= nibble_to_hex(registers[reg_idx][19:16]);
-			  col2_line[reg_idx+1][8] <= nibble_to_hex(registers[reg_idx][15:12]);
-			  col2_line[reg_idx+1][9] <= nibble_to_hex(registers[reg_idx][11:8]);
-			  col2_line[reg_idx+1][10] <= nibble_to_hex(registers[reg_idx][7:4]);
-			  col2_line[reg_idx+1][11] <= nibble_to_hex(registers[reg_idx][3:0]);
-			  for (i = 12; i < 20; i = i + 1) col2_line[reg_idx+1][i] <= 8'd32;
+			for(idx = 0;idx<32;idx=idx+1) begin
+			  col2_line[idx+1][0] <= 8'd91;  // [
+			  col2_line[idx+1][1] <= dec_to_ascii_tens(idx);
+			  col2_line[idx+1][2] <= dec_to_ascii_ones(idx);
+			  col2_line[idx+1][3] <= 8'd93;  // ]
+			  col2_line[idx+1][4] <= 8'd58;  // :
+			  col2_line[idx+1][5]  <= nibble_to_hex(instructions[idx][31:28]);
+			  col2_line[idx+1][6]  <= nibble_to_hex(instructions[idx][27:24]);
+			  col2_line[idx+1][7]  <= nibble_to_hex(instructions[idx][23:20]);
+			  col2_line[idx+1][8]  <= nibble_to_hex(instructions[idx][19:16]);
+			  col2_line[idx+1][9]  <= nibble_to_hex(instructions[idx][15:12]);
+			  col2_line[idx+1][10] <= nibble_to_hex(instructions[idx][11:8]);
+			  col2_line[idx+1][11] <= nibble_to_hex(instructions[idx][7:4]);
+			  col2_line[idx+1][12] <= nibble_to_hex(instructions[idx][3:0]);
+			  for(i=13;i<18;i=i+1) col2_line[idx+1][i]<=8'd32;
 			end
 			
-			// COLUMNA 3: REGISTROS x16-x31
+			// COLUMNA 3: REGISTROS x0-x31
 			// Título
-			col3_line[0][0] <= 8'd82;  col3_line[0][1] <= 8'd69;  col3_line[0][2] <= 8'd71;
-			col3_line[0][3] <= 8'd73;  col3_line[0][4] <= 8'd83;  col3_line[0][5] <= 8'd84;
-			col3_line[0][6] <= 8'd69;  col3_line[0][7] <= 8'd82;  col3_line[0][8] <= 8'd83;
-			for (i = 9; i < 20; i = i + 1) col3_line[0][i] <= 8'd32;
+			col3_line[0][0]<=8'd82;  //R
+			col3_line[0][1]<=8'd69;  //E
+			col3_line[0][2]<=8'd71;  //G
+			col3_line[0][3]<=8'd83;  //S
+			col3_line[0][4]<=8'd32;  
+			col3_line[0][5]<=8'd120; //x
+			col3_line[0][6]<=8'd48;  //0
+			col3_line[0][7]<=8'd48;  //0
+			col3_line[0][8]<=8'd45;  //-
+			col3_line[0][9]<=8'd120; //x
+			col3_line[0][10]<=8'd51; //3
+			col3_line[0][11]<=8'd49; //1
+			for(i=12;i<18;i=i+1) col3_line[0][i]<=8'd32;
 			
-			// Registros x16-x31
-			for (reg_idx = 16; reg_idx < 32; reg_idx = reg_idx + 1) begin
-			  col3_line[reg_idx-15][0] <= 8'd120;  // x
-			  col3_line[reg_idx-15][1] <= dec_to_ascii_tens(reg_idx);
-			  col3_line[reg_idx-15][2] <= dec_to_ascii_ones(reg_idx);
-			  col3_line[reg_idx-15][3] <= 8'd58;  // :
-			  col3_line[reg_idx-15][4] <= nibble_to_hex(registers[reg_idx][31:28]);
-			  col3_line[reg_idx-15][5] <= nibble_to_hex(registers[reg_idx][27:24]);
-			  col3_line[reg_idx-15][6] <= nibble_to_hex(registers[reg_idx][23:20]);
-			  col3_line[reg_idx-15][7] <= nibble_to_hex(registers[reg_idx][19:16]);
-			  col3_line[reg_idx-15][8] <= nibble_to_hex(registers[reg_idx][15:12]);
-			  col3_line[reg_idx-15][9] <= nibble_to_hex(registers[reg_idx][11:8]);
-			  col3_line[reg_idx-15][10] <= nibble_to_hex(registers[reg_idx][7:4]);
-			  col3_line[reg_idx-15][11] <= nibble_to_hex(registers[reg_idx][3:0]);
-			  for (i = 12; i < 20; i = i + 1) col3_line[reg_idx-15][i] <= 8'd32;
+			for(idx=0;idx<32;idx=idx+1) begin
+			  col3_line[idx+1][0]<=8'd120;
+			  col3_line[idx+1][1]<=dec_to_ascii_tens(idx);
+			  col3_line[idx+1][2]<=dec_to_ascii_ones(idx);
+			  col3_line[idx+1][3]<=8'd58;
+			  col3_line[idx+1][4]<=nibble_to_hex(registers[idx][31:28]);
+			  col3_line[idx+1][5]<=nibble_to_hex(registers[idx][27:24]);
+			  col3_line[idx+1][6]<=nibble_to_hex(registers[idx][23:20]);
+			  col3_line[idx+1][7]<=nibble_to_hex(registers[idx][19:16]);
+			  col3_line[idx+1][8]<=nibble_to_hex(registers[idx][15:12]);
+			  col3_line[idx+1][9]<=nibble_to_hex(registers[idx][11:8]);
+			  col3_line[idx+1][10]<=nibble_to_hex(registers[idx][7:4]);
+			  col3_line[idx+1][11]<=nibble_to_hex(registers[idx][3:0]);
+			  for(i=12;i<18;i=i+1) col3_line[idx+1][i]<=8'd32;
 			end
 			
 			// COLUMNA 4: MEMORIA
@@ -568,15 +585,15 @@ module color(
 			for (i = 6; i < 20; i = i + 1) col4_line[0][i] <= 8'd32;
 			
 			// Memoria [0-31]
-			for (reg_idx = 0; reg_idx < 32; reg_idx = reg_idx + 1) begin
-			  col4_line[reg_idx+1][0] <= 8'd91;  // [
-			  col4_line[reg_idx+1][1] <= dec_to_ascii_tens(reg_idx);
-			  col4_line[reg_idx+1][2] <= dec_to_ascii_ones(reg_idx);
-			  col4_line[reg_idx+1][3] <= 8'd93;  // ]
-			  col4_line[reg_idx+1][4] <= 8'd58;  // :
-			  col4_line[reg_idx+1][5] <= nibble_to_hex(memory[reg_idx][7:4]);
-			  col4_line[reg_idx+1][6] <= nibble_to_hex(memory[reg_idx][3:0]);
-			  for (i = 7; i < 20; i = i + 1) col4_line[reg_idx+1][i] <= 8'd32;
+			for (idx = 0; idx < 32; idx = idx + 1) begin
+			  col4_line[idx+1][0] <= 8'd91;  // [
+			  col4_line[idx+1][1] <= dec_to_ascii_tens(idx);
+			  col4_line[idx+1][2] <= dec_to_ascii_ones(idx);
+			  col4_line[idx+1][3] <= 8'd93;  // ]
+			  col4_line[idx+1][4] <= 8'd58;  // :
+			  col4_line[idx+1][5] <= nibble_to_hex(memory[idx][7:4]);
+			  col4_line[idx+1][6] <= nibble_to_hex(memory[idx][3:0]);
+			  for (i = 7; i < 20; i = i + 1) col4_line[idx+1][i] <= 8'd32;
 			end
     end 
   end
@@ -615,8 +632,8 @@ module color(
   wire [3:0] row_in_line_col4 = (y - COL4_Y) % LINE_SPACING;
   
   wire valid_col1 = in_col1 && (y >= COL1_Y) && (line_num_col1 < 23) && (row_in_line_col1 < CHAR_H);
-  wire valid_col2 = in_col2 && (y >= COL2_Y) && (line_num_col2 < 17) && (row_in_line_col2 < CHAR_H);
-  wire valid_col3 = in_col3 && (y >= COL3_Y) && (line_num_col3 < 17) && (row_in_line_col3 < CHAR_H);
+  wire valid_col2 = in_col2 && (y >= COL2_Y) && (line_num_col2 < 33) && (row_in_line_col2 < CHAR_H);
+  wire valid_col3 = in_col3 && (y >= COL3_Y) && (line_num_col3 < 33) && (row_in_line_col3 < CHAR_H);
   wire valid_col4 = in_col4 && (y >= COL4_Y) && (line_num_col4 < 33) && (row_in_line_col4 < CHAR_H);
   wire valid_ebreak = in_ebreak;
   
