@@ -41,6 +41,7 @@ module top_level (
   wire [4:0]  rs1 = instruction[19:15];
   wire [4:0]  rs2 = instruction[24:20];
   wire [31:0] registers [0:31];
+  wire [31:0] instructions [0:31];
   
   wire [4:0] AluOp;
   wire RUWr;
@@ -60,6 +61,17 @@ module top_level (
   wire [4:0] BrOp;
   
   wire EBreak;
+  
+  // Clock seleccionado
+  logic clk_selected;
+
+  // MUX DE CLOCK
+  always_comb begin
+      if (selector2)
+          clk_selected = clk;        // Clock manual (KEY0)
+      else
+          clk_selected = CLOCK_50;   // Clock de la board
+  end
 
   // MÓDULOS DEL PROCESADOR
   control_unit cu_inst(
@@ -80,7 +92,7 @@ module top_level (
   );
 
   program_counter pc_inst(
-	 .clk(clk),
+	 .clk(clk_selected),
 	 .rst_n(rst_n),
 	 .PCSrc(PCSrc),
 	 .EBreak(EBreak),
@@ -91,11 +103,13 @@ module top_level (
   
   instruction_memory memory_inst(
     .address(address),
-    .instruction(instruction)
+	 .page(2'b00),
+    .instruction(instruction),
+	 .show_memory(instructions)
   );
   
   registers_unit ru_inst(
-    .clk(clk),
+    .clk(clk_selected),
 	 .rst_n(rst_n),
     .rs1(rs1),
     .rs2(rs2),
@@ -135,7 +149,7 @@ module top_level (
   );
   
   data_memory dm_inst(
-    .clk(clk),
+    .clk(clk_selected),
 	 .rst_n(rst_n),
     .address(DataAlu),
     .DataWr(AluB),
@@ -183,6 +197,7 @@ module top_level (
 	  .reg_write_en(RUWr),
 	  .mem_write_en(DMWR),
 	  .registers(registers),
+	  .instructions(instructions),
 	  .memory(memory),
 	  .AluASrc(AluASrc),
 	  .AluBSrc(AluBSrc),
@@ -225,7 +240,7 @@ module top_level (
   hex7seg d2 (.val(selected_16_reg[11:8]), .display(HEX2));
   hex7seg d3 (.val(selected_16_reg[15:12]), .display(HEX3));
 
-  // LEDS DE DEBUG
+  // LEDS
   assign leds[7:0] = address[7:0];
   assign leds[8]   = RUWr;
   assign leds[9]   = AluBSrc;
