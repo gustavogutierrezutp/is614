@@ -10,3 +10,5 @@ single-cycle/incremental_db/*
 single-cycle/output_files/*
 single-cycle/simulation/*
 single-cycle/c5_pin_model_dump.txt
+course/.quarto/*
+course/description_files/*
