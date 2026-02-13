@@ -1,0 +1,24 @@
+// instruction_memory.sv
+// ROM simple con instrucciones Tipo-R hardcodeadas.
+module instruction_memory (
+    input  logic [31:0] addr,
+    output logic [31:0] instruction
+);
+    // Memoria para 128 instrucciones (512 bytes)
+    logic [31:0] rom[127:0];
+
+    // Instrucciones de ejemplo
+    // 1. add x3, x1, x2  (0x002081B3)
+    // 2. sub x4, x1, x2  (0x40208233)
+    // 3. xor x5, x1, x2  (0x0020C2B3)
+    initial begin
+        rom[0] = 32'h002081B3; // add x3, x1, x2
+        rom[1] = 32'h40208233; // sub x4, x1, x2
+        rom[2] = 32'h0020C2B3; // xor x5, x1, x2
+    end
+    
+    // La dirección de RISC-V es en bytes, pero nuestra ROM está indexada por palabra.
+    // Dividimos la dirección entre 4 para obtener el índice correcto.
+    assign instruction = rom[addr[8:2]]; 
+
+endmodule

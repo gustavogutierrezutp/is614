@@ -1,0 +1,30 @@
+// display_selector.sv
+//
+// Usa los switches SW[1:0] para seleccionar qué señal
+// se mostrará en los displays HEX.
+
+module display_selector (
+    input  logic [1:0]  sel,      // Conectado a SW[1:0]
+    input  logic [31:0] pc_in,    // Señal del Program Counter
+    input  logic [31:0] instr_in, // Señal de la Instrucción actual
+    input  logic [31:0] result_in,// Resultado final (de ALU o Memoria)
+    
+    output logic [31:0] data_out  // Salida de 32 bits hacia los decodificadores
+);
+
+    // Definición de modos de visualización
+    localparam MODE_PC     = 2'b00;
+    localparam MODE_INSTR  = 2'b01;
+    localparam MODE_RESULT = 2'b10;
+    // (Puedes añadir más modos, ej: ALU_RAW = 2'b11)
+
+    always_comb begin
+        case (sel)
+            MODE_PC:     data_out = pc_in;
+            MODE_INSTR:  data_out = instr_in;
+            MODE_RESULT: data_out = result_in;
+            default:     data_out = 32'hDEADBEEF; // Señal de error
+        endcase
+    end
+
+endmodule

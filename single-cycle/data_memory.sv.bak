@@ -1,0 +1,90 @@
+// data_memory.sv
+module data_memory (
+    input  logic        clk,
+    input  logic        mem_read,
+    input  logic [31:0] addr,     // Dirección (calculada por la ALU)
+    input  logic [2:0]  funct3,   // Para tipo de carga (lb, lw...)
+    output logic [31:0] rdata     // Dato leído
+);
+
+    // Memoria de 512 Bytes (128 palabras de 32 bits)
+    logic [31:0] ram[127:0];
+
+    // --- Pre-cargar la memoria con valores de ejemplo ---
+    initial begin
+        for (int i = 0; i < 128; i++) ram[i] = 32'h0;
+        
+        // Ponemos un valor en la dirección 100
+        // 100 = 0x64. El índice del array es 100/4 = 25.
+        // Escribimos "0xAAAAAAAA"
+        ram[25] = 32'hAAAAAAAA; 
+        
+        // Escribimos "0x12345678" en la dirección 104 (índice 26)
+        ram[26] = 32'h12345678;
+    end
+
+    logic [31:0] mem_word;
+    logic [1:0]  byte_offset;
+    logic [31:0] read_data_comb;
+    
+    // La RAM es direccionable por bytes, pero la leemos por palabras
+    assign mem_word = ram[addr[31:2]]; // Índice de palabra (ignora 2 bits LSB)
+    assign byte_offset = addr[1:0];      // Byte dentro de la palabra
+
+    always_comb begin
+        read_data_comb = 32'hxxxxxxxx; // Valor por defecto
+        if (mem_read) begin
+            case (funct3)
+                // --- lb (load byte con signo) ---
+                3'b000: begin
+                    case (byte_offset)
+                        2'b00: read_data_comb = {{24{mem_word[7]}},  mem_word[7:0]};
+                        2'b01: read_data_comb = {{24{mem_word[15]}}, mem_word[15:8]};
+                        2'b10: read_data_comb = {{24{mem_word[23]}}, mem_word[23:16]};
+                        2'b11: read_data_comb = {{24{mem_word[31]}}, mem_word[31:24]};
+                    endcase
+                end
+                
+                // --- lh (load half-word con signo) ---
+                3'b001: begin
+                    case (byte_offset)
+                        2'b00: read_data_comb = {{16{mem_word[15]}}, mem_word[15:0]};
+                        2'b10: read_data_comb = {{16{mem_word[31]}}, mem_word[31:16]};
+                        default: read_data_comb = 32'hxxxxxxxx; // Dirección no alineada
+                    endcase
+                end
+
+                // --- lw (load word) ---
+                3'b010: begin
+                    read_data_comb = (byte_offset == 2'b00) ? mem_word : 32'hxxxxxxxx; // Requiere alineación
+                end
+                
+                // --- lbu (load byte sin signo) ---
+                3'b100: begin
+                    case (byte_offset)
+                        2'b00: read_data_comb = {{24{1'b0}}, mem_word[7:0]};
+                        2'b01: read_data_comb = {{24{1'b0}}, mem_word[15:8]};
+                        2'b10: read_data_comb = {{24{1'b0}}, mem_word[23:16]};
+                        2'b11: read_data_comb = {{24{1'b0}}, mem_word[31:24]};
+                    endcase
+                end
+
+                // --- lhu (load half-word sin signo) ---
+                3'b101: begin
+                    case (byte_offset)
+                        2'b00: read_data_comb = {{16{1'b0}}, mem_word[15:0]};
+                        2'b10: read_data_comb = {{16{1'b0}}, mem_word[31:16]};
+                        default: read_data_comb = 32'hxxxxxxxx; // Dirección no alineada
+                    endcase
+                end
+                default: read_data_comb = 32'hxxxxxxxx;
+            endcase
+        end
+    end
+    
+    // Salida registrada
+    always_ff @(posedge clk) begin
+        rdata <= read_data_comb;
+    end
+
+endmodule
