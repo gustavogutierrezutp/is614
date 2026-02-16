@@ -1,0 +1,72 @@
+Info: Start Nativelink Simulation process
+
+========= EDA Simulation Settings =====================
+
+Sim Mode              :  Gate
+Family                :  cyclonev
+Quartus root          :  c:/intelfpga_lite/23.1std/quartus/bin64/
+Quartus sim root      :  c:/intelfpga_lite/23.1std/quartus/eda/sim_lib
+Simulation Tool       :  questa intel fpga
+Simulation Language   :  verilog
+Simulation Mode       :  GUI
+Sim Output File       :  parte2.vo
+Sim SDF file          :  parte2__verilog.sdo
+Sim dir               :  simulation\questa
+
+=======================================================
+
+Info: Starting NativeLink simulation with Questa Intel FPGA software
+Sourced NativeLink script c:/intelfpga_lite/23.1std/quartus/common/tcl/internal/nativelink/modelsim.tcl
+Warning: File parte2_run_msim_gate_verilog.do already exists - backing up current file as parte2_run_msim_gate_verilog.do.bak11
+Probing transcript
+Questa Intel FPGA Info: # Reading pref.tcl
+Questa Intel FPGA Info: # do parte2_run_msim_gate_verilog.do
+Questa Intel FPGA Info: # if {[file exists gate_work]} {
+Questa Intel FPGA Info: # 	vdel -lib gate_work -all
+Questa Intel FPGA Info: # }
+Questa Intel FPGA Info: # vlib gate_work
+Questa Intel FPGA Info: # vmap work gate_work
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+Questa Intel FPGA Info: # vmap work gate_work 
+Questa Intel FPGA Info: # Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+Questa Intel FPGA Info: # Modifying modelsim.ini
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vlog -vlog01compat -work work +incdir+. {parte2.vo}
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+Questa Intel FPGA Info: # Start time: 21:36:04 on Aug 22,2025
+Questa Intel FPGA Info: # vlog -reportprogress 300 -vlog01compat -work work "+incdir+." parte2.vo 
+Questa Intel FPGA Info: # -- Compiling module parte2
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # Top level modules:
+Questa Intel FPGA Info: # 	parte2
+Questa Intel FPGA Info: # End time: 21:36:04 on Aug 22,2025, Elapsed time: 0:00:00
+Questa Intel FPGA Info: # Errors: 0, Warnings: 0
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vlog -vlog01compat -work work +incdir+C:/Users/Andrea/Documents/Universidad/Semestre\ VI/Arqui\ Computadores/parte4 {C:/Users/Andrea/Documents/Universidad/Semestre VI/Arqui Computadores/parte4/parte2TB.v}
+Questa Intel FPGA Info: # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+Questa Intel FPGA Info: # Start time: 21:36:04 on Aug 22,2025
+Questa Intel FPGA Info: # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/Andrea/Documents/Universidad/Semestre VI/Arqui Computadores/parte4" C:/Users/Andrea/Documents/Universidad/Semestre VI/Arqui Computadores/parte4/parte2TB.v 
+Questa Intel FPGA Info: # -- Compiling module parte2TB
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # Top level modules:
+Questa Intel FPGA Info: # 	parte2TB
+Questa Intel FPGA Info: # End time: 21:36:04 on Aug 22,2025, Elapsed time: 0:00:00
+Questa Intel FPGA Info: # Errors: 0, Warnings: 0
+Questa Intel FPGA Info: # 
+Questa Intel FPGA Info: # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  parte2TB
+Questa Intel FPGA Info: # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" parte2TB 
+Questa Intel FPGA Info: # Start time: 21:36:05 on Aug 22,2025
+Questa Intel FPGA Info: # Loading work.parte2TB
+Questa Intel FPGA Info: # Loading work.parte2
+Questa Intel FPGA Info: # ** Error (suppressible): (vsim-3009) [TSCALE] - Module 'parte2TB' does not have a timeunit/timeprecision specification in effect, but other modules do.
+Questa Intel FPGA Info: #    Time: 0 ps  Iteration: 0  Instance: /parte2TB/u0 File: parte2.vo
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_io_obuf
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_io_ibuf
+Questa Intel FPGA Info: # Loading cyclonev_ver.cyclonev_lcell_comb
+Questa Intel FPGA Info: # Error loading design
+Questa Intel FPGA Info: # Error: Error loading design
+Questa Intel FPGA Info: #        Pausing macro execution
+Questa Intel FPGA Info: # MACRO ./parte2_run_msim_gate_verilog.do PAUSED at line 12
+Questa Intel FPGA Info: # End time: 21:40:01 on Aug 22,2025, Elapsed time: 0:03:56
+Questa Intel FPGA Info: # Errors: 1, Warnings: 0
+Info: NativeLink simulation flow was successful
