@@ -1,0 +1,39 @@
+
+module control_unit (
+    input  wire [6:0] opcode,
+    input  wire [2:0] funct3,
+    input  wire [6:0] funct7,
+    output reg  [3:0] alu_op,
+    output reg        reg_write
+);
+    always @(*) begin
+        // default
+        alu_op = 4'b0000;
+        reg_write = 1'b0;
+
+        if (opcode == 7'b0110011) begin // R-type
+            reg_write = 1'b1;
+            case ({funct7, funct3})
+                // ADD : funct7=0000000 funct3=000
+                10'b0000000_000: alu_op = 4'b0000;
+                // SUB : funct7=0100000 funct3=000
+                10'b0100000_000: alu_op = 4'b0001;
+                // AND : funct7=0000000 funct3=111
+                10'b0000000_111: alu_op = 4'b0010;
+                // OR : funct7=0000000 funct3=110
+                10'b0000000_110: alu_op = 4'b0011;
+                // XOR : funct7=0000000 funct3=100
+                10'b0000000_100: alu_op = 4'b0100;
+                // SLL : funct7=0000000 funct3=001
+                10'b0000000_001: alu_op = 4'b0101;
+                // SRL : funct7=0000000 funct3=101
+                10'b0000000_101: alu_op = 4'b0110;
+                // SRA : funct7=0100000 funct3=101
+                10'b0100000_101: alu_op = 4'b0111;
+                // SLT : funct7=0000000 funct3=010
+                10'b0000000_010: alu_op = 4'b1000;
+                default: alu_op = 4'b0000;
+            endcase
+        end
+    end
+endmodule

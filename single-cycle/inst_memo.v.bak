@@ -1,0 +1,21 @@
+module inst_mem(
+	input wire reset,
+	input wire [31:0] addres,
+	output wire [31:0] instruction
+);
+
+
+
+reg [31:0] Memory [0:63];
+
+assign instruction = Memory[addres[5:0]];
+integer i;
+
+always @(posedge reset) begin
+
+	for(i = 0; i<64; i = i+1) begin
+		Memory[i] = 32'h00000000;
+	end
+end
+
+endmodule

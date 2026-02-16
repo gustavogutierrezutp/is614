@@ -1,0 +1,5 @@
+module instructio_memory(reset, addres, instruction);
+
+input reset;
+input [31:0] addres;
+output [31:0] instruction;

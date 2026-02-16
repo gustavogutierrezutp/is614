@@ -15,7 +15,6 @@ module hex7seg(
             4'h8: display = 7'b0000000;  // 8
             4'h9: display = 7'b0010000;  // 9
             4'ha: display = 7'b0001000;  // a
-            4'ha: display = 7'b0001000;  // a
             4'hb: display = 7'b0000011;  // b
             4'hc: display = 7'b1000110;  // c
             4'hd: display = 7'b0100001;  // d
