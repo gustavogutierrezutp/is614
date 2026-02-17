@@ -47,7 +47,7 @@
           <string>Clk</string>
         </entry>
       </elementAttributes>
-      <pos x="280" y="140"/>
+      <pos x="360" y="140"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -57,7 +57,7 @@
           <string>clk</string>
         </entry>
       </elementAttributes>
-      <pos x="320" y="140"/>
+      <pos x="400" y="140"/>
     </visualElement>
     <visualElement>
       <elementName>Tunnel</elementName>
@@ -95,12 +95,12 @@
           <boolean>true</boolean>
         </entry>
         <entry>
-          <string>intFormat</string>
-          <intFormat>decSigned</intFormat>
-        </entry>
-        <entry>
           <string>Bits</string>
           <int>4</int>
+        </entry>
+        <entry>
+          <string>intFormat</string>
+          <intFormat>decSigned</intFormat>
         </entry>
       </elementAttributes>
       <pos x="680" y="220"/>
@@ -139,8 +139,8 @@
       <p2 x="580" y="200"/>
     </wire>
     <wire>
-      <p1 x="280" y="140"/>
-      <p2 x="320" y="140"/>
+      <p1 x="360" y="140"/>
+      <p2 x="400" y="140"/>
     </wire>
     <wire>
       <p1 x="500" y="140"/>
