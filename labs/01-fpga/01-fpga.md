@@ -99,14 +99,3 @@ representations. So the expected behavior of your final circuit is:
   (two's complement) and will display the corresponding value.
   
 
-## 5. Deadline
-
-You will submit your work in two parts:
-
-- **Part 1**: By next friday, August 22 (23:59 COT) you will create a pull request
-  with your answers and a simulation of your circuit.
-
-- **Part 2**: After that you will contact out teaching assistant and schedule
-  a time to test your circuit on the DE1-SoC board. The strict deadline for
-  this is August 27.
-
